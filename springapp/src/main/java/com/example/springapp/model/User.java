@@ -12,18 +12,17 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.example.springapp.model.UserRole;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//Defined all Details of User
 @Data
 @Entity
 @Builder
@@ -31,107 +30,107 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User implements UserDetails {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private String username;
-	private String password;
-	private String email;
-	private String bio;
-	private Date dateOfBirth;
-	private byte[] profilePicture;
-	@Builder.Default
-	private LocalDate registrationDate = LocalDate.now();
-	@Enumerated(EnumType.STRING)
-	private UserRole role;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String username;
+    private String password;
+    private String email;
+    private String bio;
+    private Date dateOfBirth;
+    private byte[] profilePicture;
+    @Builder.Default
+    private LocalDate registrationDate = LocalDate.now();
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	@Override
-	public String getUsername() {
-		return username;
-	}
+    @Override
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	@Override
-	public String getPassword() {
-		return password;
-	}
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getBio() {
-		return bio;
-	}
+    public String getBio() {
+        return bio;
+    }
 
-	public void setBio(String bio) {
-		this.bio = bio;
-	}
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 
-	public byte[] getProfilePicture() {
-		return profilePicture;
-	}
+    public byte[] getProfilePicture() {
+        return profilePicture;
+    }
 
-	public void setProfilePicture(byte[] profilePicture) {
-		this.profilePicture = profilePicture;
-	}
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }
 
-	public LocalDate getRegistrationDate() {
-		return registrationDate;
-	}
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
 
-	public String getDateOfBirth() {
-		SimpleDateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		return outputFormatter.format(dateOfBirth);
-	}
+    public String getDateOfBirth() {
+        SimpleDateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        return outputFormatter.format(dateOfBirth);
+    }
 
-	public void setDateOfBirth(String dateString) throws ParseException {
-		SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date parsedDate = inputFormatter.parse(dateString);
-		this.dateOfBirth = parsedDate;
-	}
+    public void setDateOfBirth(String dateString) throws ParseException {
+        SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date parsedDate = inputFormatter.parse(dateString);
+        this.dateOfBirth = parsedDate;
+    }
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority(role.name()));
-	}
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
 
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
