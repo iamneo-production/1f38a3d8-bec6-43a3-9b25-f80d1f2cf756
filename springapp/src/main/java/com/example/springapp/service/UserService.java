@@ -1,8 +1,8 @@
 package com.example.springapp.service;
 
 import java.text.ParseException;
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,13 +10,11 @@ import org.springframework.stereotype.Service;
 import com.example.springapp.model.User;
 import com.example.springapp.repository.UserRepository;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
-public class UserService{
+public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -36,9 +34,9 @@ public class UserService{
     public void editUser(User updatedUser, String username) {
         Optional<User> optionalUser = userRepository.findByUsername(username);
         User existingUser = optionalUser.orElseThrow(() -> new IllegalArgumentException("User not found"));
-        
+
         if (updatedUser.getUsername() != null) {
-        existingUser.setUsername(updatedUser.getUsername());
+            existingUser.setUsername(updatedUser.getUsername());
         }
         if (updatedUser.getPassword() != null) {
             existingUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
@@ -62,9 +60,9 @@ public class UserService{
         userRepository.save(existingUser);
     }
 
-    public List<User> getAllUsers(){
-		return (List<User>) userRepository.findAll();
-	}
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     public void deleteUser(String username) {
         userRepository.deleteByUsername(username);

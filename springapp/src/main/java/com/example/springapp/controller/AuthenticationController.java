@@ -1,8 +1,9 @@
 package com.example.springapp.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-
 import com.example.springapp.service.AuthenticationService;
+import com.example.springapp.controller.AuthenticationRequest;
+import com.example.springapp.controller.AuthenticationResponse;
+import com.example.springapp.controller.RegisterRequest;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,21 +12,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
 public class AuthenticationController {
-	@Autowired
+	
 	private final AuthenticationService service;
 
 	@PostMapping("/register")
-	public ResponseEntity<AuthenticationResponse> userRegister(@RequestBody RegisterRequest request) {
+	public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerUser(request));
 	}
 
 	@PostMapping("/register/admin")
-	public ResponseEntity<AuthenticationResponse> adminRegister(@RequestBody RegisterRequest request) {
+	public ResponseEntity<AuthenticationResponse> registerAdmin(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerAdmin(request));
 	}
 

@@ -1,15 +1,14 @@
 package com.example.springapp.repository;
 
-import java.util.Optional;
-
+import com.example.springapp.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.springapp.model.User;
+import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, String> {
-	public User findById(int userId);
-	Optional<User> findByEmail(String email);
-	Optional<User> findByUsername(String username);
-	public boolean existsByUsername(String username);
-	Optional<User> deleteByUsername(String username);
+public interface UserRepository extends JpaRepository<User, Integer> {
+    User findById(int userId);
+    Optional<User> findByEmail(String email);
+    Optional<User> findByUsername(String username);
+    boolean existsByUsername(String username);
+    Optional<User> deleteByUsername(String username);
 }
