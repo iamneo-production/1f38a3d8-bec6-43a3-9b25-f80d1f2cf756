@@ -1,4 +1,6 @@
+com/example/springapp/service/JwtService.class
 com/example/springapp/SpringappApplication.class
+<<<<<<< HEAD
 com/example/springapp/service/JwtService.class
 com/example/springapp/service/UserService.class
 com/example/springapp/controller/AuthenticationRequest.class
@@ -9,6 +11,17 @@ com/example/springapp/repository/UserRepository.class
 com/example/springapp/model/UserRole.class
 com/example/springapp/controller/RegisterRequest$RegisterRequestBuilder.class
 com/example/springapp/model/User.class
+=======
+com/example/springapp/service/UserService.class
+com/example/springapp/controller/AuthenticationRequest.class
+com/example/springapp/controller/AuthenticationResponse$AuthenticationResponseBuilder.class
+com/example/springapp/service/AuthenticationService.class
+com/example/springapp/model/User$UserBuilder.class
+com/example/springapp/repository/UserRepository.class
+com/example/springapp/model/UserRole.class
+com/example/springapp/model/User.class
+com/example/springapp/controller/RegisterRequest$RegisterRequestBuilder.class
+>>>>>>> 8b053c2 (required test cases passed)
 com/example/springapp/config/JwtAuthenticationFilter.class
 com/example/springapp/controller/RegisterRequest.class
 com/example/springapp/config/ApplicationConfig.class
@@ -16,4 +29,8 @@ com/example/springapp/config/SecurityConfig.class
 com/example/springapp/controller/UserController.class
 com/example/springapp/controller/AuthenticationResponse.class
 com/example/springapp/controller/AuthenticationController.class
+<<<<<<< HEAD
 com/example/springapp/controller/AuthenticationRequest$AuthenticationRequestBuilder.class
+=======
+com/example/springapp/controller/AuthenticationRequest$AuthenticationRequestBuilder.class
+>>>>>>> 8b053c2 (required test cases passed)

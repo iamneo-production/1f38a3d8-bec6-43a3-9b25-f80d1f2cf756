@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/RegisterRequest.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/User.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/UserService.java
@@ -7,6 +8,11 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/User.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/RegisterRequest.java
 >>>>>>> 2160fe1 (Merge branch 'Social-Media-Portal-pratikmandge')
+=======
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/UserService.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/User.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/RegisterRequest.java
+>>>>>>> 8b053c2 (required test cases passed)
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/SpringappApplication.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/UserRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/AuthenticationController.java
