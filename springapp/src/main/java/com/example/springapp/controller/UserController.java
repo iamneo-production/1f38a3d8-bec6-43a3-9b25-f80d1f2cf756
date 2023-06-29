@@ -20,8 +20,18 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+<<<<<<< HEAD
+<<<<<<< HEAD
+@RequestMapping("/api")
+public class UserController {
+=======
 @RequestMapping("/")
 public class UserController{
+>>>>>>> Social-Media-Portal-pratikmandge
+=======
+@RequestMapping("/")
+public class UserController{
+>>>>>>> Project-Workspace-pratikmandge
 	
 	private final UserService userService;
 
@@ -45,11 +55,11 @@ public class UserController{
 
 	@DeleteMapping("/api/users/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable("userId") String userId) {
-        try{
+		if (userId != null){
 			userService.deleteUser(userId);
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-		}catch (Exception e) {
-			e.printStackTrace();
+		}
+		else {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
     }
