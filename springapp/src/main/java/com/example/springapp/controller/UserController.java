@@ -20,8 +20,6 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
-public class UserController {
 @RequestMapping("/")
 public class UserController{
 	
@@ -55,5 +53,4 @@ public class UserController{
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
     }
-}
 }

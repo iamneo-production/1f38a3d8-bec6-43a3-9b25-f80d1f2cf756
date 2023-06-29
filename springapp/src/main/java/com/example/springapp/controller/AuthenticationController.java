@@ -21,13 +21,11 @@ public class AuthenticationController {
 	
 	private final AuthenticationService service;
 
-	@PostMapping("/register")
 	@PostMapping("/api/register")
 	public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerUser(request));
 	}
-
-	@PostMapping("/register/admin")
+	
 	@PostMapping("/api/register/admin")
 	public ResponseEntity<AuthenticationResponse> registerAdmin(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerAdmin(request));
