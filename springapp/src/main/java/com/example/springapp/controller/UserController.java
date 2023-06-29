@@ -20,29 +20,30 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
-public class UserController {
+@RequestMapping("/")
+public class UserController{
+	
 	private final UserService userService;
 
-	@GetMapping("/users/{userId}")
+	@GetMapping("/api/users/{userId}")
     public ResponseEntity<User> getUserByUsername(@PathVariable("userId") String userId) {
         User user = userService.getUserByUsername(userId);
         return ResponseEntity.ok(user);
     }
 
-	@GetMapping("/users")
+	@GetMapping("/api/users")
 	public ResponseEntity<List<User>> getAllUserDetails() throws ParseException {
 		List<User> userList = userService.getAllUsers();
 		return ResponseEntity.ok(userList);
 	}
 
-	@PutMapping("/users/{userId}")
+	@PutMapping("/api/users/{userId}")
     public ResponseEntity<String> updateUser(@PathVariable("userId") String userId, @RequestBody User updatedUser) {
         userService.editUser(updatedUser, userId);
         return ResponseEntity.ok("User updated successfully");
     }
 
-	@DeleteMapping("/users/{userId}")
+	@DeleteMapping("/api/users/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable("userId") String userId) {
         try{
 			userService.deleteUser(userId);

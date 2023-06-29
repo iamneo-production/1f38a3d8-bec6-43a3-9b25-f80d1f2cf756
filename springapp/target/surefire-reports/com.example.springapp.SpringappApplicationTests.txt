@@ -1,4 +1,24 @@
 -------------------------------------------------------------------------------
 Test set: com.example.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.518 s - in com.example.springapp.SpringappApplicationTests
+Tests run: 8, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 8.577 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
+testGetPostById  Time elapsed: 0.195 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.example.springapp.SpringappApplicationTests.testGetPostById(SpringappApplicationTests.java:44)
+
+testGetCommentAll  Time elapsed: 0.032 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.example.springapp.SpringappApplicationTests.testGetCommentAll(SpringappApplicationTests.java:79)
+
+testGetPostAll  Time elapsed: 0.006 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.example.springapp.SpringappApplicationTests.testGetPostAll(SpringappApplicationTests.java:33)
+
+testGetCommentById  Time elapsed: 0.022 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.example.springapp.SpringappApplicationTests.testGetCommentById(SpringappApplicationTests.java:90)
+
+test_case2  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.example.springapp.SpringappApplicationTests.test_case2(SpringappApplicationTests.java:109)
+

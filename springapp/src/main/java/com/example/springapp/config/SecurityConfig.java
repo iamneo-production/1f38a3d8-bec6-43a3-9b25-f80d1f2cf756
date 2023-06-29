@@ -15,28 +15,24 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-	private final JwtAuthenticationFilter jwtAuthFilter;
+	
+	private final JwtAuthenticationFilter jwtAuthenticationFilter;
 	private final AuthenticationProvider authenticationProvider;
+	
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity
-		.csrf(csrf -> csrf.disable())
-		.authorizeHttpRequests(authorizeHttpRequests ->
-		authorizeHttpRequests
-			// .requestMatchers("/admin").hasRole("ADMIN")
-			// .requestMatchers("/normal").hasRole("PUBLIC")
-			.requestMatchers("/api/**")
-			.permitAll()
-			.anyRequest()
-			.authenticated()
-		)
-		.sessionManagement(session -> session
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-		.authenticationProvider(authenticationProvider)
-		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+			.csrf().disable()
+			.authorizeRequests(authorizeRequests -> authorizeRequests
+				.antMatchers("/api/**").permitAll()
+				.anyRequest().authenticated()
+			)
+			.sessionManagement(session -> session
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			)
+			.authenticationProvider(authenticationProvider)
+			.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 		
-		return httpSecurity.build();
-		
+		return http.build();
 	}
-
 }
