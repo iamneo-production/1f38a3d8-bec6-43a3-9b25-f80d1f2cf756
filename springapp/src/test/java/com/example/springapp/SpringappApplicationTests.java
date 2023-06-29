@@ -25,7 +25,6 @@ class SpringappApplicationTests {
 
 	 @Autowired
 	    private MockMvc mockMvc;
-    String contenttype = "application/json";
      
      @Test
      public void testGetPostAll() throws Exception {
@@ -33,7 +32,7 @@ class SpringappApplicationTests {
          mockMvc.perform(get("/api/posts"))
          .andExpect(MockMvcResultMatchers.status().isOk())
          .andDo(print())
-         .andExpect(content().contentType(contenttype))
+         .andExpect(content().contentType("application/json"))
  			.andExpect(jsonPath("$").isArray())
  			.andReturn();
      }
@@ -44,7 +43,7 @@ class SpringappApplicationTests {
          mockMvc.perform(get("/api/posts").param("id", "1"))
          .andExpect(MockMvcResultMatchers.status().isOk())
          .andDo(print())
-         .andExpect(content().contentType(contenttype))
+         .andExpect(content().contentType("application/json"))
  			.andExpect(jsonPath("$").isArray())
  			.andReturn();
      }
@@ -56,7 +55,7 @@ class SpringappApplicationTests {
          mockMvc.perform(get("/api/users"))
          .andExpect(MockMvcResultMatchers.status().isOk())
          .andDo(print())
-         .andExpect(content().contentType(contenttype))
+         .andExpect(content().contentType("application/json"))
  			.andExpect(jsonPath("$").isArray())
  			.andReturn();
      }
@@ -67,7 +66,7 @@ class SpringappApplicationTests {
          mockMvc.perform(get("/api/users").param("id", "1"))
          .andExpect(MockMvcResultMatchers.status().isOk())
          .andDo(print())
-         .andExpect(content().contentType(contenttype))
+         .andExpect(content().contentType("application/json"))
  			.andExpect(jsonPath("$").isArray())
  			.andReturn();
      }
@@ -79,7 +78,7 @@ class SpringappApplicationTests {
          mockMvc.perform(get("/api/comments"))
          .andExpect(MockMvcResultMatchers.status().isOk())
          .andDo(print())
-         .andExpect(content().contentType(contenttype))
+         .andExpect(content().contentType("application/json"))
  			.andExpect(jsonPath("$").isArray())
  			.andReturn();
      }
@@ -90,7 +89,7 @@ class SpringappApplicationTests {
          mockMvc.perform(get("/api/comments").param("id", "1"))
          .andExpect(MockMvcResultMatchers.status().isOk())
          .andDo(print())
-         .andExpect(content().contentType(contenttype))
+         .andExpect(content().contentType("application/json"))
  			.andExpect(jsonPath("$").isArray())
  			.andReturn();
      }
@@ -99,7 +98,7 @@ class SpringappApplicationTests {
      public void test_case1() {
      String directoryPath = "src/main/java/com/example/springapp/controller";
       File directory = new File(directoryPath);
-      assertTrue(directory.exists() && directory.isDirectory());
+      assertTrue(directory.exists() && directory.isDirectory());;
       }
 
 
@@ -107,6 +106,6 @@ class SpringappApplicationTests {
      public void test_case2() {
      String filePath = "src/main/java/com/example/springapp/controller/PostController.java";
       File file = new File(filePath);
-      assertTrue(file.exists() && file.isFile());
+      assertTrue(file.exists() && file.isFile());;
       }
 }

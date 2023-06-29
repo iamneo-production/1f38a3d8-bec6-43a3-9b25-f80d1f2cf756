@@ -1,24 +1,24 @@
 -------------------------------------------------------------------------------
 Test set: com.example.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 8.577 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
-testGetPostById  Time elapsed: 0.195 s  <<< FAILURE!
+Tests run: 8, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 8.021 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
+testGetPostById  Time elapsed: 0.221 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.example.springapp.SpringappApplicationTests.testGetPostById(SpringappApplicationTests.java:44)
 
-testGetCommentAll  Time elapsed: 0.032 s  <<< FAILURE!
+testGetCommentAll  Time elapsed: 0.015 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.example.springapp.SpringappApplicationTests.testGetCommentAll(SpringappApplicationTests.java:79)
 
-testGetPostAll  Time elapsed: 0.006 s  <<< FAILURE!
+testGetPostAll  Time elapsed: 0.011 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.example.springapp.SpringappApplicationTests.testGetPostAll(SpringappApplicationTests.java:33)
 
-testGetCommentById  Time elapsed: 0.022 s  <<< FAILURE!
+testGetCommentById  Time elapsed: 0.016 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.example.springapp.SpringappApplicationTests.testGetCommentById(SpringappApplicationTests.java:90)
 
-test_case2  Time elapsed: 0.003 s  <<< FAILURE!
+test_case2  Time elapsed: 0.005 s  <<< FAILURE!
 java.lang.AssertionError
 	at com.example.springapp.SpringappApplicationTests.test_case2(SpringappApplicationTests.java:109)
 
