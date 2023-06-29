@@ -1,2 +1,9 @@
 node_modules/
 done
+.project
+springapp/target/springapp-0.0.1-SNAPSHOT.jar
+springapp/target/springapp-0.0.1-SNAPSHOT.jar.original
+springapp/target/surefire-reports/com.example.springapp.SpringappApplicationTests.txt
+springapp/target/surefire-reports/TEST-com.example.springapp.SpringappApplicationTests.xml
+target/iamneo-production_1f38a3d8-bec6-43a3-9b25-f80d1f2cf756-1.0-SNAPSHOT.jar
+target/maven-archiver/pom.properties

@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +65,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    @Transactional
     public void deleteUser(String username) {
         userRepository.deleteByUsername(username);
     }
