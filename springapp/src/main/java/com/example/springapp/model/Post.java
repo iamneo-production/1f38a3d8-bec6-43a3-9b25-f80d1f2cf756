@@ -30,8 +30,6 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
     private int postId;
     private String title;
     private String content;
@@ -43,14 +41,6 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "username")
     private User user;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getPostId() {
         return postId;
