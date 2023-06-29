@@ -16,6 +16,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import lombok.Builder;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
