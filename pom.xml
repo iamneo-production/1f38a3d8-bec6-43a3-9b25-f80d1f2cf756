@@ -18,8 +18,8 @@
         <sonar.tests></sonar.tests>
 >>>>>>> Project-Workspace-pratikmandge
 =======
-        <sonar.sources>null</sonar.sources>
-        <sonar.tests>null</sonar.tests>
+        <sonar.sources></sonar.sources>
+        <sonar.tests></sonar.tests>
 >>>>>>> Project-Workspace-pratikmandge
         <sonar.java.binaries>target</sonar.java.binaries>
     </properties>

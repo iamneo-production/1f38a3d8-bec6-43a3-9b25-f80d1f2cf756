@@ -2,6 +2,7 @@
 Test set: com.example.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tests run: 8, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 8.021 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
 testGetPostById  Time elapsed: 0.221 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
@@ -25,4 +26,7 @@ java.lang.AssertionError
 
 =======
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.589 s - in com.example.springapp.SpringappApplicationTests
+>>>>>>> Project-Workspace-pratikmandge
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.82 s - in com.example.springapp.SpringappApplicationTests
 >>>>>>> Project-Workspace-pratikmandge
