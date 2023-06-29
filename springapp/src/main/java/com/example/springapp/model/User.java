@@ -11,12 +11,17 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.example.springapp.model.UserRole;
+import com.example.springapp.model.Post;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,6 +48,8 @@ public class User implements UserDetails {
     private LocalDate registrationDate = LocalDate.now();
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Post> posts;
 
     public int getId() {
         return id;
@@ -107,6 +114,14 @@ public class User implements UserDetails {
         SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
         Date parsedDate = inputFormatter.parse(dateString);
         this.dateOfBirth = parsedDate;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
