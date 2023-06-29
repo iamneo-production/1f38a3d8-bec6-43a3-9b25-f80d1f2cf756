@@ -16,11 +16,11 @@ import com.example.springapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
-@RequiredArgsConstructor 
+@RequiredArgsConstructor
 public class ApplicationConfig {
 	
 	private final UserRepository repository;
-
+	
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return username -> repository.findByUsername(username)
@@ -28,10 +28,10 @@ public class ApplicationConfig {
 	}
 	
 	@Bean
-	public AuthenticationProvider authenticationProvider() {
+	public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-		authProvider.setUserDetailsService(userDetailsService());
-		authProvider.setPasswordEncoder(passwordEncoder());
+		authProvider.setUserDetailsService(userDetailsService);
+		authProvider.setPasswordEncoder(passwordEncoder);
 		return authProvider;
 	}
 	
@@ -39,7 +39,7 @@ public class ApplicationConfig {
 	public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
 	}
-
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
