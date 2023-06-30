@@ -1,10 +1,10 @@
 import './App.css';
-import CommentSection from './Components/Comment';
+import CommentsSection from './Components/Comments/CommentSection';
 
 
 function App() {
   return (
-      <CommentSection/>
+    <CommentsSection/>
   );
 }
 
