@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.example.springapp.model.UserRole;
 import com.example.springapp.model.Post;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -48,7 +49,8 @@ public class User implements UserDetails {
     private LocalDate registrationDate = LocalDate.now();
     @Enumerated(EnumType.STRING)
     private UserRole role;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
     public int getId() {
