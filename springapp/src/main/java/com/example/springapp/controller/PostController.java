@@ -53,7 +53,6 @@ public class PostController {
         postService.deletePost(postId);
         return ResponseEntity.noContent().build();
     }
-
     
     @GetMapping("api/posts/user")
     public ResponseEntity<List<Post>> getPostsByUser(@RequestParam("userId") String userId) {
