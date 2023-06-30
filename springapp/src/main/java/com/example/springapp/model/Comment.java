@@ -1,39 +1,38 @@
+package com.example.springapp.model;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "comments")
 public class Comment {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
     private String text;
-    private String createdDate;
 
-    public Comment() {
+    @Column(nullable = false)
+    private LocalDateTime createdDate;
+
+    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reply> replies = new ArrayList<>();
+
+
+    public void addReply(Reply reply) {
+        replies.add(reply);
+        reply.setParentComment(this);
     }
 
-    public Comment(int id, String text, String createdDate) {
-        this.id = id;
-        this.text = text;
-        this.createdDate = createdDate;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
+    public void removeReply(Reply reply) {
+        replies.remove(reply);
+        reply.setParentComment(null);
     }
 }
