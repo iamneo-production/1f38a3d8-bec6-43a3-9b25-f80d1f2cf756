@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import MainFeeds from './components/Feeds/MainFeeds';
 import MainPage from './Settings/SideBar/MainPage';
 import Login from './components/Auth/Login';
-//import ChatBody from './Components/Message/chatBody/chatBody/ChatBody';
 import NavBar from './components/NavBar/NavBar';
 
 
@@ -50,8 +49,6 @@ const router = createBrowserRouter(
       ]
 
 
-
-//  
 
 );
 
