@@ -1,10 +1,11 @@
 import './App.css';
 import CommentsSection from './Components/Comments/CommentSection';
+import ReportButton from './Components/Report';
 
 
 function App() {
   return (
-    <CommentsSection/>
+    <ReportButton/>
   );
 }
 
