@@ -1,4 +1,5 @@
 com/example/springapp/service/JwtService.class
+<<<<<<< HEAD
 com/example/springapp/SpringappApplication.class
 <<<<<<< HEAD
 com/example/springapp/service/JwtService.class
@@ -12,25 +13,40 @@ com/example/springapp/model/UserRole.class
 com/example/springapp/controller/RegisterRequest$RegisterRequestBuilder.class
 com/example/springapp/model/User.class
 =======
+=======
+>>>>>>> 8a4b4ca (Merge branch 'Project-Workspace-pratikmandge' of https://github.com/iamneo-production/1f38a3d8-bec6-43a3-9b25-f80d1f2cf756 into Social-Media-Portal-pratikmandge)
 com/example/springapp/service/UserService.class
-com/example/springapp/controller/AuthenticationRequest.class
-com/example/springapp/controller/AuthenticationResponse$AuthenticationResponseBuilder.class
-com/example/springapp/service/AuthenticationService.class
-com/example/springapp/model/User$UserBuilder.class
-com/example/springapp/repository/UserRepository.class
 com/example/springapp/model/UserRole.class
 com/example/springapp/model/User.class
 com/example/springapp/controller/RegisterRequest$RegisterRequestBuilder.class
+<<<<<<< HEAD
 >>>>>>> 8b053c2 (required test cases passed)
 com/example/springapp/config/JwtAuthenticationFilter.class
+=======
+>>>>>>> 8a4b4ca (Merge branch 'Project-Workspace-pratikmandge' of https://github.com/iamneo-production/1f38a3d8-bec6-43a3-9b25-f80d1f2cf756 into Social-Media-Portal-pratikmandge)
 com/example/springapp/controller/RegisterRequest.class
 com/example/springapp/config/ApplicationConfig.class
-com/example/springapp/config/SecurityConfig.class
 com/example/springapp/controller/UserController.class
+com/example/springapp/repository/PostRepository.class
 com/example/springapp/controller/AuthenticationResponse.class
 com/example/springapp/controller/AuthenticationController.class
 <<<<<<< HEAD
 com/example/springapp/controller/AuthenticationRequest$AuthenticationRequestBuilder.class
 =======
 com/example/springapp/controller/AuthenticationRequest$AuthenticationRequestBuilder.class
+<<<<<<< HEAD
 >>>>>>> 8b053c2 (required test cases passed)
+=======
+com/example/springapp/SpringappApplication.class
+com/example/springapp/controller/PostController.class
+com/example/springapp/controller/AuthenticationRequest.class
+com/example/springapp/service/PostService.class
+com/example/springapp/controller/AuthenticationResponse$AuthenticationResponseBuilder.class
+com/example/springapp/service/AuthenticationService.class
+com/example/springapp/model/User$UserBuilder.class
+com/example/springapp/repository/UserRepository.class
+com/example/springapp/config/JwtAuthenticationFilter.class
+com/example/springapp/config/SecurityConfig.class
+com/example/springapp/model/Post$PostBuilder.class
+com/example/springapp/model/Post.class
+>>>>>>> 8a4b4ca (Merge branch 'Project-Workspace-pratikmandge' of https://github.com/iamneo-production/1f38a3d8-bec6-43a3-9b25-f80d1f2cf756 into Social-Media-Portal-pratikmandge)

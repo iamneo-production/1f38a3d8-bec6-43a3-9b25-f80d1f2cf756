@@ -54,7 +54,6 @@ public class PostController {
         return ResponseEntity.noContent().build();
     }
 
-    
     @GetMapping("api/posts/user")
     public ResponseEntity<List<Post>> getPostsByUser(@RequestParam("userId") String userId) {
         List<Post> posts = postService.getPostsByUser(userId);

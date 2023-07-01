@@ -32,8 +32,11 @@ public class ApplicationConfig {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService);
 		authProvider.setPasswordEncoder(passwordEncoder);
+<<<<<<< HEAD
 		authProvider.setUserDetailsService(userDetailsService());
 		authProvider.setPasswordEncoder(passwordEncoder());
+=======
+>>>>>>> 8a4b4ca (Merge branch 'Project-Workspace-pratikmandge' of https://github.com/iamneo-production/1f38a3d8-bec6-43a3-9b25-f80d1f2cf756 into Social-Media-Portal-pratikmandge)
 		return authProvider;
 	}
 	
