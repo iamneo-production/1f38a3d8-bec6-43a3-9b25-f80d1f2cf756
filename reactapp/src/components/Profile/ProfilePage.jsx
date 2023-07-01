@@ -1,5 +1,5 @@
 import React from 'react'
-import "./profile.css";
+
 
 const ProfilePage = () => {
   return (
@@ -50,7 +50,7 @@ const ProfilePage = () => {
                 </li>
               </ul>
 
-              {/* <!-- user meta form medium screens --> */}
+              
               <div class="hidden md:block">
                 <h1 class="font-semibold">Mr Travlerrr...</h1>
                 <span>Travel, Nature and Music</span>
@@ -59,7 +59,7 @@ const ProfilePage = () => {
 
             </div>
 
-            {/* <!-- user meta form small screens --> */}
+            
             <div class="md:hidden text-sm my-2">
               <h1 class="font-semibold">Mr Travlerrr...</h1>
               <span>Travel, Nature and Music</span>
@@ -68,15 +68,15 @@ const ProfilePage = () => {
 
           </header>
 
-          {/* <!-- posts --> */}
+          
           <div class="">
 
 
-            {/* <!-- insta freatures --> */}
+            
             <ul class="flex items-center justify-around md:justify-center space-x-12  
                     uppercase tracking-widest font-semibold text-xs text-gray-600
                     border-t">
-              {/* <!-- posts tab is active --> */}
+              
               <li class="md:border-t md:border-gray-700 md:-mt-px md:text-gray-700">
                 <a class="inline-block p-3" href="#">
                   <i class="fas fa-th-large text-xl md:text-xs"></i>
@@ -99,7 +99,7 @@ const ProfilePage = () => {
             </ul>
             <div class="flex flex-wrap pr-20  w-10/12">
 
-              {/* <!-- column --> */}
+              
               <div class="w-1/4 p-px md:px-3">
                 {/* <!-- post 1--> */}
                 <a href="#">
@@ -113,7 +113,7 @@ const ProfilePage = () => {
                 </a>
               </div>
               <div class="w-1/4 p-px md:px-3">
-                {/* <!-- post 1--> */}
+                {/* <!-- post 2--> */}
                 <a href="#">
                   <article class="post bg-gray-100 text-white  pb-full md:mb-6">
                     {/* <!-- post image--> */}
@@ -125,7 +125,7 @@ const ProfilePage = () => {
                 </a>
               </div>
               <div class="w-1/4 p-px md:px-3">
-                {/* <!-- post 1--> */}
+                {/* <!-- post 3--> */}
                 <a href="#">
                   <article class="post bg-gray-100 text-white  pb-full md:mb-6">
                     {/* <!-- post image--> */}
@@ -137,7 +137,7 @@ const ProfilePage = () => {
                 </a>
               </div>
               <div class="w-1/4 p-px md:px-3">
-                {/* <!-- post 1--> */}
+                {/* <!-- post 4--> */}
                 <a href="#">
                   <article class="post bg-gray-100 text-white  pb-full md:mb-6">
                     {/* <!-- post image--> */}
@@ -149,7 +149,7 @@ const ProfilePage = () => {
                 </a>
               </div>
               <div class="w-1/4 p-px md:px-3">
-                {/* <!-- post 1--> */}
+                {/* <!-- post 5--> */}
                 <a href="#">
                   <article class="post bg-gray-100 text-white  pb-full md:mb-6">
                     {/* <!-- post image--> */}
