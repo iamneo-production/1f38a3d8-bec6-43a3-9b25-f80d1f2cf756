@@ -52,7 +52,6 @@ public class UserService {
             try {
                 existingUser.setDateOfBirth(updatedUser.getDateOfBirth());
             } catch (ParseException e) {
-                e.printStackTrace();
             }
         }
         if (updatedUser.getProfilePicture() != null) {
