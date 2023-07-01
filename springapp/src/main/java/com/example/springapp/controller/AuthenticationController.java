@@ -25,7 +25,7 @@ public class AuthenticationController {
 	public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerUser(request));
 	}
-
+	
 	@PostMapping("/api/register/admin")
 	public ResponseEntity<AuthenticationResponse> registerAdmin(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerAdmin(request));
