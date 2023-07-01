@@ -28,9 +28,7 @@ public class UserService {
         String username = newUser.getUsername();
         if (userRepository.existsByUsername(username)) {
             throw new IllegalArgumentException("Username already exists");
-        }
-        
-        
+        } 
         return userRepository.save(newUser);
     }
 

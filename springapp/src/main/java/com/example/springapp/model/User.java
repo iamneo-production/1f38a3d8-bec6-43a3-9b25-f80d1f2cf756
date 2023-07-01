@@ -14,6 +14,7 @@ import com.example.springapp.model.UserRole;
 import com.example.springapp.model.Post;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,16 +24,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 
-<<<<<<< HEAD
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-=======
-import javax.persistence.Id;
->>>>>>> 8a4b4ca (Merge branch 'Project-Workspace-pratikmandge' of https://github.com/iamneo-production/1f38a3d8-bec6-43a3-9b25-f80d1f2cf756 into Social-Media-Portal-pratikmandge)
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -45,21 +37,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User implements UserDetails {
 
-<<<<<<< HEAD
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private String username;
-	private String password;
-	private String email;
-	private String bio;
-	private Date dateOfBirth;
-	private byte[] profilePicture;
-	@Builder.Default
-	private LocalDate registrationDate = LocalDate.now();
-	@Enumerated(EnumType.STRING)
-	private UserRole role;
-=======
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -76,7 +53,6 @@ public class User implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
->>>>>>> 8a4b4ca (Merge branch 'Project-Workspace-pratikmandge' of https://github.com/iamneo-production/1f38a3d8-bec6-43a3-9b25-f80d1f2cf756 into Social-Media-Portal-pratikmandge)
 
     public int getId() {
         return id;
