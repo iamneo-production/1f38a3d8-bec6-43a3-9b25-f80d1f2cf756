@@ -3,6 +3,8 @@ package com.example.springapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.springapp.model.Post;
+
 import java.util.List;
 
 @RestController
@@ -20,7 +22,7 @@ public class CommentController {
         return commentService.getCommentById(commentId);
     }
 
-    @GetMapping("/post")
+    @GetMapping("api/posts/{postId}")
     public List<Comment> getAllCommentsByPostId(@RequestParam int postId) {
         return commentService.getAllCommentsByPostId(postId);
     }

@@ -3,7 +3,6 @@ package com.example.springapp.model;
 import com.example.springapp.model.User;
 
 import java.time.LocalDate;
-// import java.util.List;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
