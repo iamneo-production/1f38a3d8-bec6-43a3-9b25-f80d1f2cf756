@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-=======
 .navbar {
     background-color: #FAFAFA;
     border-bottom: 1px solid #E6E6E6;
@@ -49,5 +35,4 @@ code {
 
 .page {
     display: none;
->>>>>>> b8422ba1637cb4bfc39458fe29bb3726c9ac931f
 }

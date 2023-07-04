@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import './App.css';
-import CommentsSection from './Components/Comments/CommentSection';
-
-=======
 import React, { useState } from 'react'
 import MainFeeds from './components/Feeds/MainFeeds';
 import MainPage from './Settings/SideBar/MainPage';
@@ -59,13 +54,8 @@ const router = createBrowserRouter(
 
 const App = () => {
   const [showNav, setShowNav] = useState(false);
->>>>>>> b8422ba1637cb4bfc39458fe29bb3726c9ac931f
 
   return (
-<<<<<<< HEAD
-    <CommentsSection/>
-  );
-=======
     <div id='root'>
       
       <NavBar showNav={showNav} setShowNav={setShowNav}/>
@@ -78,7 +68,6 @@ const App = () => {
     
   )
   
->>>>>>> b8422ba1637cb4bfc39458fe29bb3726c9ac931f
 }
 
 export default App
