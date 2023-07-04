@@ -20,12 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 	
 	private final AuthenticationService service;
+<<<<<<< HEAD
 
+=======
+>>>>>>> b8422ba1637cb4bfc39458fe29bb3726c9ac931f
 	@PostMapping("/api/register")
 	public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerUser(request));
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> b8422ba1637cb4bfc39458fe29bb3726c9ac931f
 	@PostMapping("/api/register/admin")
 	public ResponseEntity<AuthenticationResponse> registerAdmin(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerAdmin(request));
