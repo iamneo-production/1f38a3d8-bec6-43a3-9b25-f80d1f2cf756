@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import Alert from '../Alerts/Alert';
-
+import { login } from '../../actions/auth';
 
 
 const Login = () => {
@@ -43,6 +43,7 @@ const Login = () => {
     e.preventDefault();
     if(email === "bhavana" && password === "123"){
       console.log("Logged in Successfullly");
+      login("bhavan","123")
       const token = email+" "+password;
       localStorage.setItem("user",token);
       navigate("/")
