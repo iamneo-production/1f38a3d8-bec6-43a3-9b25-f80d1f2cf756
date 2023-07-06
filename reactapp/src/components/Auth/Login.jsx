@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import Alert from '../Alerts/Alert';
 import { login } from '../../actions/auth';
+import {connect} from 'react-redux';
 
-
-const Login = () => {
+const Login = ({login}) => {
     
 
   const navigate = useNavigate();
@@ -109,4 +109,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default connect(null,{login}) (Login)

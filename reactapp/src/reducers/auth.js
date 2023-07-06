@@ -17,6 +17,7 @@ export default function (state = initialState, action) {
       localStorage.setItem('token', payload.token);
       // localStorage.setItem('refresh', payload.refresh);
       // localStorage.setItem("logfail", JSON.stringify(false));
+      
       return {
         ...state,
         isAuthenticated: true,
