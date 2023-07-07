@@ -2,10 +2,10 @@ import React,{useState,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import Alert from '../Alerts/Alert';
+import { login } from '../../actions/auth';
+import {connect} from 'react-redux';
 
-
-
-const Login = () => {
+const Login = ({login}) => {
     
 
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const Login = () => {
     e.preventDefault();
     if(email === "bhavana" && password === "123"){
       console.log("Logged in Successfullly");
+      login("bhavan","123")
       const token = email+" "+password;
       localStorage.setItem("user",token);
       navigate("/")
@@ -108,4 +109,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default connect(null,{login}) (Login)
