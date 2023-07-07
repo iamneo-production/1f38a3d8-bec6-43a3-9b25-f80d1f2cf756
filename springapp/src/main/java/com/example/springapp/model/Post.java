@@ -47,7 +47,7 @@ public class Post {
     private LocalDate updatedAt = LocalDate.now();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "comment")
+    @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
     @ManyToOne
