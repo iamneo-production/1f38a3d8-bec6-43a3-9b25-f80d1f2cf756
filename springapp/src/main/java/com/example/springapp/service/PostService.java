@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -31,7 +32,6 @@ public class PostService {
     }
 
     public List<Post> getPostsByUser(String userId) {
-        // Assuming you have a User object or UserService to retrieve the user by ID
         User user = userService.getUserByUsername(userId);
         return postRepository.findByUser(user);
     }
