@@ -1,8 +1,10 @@
 package com.example.springapp.model;
 
 import com.example.springapp.model.User;
+import com.example.springapp.model.Comment;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,7 +14,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import lombok.AllArgsConstructor;
@@ -29,6 +33,8 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     private int postId;
     private String title;
     private String content;
@@ -37,9 +43,21 @@ public class Post {
     @Builder.Default
     private LocalDate updatedAt = LocalDate.now();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments;
+
     @ManyToOne
     @JoinColumn(name = "username")
     private User user;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getPostId() {
         return postId;

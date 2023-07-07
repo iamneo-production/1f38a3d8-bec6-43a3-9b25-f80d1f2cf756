@@ -28,7 +28,9 @@ public class UserService {
         String username = newUser.getUsername();
         if (userRepository.existsByUsername(username)) {
             throw new IllegalArgumentException("Username already exists");
-        } 
+        }
+        
+        
         return userRepository.save(newUser);
     }
 
@@ -52,6 +54,7 @@ public class UserService {
             try {
                 existingUser.setDateOfBirth(updatedUser.getDateOfBirth());
             } catch (ParseException e) {
+                e.printStackTrace();
             }
         }
         if (updatedUser.getProfilePicture() != null) {

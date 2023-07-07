@@ -14,7 +14,6 @@ import com.example.springapp.model.UserRole;
 import com.example.springapp.model.Post;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -24,7 +23,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 
-
+import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -113,11 +112,11 @@ public class User implements UserDetails {
         return outputFormatter.format(dateOfBirth);
     }
 
-	public void setDateOfBirth(String dateString) throws ParseException {
-		SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date parsedDate = inputFormatter.parse(dateString);
-		this.dateOfBirth = parsedDate;
-	}
+    public void setDateOfBirth(String dateString) throws ParseException {
+        SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date parsedDate = inputFormatter.parse(dateString);
+        this.dateOfBirth = parsedDate;
+    }
 
     public List<Post> getPosts() {
         return posts;
