@@ -4,10 +4,7 @@ import com.example.springapp.model.User;
 import com.example.springapp.model.Comment;
 
 import java.time.LocalDate;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> Social-Media-Portal-pratikmandge
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
