@@ -15,15 +15,12 @@ export default function (state = initialState, action) {
 
     case LOGIN_SUCCESS:
       localStorage.setItem('token', payload.token);
-      // localStorage.setItem('refresh', payload.refresh);
-      // localStorage.setItem("logfail", JSON.stringify(false));
+      console.log(localStorage.getItem('token'))
       
       return {
         ...state,
         isAuthenticated: true,
         token: payload.token,
-        // refresh: payload.refresh,
-        // logfail: false,
       }
 
     case SIGNUP_SUCCESS:
