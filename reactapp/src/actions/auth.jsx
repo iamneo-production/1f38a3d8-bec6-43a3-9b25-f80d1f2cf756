@@ -13,15 +13,23 @@ export const login = (username, password) => async dispatch => {
     const body = JSON.stringify({ username, password });
     try {
         
-        const res = await axios.post('https://8080-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/authenticate/', body,config);
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/authenticate/`, body,config);
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
         });
     } catch (err) {
-        dispatch({
-            type: LOGIN_FAIL
-        })
+        if(err.response.status != 400){
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: {message:"Something went wrong!!!  "}
+            })
+        }else{
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: {message:"Invalid username or password"}
+            })
+        }
     } 
 };
 

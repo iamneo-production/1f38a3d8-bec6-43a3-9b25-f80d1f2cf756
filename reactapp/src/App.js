@@ -16,6 +16,7 @@ import {
   
 } from "react-router-dom";
 import Register from './components/Auth/Register';
+import RouteProtectionUser from './routeProtection/RouteProtectionUser';
 // import Messages from './components/Messages/Messages';
 
 
@@ -28,11 +29,11 @@ const router = createBrowserRouter(
   [
     {
           path: "/settings",
-          element: <MainPage />,
+          element: <RouteProtectionUser><MainPage /></RouteProtectionUser>,
         },
         {
           path: "/",
-          element: <MainFeeds/>,
+          element: <RouteProtectionUser><MainFeeds/></RouteProtectionUser>,
           
         },
         {
