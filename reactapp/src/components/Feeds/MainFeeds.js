@@ -20,11 +20,11 @@ const MainFeeds = () => {
   //  useEffect -> intialized at the starting stage of a component life cycle
 
 
-  useEffect(() => {
-    if(localStorage.getItem("user") === null){
-      navigate("/login");
-    }
-  },[]);
+  // useEffect(() => {
+  //   if(localStorage.getItem("user") === null){
+  //     navigate("/login");
+  //   }
+  // },[]);
 
 
     const [postData, setPostData] = useState([

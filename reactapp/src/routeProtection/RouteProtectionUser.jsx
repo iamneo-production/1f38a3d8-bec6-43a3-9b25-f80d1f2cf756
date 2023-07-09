@@ -13,7 +13,7 @@ const RouteProtectionUser = ({ children, isAuthenticated,token}) => {
         }else{
           auth = true;
         }
-    },[isAuthenticated])
+    },[])
 
   if(isAuthenticated && localStorage.getItem("token") && token){
     return children
