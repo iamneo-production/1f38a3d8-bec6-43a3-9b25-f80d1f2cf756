@@ -30,10 +30,10 @@ export default function (state = initialState, action) {
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        isAuthenticated: true,
-        token: payload.token,
+        isAuthenticated: false,
+        // token: payload.token,
         login_state: {
-          state:false,
+          status:false,
           message:"Success"
         }
       }
