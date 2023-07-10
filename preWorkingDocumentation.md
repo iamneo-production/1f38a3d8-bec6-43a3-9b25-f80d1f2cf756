@@ -38,7 +38,7 @@ List of the tables that may be required for a Social Media application and their
 - **post_id**: foreign key referencing the post that the like is associated with
 - **comment_id**: foreign key referencing the comment that the like is associated with (nullable)
 - **created_at**: the timestamp of when the like was created
-
+    
 ### Follows Table
 - **id**: primary key for the follow
 - **follower_id**: foreign key referencing the user who is following

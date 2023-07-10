@@ -3,12 +3,16 @@ import Alert from '../Alerts/Alert';
 import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
+
+
+
 const Register = () => {
 
     const navigate = useNavigate();
 
     useEffect(function(){
         const user = localStorage.getItem("user")
+
         if(user !== null){
             navigate("/");
         }

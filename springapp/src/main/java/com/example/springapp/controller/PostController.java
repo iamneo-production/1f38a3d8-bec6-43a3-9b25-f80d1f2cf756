@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod; // Add this import statement
-import org.springframework.web.bind.annotation.RequestMethod; // Add this import statement
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
@@ -55,8 +55,8 @@ public class PostController {
     }
     
     @GetMapping("api/posts/user")
-    public ResponseEntity<List<Post>> getPostsByUser(@RequestParam("userId") String userId) {
-        List<Post> posts = postService.getPostsByUser(userId);
+    public ResponseEntity<List<Post>> getPostsByUser(@RequestParam("username") String username) {
+        List<Post> posts = postService.getPostsByUser(username);
         return ResponseEntity.ok(posts);
     }
     

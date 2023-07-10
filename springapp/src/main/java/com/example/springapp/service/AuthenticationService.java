@@ -88,16 +88,23 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        authenticationManager.authenticate(
+        
+        try {
+            authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
                         request.getPassword()
                 )
-        );
-        User user = repository.findByUsername(request.getUsername()).orElseThrow();
-        String jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-                .token(jwtToken)
-                .build();
+            );
+            User user = repository.findByUsername(request.getUsername()).orElseThrow(() -> new RuntimeException("Invalid username or password"));
+            String jwtToken = jwtService.generateToken(user);
+            return AuthenticationResponse.builder()
+                    .token(jwtToken)
+                    .build();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid username or password");
+        }
+        
+        
     }
 }
