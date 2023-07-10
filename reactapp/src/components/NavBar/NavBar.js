@@ -15,18 +15,18 @@ const NavBar = ({ showNav, setShowNav }) => {
     const [showProfile, setShowProfile] = useState(false);
 
     // const [email, setEmail] = useState("test@gmail.com");
-    var email = "test@gmail.com"
+    var email = " "
 
 
-    if(localStorage.getItem("user") !== null){
-        let user = localStorage.getItem("user")
-        email = user.split(" ")[0];
-        // setEmail(user.split(" ")[0]);
+    if(localStorage.getItem("token") !== null){
+        let user = localStorage.getItem("token")
+        email = user
+        
     }
 
 
     const logout = () =>{
-        localStorage.removeItem("user")
+        localStorage.removeItem("token")
         window.location = "/login";
         // navigate("/login")
         // redirect("/login")
