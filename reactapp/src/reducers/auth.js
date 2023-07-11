@@ -30,8 +30,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isAuthenticated: false,
+<<<<<<< HEAD
         token: payload.token,
 
+=======
+        // token: payload.token,
+        login_state: {
+          status:false,
+          message:"Success"
+        }
+>>>>>>> ff0a73bdc79be214bdbfffba15f4daffa59bd727
       }
 
     case LOGIN_FAIL:
