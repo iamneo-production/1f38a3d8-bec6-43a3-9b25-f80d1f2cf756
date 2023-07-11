@@ -4,7 +4,6 @@ import {LOGIN_FAIL,LOGIN_SUCCESS,SIGNUP_FAIL,SIGNUP_SUCCESS,LOGOUT} from '../act
 
 const initialState = {
   token: null,
-  login_state:{status:null,message:null},
   user: null,
   isAuthenticated: false,
   
@@ -16,48 +15,37 @@ export default function (state = initialState, action) {
 
     case LOGIN_SUCCESS:
       localStorage.setItem('token', payload.token);
+      // localStorage.setItem('refresh', payload.refresh);
+      // localStorage.setItem("logfail", JSON.stringify(false));
       
       return {
         ...state,
         isAuthenticated: true,
         token: payload.token,
-        login_state: {
-          state:false,
-          message:"Success"
-        }
+        // refresh: payload.refresh,
+        // logfail: false,
       }
 
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        isAuthenticated: true,
+        isAuthenticated: false,
         token: payload.token,
-        login_state: {
-          state:false,
-          message:"Success"
-        }
+
       }
 
-    
     case LOGIN_FAIL:
-      // console.log(payload)
-      
-      localStorage.removeItem('token');
+      //localStorage.setItem("logfail", JSON.stringify(true));
       return {
-          ...state,
-          login_state: {
-            status:true,
-            message:payload.message
-          },
-          isAuthenticated: false,
-          token: null,
+        ...state,
+        //logfail: true,
       }
+
     case SIGNUP_FAIL:
     case LOGOUT:
       // localStorage.removeItem('access');
       // localStorage.removeItem('refresh');
 
-      localStorage.removeItem('token');
 
       return {
         ...state,

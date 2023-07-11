@@ -7,29 +7,23 @@ import {LOGIN_FAIL,LOGIN_SUCCESS,SIGNUP_FAIL,SIGNUP_SUCCESS} from './types';
 export const login = (username, password) => async dispatch => {
     const config = {
         headers: {
-            'Content-Type': 'application/json',            
+            'Content-Type': 'application/json'
+            
         }
     };
     const body = JSON.stringify({ username, password });
     try {
-        
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/authenticate/`, body,config);
+        const res = await axios.post('https://ide-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io/proxy/8080/api/authenticate', body, config);
+        console.log(res);
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
         });
+        // dispatch(load_user());
     } catch (err) {
-        if(err.response.status != 400){
-            dispatch({
-                type: LOGIN_FAIL,
-                payload: {message:"Something went wrong!!!  "}
-            })
-        }else{
-            dispatch({
-                type: LOGIN_FAIL,
-                payload: {message:"Invalid username or password"}
-            })
-        }
+        dispatch({
+            type: LOGIN_FAIL
+        })
     } 
 };
 
