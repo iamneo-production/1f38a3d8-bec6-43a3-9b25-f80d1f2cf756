@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springapp.model.User;
 import com.example.springapp.service.UserService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequestMapping("/")
 public class UserController{
 	

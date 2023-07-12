@@ -1,25 +1,77 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import MainFeeds from './components/Feeds/MainFeeds';
+import MainPage from './Settings/SideBar/MainPage';
+import Login from './components/Auth/Login';
+import NavBar from './components/NavBar/NavBar';
+import store from './store';
+import { Provider } from 'react-redux';
 
-function App() {
+import "./App.css";
+// import "./Scroll.css";
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements
+  
+} from "react-router-dom";
+import Register from './components/Auth/Register';
+import RouteProtectionUser from './routeProtection/RouteProtectionUser';
+// import Messages from './components/Messages/Messages';
+
+
+
+
+const router = createBrowserRouter(
+  
+
+
+  [
+    {
+          path: "/settings",
+          element: <RouteProtectionUser><MainPage /></RouteProtectionUser>,
+        },
+        {
+          path: "/",
+          element: <RouteProtectionUser><MainFeeds/></RouteProtectionUser>,
+          
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        // {
+        //   path: "/messages",
+        //   element: <Messages />,
+        // },  
+      ]
+
+
+
+);
+
+const App = () => {
+  const [showNav, setShowNav] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='root'>
+      
+      <Provider store={store}>
+      <NavBar showNav={showNav} setShowNav={setShowNav}/>
+      <div onClick = {() => setShowNav(false)}>
+        <RouterProvider router={router} />
+        </div>
+        {/* <MainPage /> */}
+        
+      </Provider>
     </div>
-  );
+    
+  )
+  
 }
 
-export default App;
+export default App

@@ -6,9 +6,10 @@ import com.example.springapp.controller.AuthenticationResponse;
 import com.example.springapp.controller.RegisterRequest;
 
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,23 +17,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequestMapping("/")
 public class AuthenticationController {
-	
+
 	private final AuthenticationService service;
 
 	@PostMapping("/api/register")
 	public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody RegisterRequest request) {
-		return ResponseEntity.ok(service.registerUser(request));
+		try {
+			AuthenticationResponse response = service.registerUser(request);
+			return ResponseEntity.ok(response);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new AuthenticationResponse("User registration failed: " + e.getMessage()));
+		}
 	}
-	
+
 	@PostMapping("/api/register/admin")
 	public ResponseEntity<AuthenticationResponse> registerAdmin(@RequestBody RegisterRequest request) {
-		return ResponseEntity.ok(service.registerAdmin(request));
+		try {
+			AuthenticationResponse response = service.registerAdmin(request);
+			return ResponseEntity.ok(response);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new AuthenticationResponse("Admin registration failed: " + e.getMessage()));
+		}
 	}
 
 	@PostMapping("/api/authenticate")
 	public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
-		return ResponseEntity.ok(service.authenticate(request));
+		try {
+			AuthenticationResponse response = service.authenticate(request);
+			return ResponseEntity.ok(response);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new AuthenticationResponse("Authentication failed: " + e.getMessage()));
+		}
 	}
 }

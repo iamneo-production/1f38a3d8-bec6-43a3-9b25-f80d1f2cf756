@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
 import com.example.springapp.service.PostService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class PostController {
