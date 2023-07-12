@@ -1,56 +1,60 @@
 package com.example.springapp.service;
 
+import com.example.springapp.model.Comment;
+import com.example.springapp.model.Post;
+import com.example.springapp.repository.CommentRepository;
+import com.example.springapp.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
 import java.util.List;
 
+
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class CommentService {
 
-    private final List<CommentDTO> comments = new ArrayList<>();
-    private int commentId = 1;
+    @Autowired
+    private final PostService postService;
+    private final CommentRepository commentRepository;
 
-    public List<CommentDTO> getAllComments() {
-        return comments;
+    public Comment getCommentById(int commentId) {
+        return commentRepository.findById(commentId)
+                .orElseThrow(() -> new IllegalArgumentException("Comment not found"));
     }
 
-    public CommentDTO addComment(CommentDTO commentDTO) {
-        commentDTO.setId(commentId++);
-        commentDTO.setTimestamp(getCurrentTimestamp());
-        comments.add(commentDTO);
-        return commentDTO;
+    public List<Comment> getCommentsByPost(int postId) {
+        Post post = postService.getPostById(postId);
+        return commentRepository.findByPost(post);
     }
 
-    public CommentDTO addReplyToComment(int parentId, CommentDTO replyDTO) {
-        CommentDTO parentComment = getCommentById(parentId);
-        if (parentComment != null) {
-            replyDTO.setId(commentId++);
-            replyDTO.setTimestamp(getCurrentTimestamp());
-            parentComment.getReplies().add(replyDTO);
-            return replyDTO;
-        }
-        return null;
+    public List<Comment> getAllComments() {
+        return commentRepository.findAll();
     }
 
-    public void deleteComment(int id) {
-        CommentDTO comment = getCommentById(id);
-        if (comment != null) {
-            comments.remove(comment);
-        }
+    public Comment createComment(Comment comment) {
+        Post post = postService.getPostById(comment.getPost().getId());
+        comment.setPost(post);
+        comment.setText(comment.getText());
+        comment.setCreatedDate(comment.getCreatedDate());
+        comment.setUpdatedDate(comment.getUpdatedDate());
+        return commentRepository.save(comment);
     }
 
-    private CommentDTO getCommentById(int id) {
-        for (CommentDTO comment : comments) {
-            if (comment.getId() == id) {
-                return comment;
-            }
-        }
-        return null;
+    public Comment updateComment(int commentId, Comment updatedComment) {
+        Comment comment = getCommentById(commentId);
+        comment.setText(updatedComment.getText());
+        return commentRepository.save(comment);
     }
 
-    private String getCurrentTimestamp() {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        return currentDateTime.toString();
+    @Transactional
+    public void deleteComment(int commentId) {
+        Comment comment = getCommentById(commentId);
+        commentRepository.delete(comment);
     }
 }

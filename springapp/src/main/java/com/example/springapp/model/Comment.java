@@ -1,38 +1,78 @@
 package com.example.springapp.model;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import com.example.springapp.model.Post;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+
+import lombok.Data;
+import lombok.Builder;
+import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@Data
 @Entity
-@Table(name = "comments")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Comment {
-
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String text;
+    @Builder.Default
+    private LocalDate createdDate =  LocalDate.now();
+    @Builder.Default
+    private LocalDate updatedDate = LocalDate.now();
 
-    @Column(nullable = false)
-    private LocalDateTime createdDate;
+    @ManyToOne
+    @JoinColumn(name = "postId")
+    private Post post;
 
-    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reply> replies = new ArrayList<>();
-
-
-    public void addReply(Reply reply) {
-        replies.add(reply);
-        reply.setParentComment(this);
+    public int getId() {
+        return id;
     }
 
-    public void removeReply(Reply reply) {
-        replies.remove(reply);
-        reply.setParentComment(null);
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public LocalDate getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public Post getPost(){
+        return post;
+    }
+
+    public void setPost(Post post){
+        this.post = post;
     }
 }
