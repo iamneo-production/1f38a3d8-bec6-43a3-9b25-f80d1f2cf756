@@ -1,12 +1,12 @@
 import './App.css';
-import CommentsSection from './Components/Comments/CommentSection';
-import ReportButton from './Components/Report';
+
 
 import React, { useState } from 'react'
 import MainFeeds from './components/Feeds/MainFeeds';
 import MainPage from './Settings/SideBar/MainPage';
 import Login from './components/Auth/Login';
 import NavBar from './components/NavBar/NavBar';
+import NotificationList from './components/Notification/NotificationList';
 
 
 import "./App.css";
@@ -46,6 +46,10 @@ const router = createBrowserRouter(
           path: "/register",
           element: <Register />,
         },
+        {
+          path:"/notification",
+          element: <NotificationList/>,
+        }
         // {
         //   path: "/messages",
         //   element: <Messages />,
@@ -69,7 +73,7 @@ const App = () => {
         <RouterProvider router={router} />
         </div>
         {/* <MainPage /> */}
-        
+    
     </div>
     
   )
