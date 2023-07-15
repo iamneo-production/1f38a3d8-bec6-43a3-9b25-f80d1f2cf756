@@ -17,7 +17,7 @@ import {
   
 } from "react-router-dom";
 import Register from './components/Auth/Register';
-// import Messages from './components/Messages/Messages';
+import Messages from './components/Messages';
 
 
 
@@ -44,10 +44,10 @@ const router = createBrowserRouter(
           path: "/register",
           element: <Register />,
         },
-        // {
-        //   path: "/messages",
-        //   element: <Messages />,
-        // },  
+         {
+           path: "/messages",
+           element: <Messages />,
+         },  
       ]
 
 
