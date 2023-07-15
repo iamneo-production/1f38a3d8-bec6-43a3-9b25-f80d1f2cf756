@@ -1,45 +1,55 @@
 package com.example.springapp.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.springapp.model.Comment;
+import com.example.springapp.service.CommentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/comments")
+@RequestMapping("/")
+@RequiredArgsConstructor
 public class CommentController {
 
     private final CommentService commentService;
 
-    @Autowired
-    public CommentController(CommentService commentService) {
-        this.commentService = commentService;
+    @GetMapping("/api/comments/{commentId}")
+    public ResponseEntity<Comment> getCommentById(@PathVariable int commentId) {
+        Comment comment = commentService.getCommentById(commentId);
+        return ResponseEntity.ok(comment);
     }
 
-    @GetMapping
-    public ResponseEntity<List<CommentDTO>> getAllComments() {
-        List<CommentDTO> comments = commentService.getAllComments();
-        return new ResponseEntity<>(comments, HttpStatus.OK);
+    @GetMapping("/api/comments/post")
+    public ResponseEntity<List<Comment>> getCommentsByPost(@RequestParam("postId") int postId) {
+        List<Comment> comments = commentService.getCommentsByPost(postId);
+        return ResponseEntity.ok(comments);
     }
 
-    @PostMapping
-    public ResponseEntity<CommentDTO> addComment(@RequestBody CommentDTO commentDTO) {
-        CommentDTO addedComment = commentService.addComment(commentDTO);
-        return new ResponseEntity<>(addedComment, HttpStatus.CREATED);
+    @GetMapping("/api/comments")
+    public ResponseEntity<List<Comment>> getAllComments() {
+        List<Comment> comments = commentService.getAllComments();
+        return ResponseEntity.ok(comments);
     }
 
-    @PostMapping("/{parentId}/reply")
-    public ResponseEntity<CommentDTO> addReplyToComment(@PathVariable int parentId, @RequestBody CommentDTO replyDTO) {
-        CommentDTO addedReply = commentService.addReplyToComment(parentId, replyDTO);
-        return new ResponseEntity<>(addedReply, HttpStatus.CREATED);
+    @PostMapping("/api/comments")
+    public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
+        Comment createdComment = commentService.createComment(comment);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteComment(@PathVariable int id) {
-        commentService.deleteComment(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @PutMapping("/api/comments/{commentId}")
+    public ResponseEntity<Comment> updateComment(@PathVariable int commentId, @RequestBody Comment updatedComment) {
+        Comment comment = commentService.updateComment(commentId, updatedComment);
+        return ResponseEntity.ok(comment);
     }
+
+    @DeleteMapping("/api/comments/{commentId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable int commentId) {
+        commentService.deleteComment(commentId);
+        return ResponseEntity.noContent().build();
+    }
+
 }
