@@ -1,10 +1,11 @@
 import React from 'react'
 
 const Alert = ({errorMessage,errorCode, errorColor,setAlert}) => {
-
-    const cls = `bg-${errorColor}-100  border border-${errorColor}-400 text-${errorColor}-700 px-4 py-3 rounded relative`;
+    
     return (
-            <div className={cls} >
+        <>
+            {errorCode === "error" ?
+                <div className="bg-red-100 tes my-4  border border-red-400 text-red-700 px-4 py-3 rounded relative" >
 
                 <strong class="font-bold">{errorCode}!
                 </strong>
