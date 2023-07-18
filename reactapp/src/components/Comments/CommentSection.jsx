@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Comment from "./Comment";
+import {FaRegCommentDots} from 'react-icons/fa';
 
 const CommentsSection = () => {
   const [comments, setComments] = useState([
@@ -37,9 +38,13 @@ const CommentsSection = () => {
     const updatedComments = comments.filter((comment) => comment.id !== id);
     setComments(updatedComments);
   };
+  const handleClickOpen=()=>{
+    setOpen(true);
+  };
 
   return (
     <div>
+      <FaRegCommentDots size={30} onClick={handleClickOpen}/>
       {comments.map((comment) => (
         <Comment
           key={comment.id}
