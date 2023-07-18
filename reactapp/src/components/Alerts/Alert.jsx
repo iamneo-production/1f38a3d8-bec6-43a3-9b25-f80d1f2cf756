@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Alert = ({errorMessage,errorCode, errorColor,setAlert}) => {
-    
+const Alert = ({ errorMessage, errorCode, errorColor, setAlert }) => {
+    const test= "";
     return (
         <>
             {errorCode === "error" ?
