@@ -48,6 +48,10 @@ const router = createBrowserRouter(
            path: "/messages",
            element: <Messages />,
          },  
+         {
+          path: "/commentssection",
+          element: <CommentsSection/>,
+         },
       ]
 
 
