@@ -1,49 +1,55 @@
 package com.example.springapp.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.springapp.model.Comment;
+import com.example.springapp.service.CommentService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.example.springapp.model.Post;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/comments")
+@RequestMapping("/")
+@RequiredArgsConstructor
 public class CommentController {
+
     private final CommentService commentService;
 
-    @Autowired
-    public CommentController(CommentService commentService) {
-        this.commentService = commentService;
+    @GetMapping("/api/comments/{commentId}")
+    public ResponseEntity<Comment> getCommentById(@PathVariable int commentId) {
+        Comment comment = commentService.getCommentById(commentId);
+        return ResponseEntity.ok(comment);
     }
 
-    @GetMapping("/{commentId}")
-    public Comment getCommentById(@PathVariable int commentId) {
-        return commentService.getCommentById(commentId);
+    @GetMapping("/api/comments/post")
+    public ResponseEntity<List<Comment>> getCommentsByPost(@RequestParam("postId") int postId) {
+        List<Comment> comments = commentService.getCommentsByPost(postId);
+        return ResponseEntity.ok(comments);
     }
 
-    @GetMapping("api/posts/{postId}")
-    public List<Comment> getAllCommentsByPostId(@RequestParam int postId) {
-        return commentService.getAllCommentsByPostId(postId);
+    @GetMapping("/api/comments")
+    public ResponseEntity<List<Comment>> getAllComments() {
+        List<Comment> comments = commentService.getAllComments();
+        return ResponseEntity.ok(comments);
     }
 
-    @GetMapping
-    public List<Comment> getAllComments() {
-        return commentService.getAllComments();
+    @PostMapping("/api/comments")
+    public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
+        Comment createdComment = commentService.createComment(comment);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
     }
 
-    @PostMapping
-    public Comment createComment(@RequestBody Comment comment) {
-        return commentService.createComment(comment);
+    @PutMapping("/api/comments/{commentId}")
+    public ResponseEntity<Comment> updateComment(@PathVariable int commentId, @RequestBody Comment updatedComment) {
+        Comment comment = commentService.updateComment(commentId, updatedComment);
+        return ResponseEntity.ok(comment);
     }
 
-    @PutMapping
-    public Comment updateComment(@RequestBody Comment comment) {
-        return commentService.updateComment(comment);
-    }
-
-    @DeleteMapping("/{commentId}")
-    public void deleteComment(@PathVariable int commentId) {
+    @DeleteMapping("/api/comments/{commentId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable int commentId) {
         commentService.deleteComment(commentId);
+        return ResponseEntity.noContent().build();
     }
+
 }
