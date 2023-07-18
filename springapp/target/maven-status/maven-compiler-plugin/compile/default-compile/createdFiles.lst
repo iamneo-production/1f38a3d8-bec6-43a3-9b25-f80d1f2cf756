@@ -1,6 +1,7 @@
 com/example/springapp/service/JwtService.class
 com/example/springapp/model/Comment.class
 com/example/springapp/service/UserService.class
+com/example/springapp/controller/LoadUserRequest$LoadUserRequestBuilder.class
 com/example/springapp/model/UserRole.class
 com/example/springapp/model/User.class
 com/example/springapp/controller/RegisterRequest$RegisterRequestBuilder.class
@@ -21,6 +22,7 @@ com/example/springapp/service/PostService.class
 com/example/springapp/controller/AuthenticationResponse$AuthenticationResponseBuilder.class
 com/example/springapp/service/AuthenticationService.class
 com/example/springapp/model/User$UserBuilder.class
+com/example/springapp/controller/LoadUserRequest.class
 com/example/springapp/repository/UserRepository.class
 com/example/springapp/config/JwtAuthenticationFilter.class
 com/example/springapp/service/CommentService.class

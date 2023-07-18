@@ -2,6 +2,7 @@ package com.example.springapp.service;
 
 import com.example.springapp.controller.AuthenticationRequest;
 import com.example.springapp.controller.AuthenticationResponse;
+import com.example.springapp.controller.LoadUserRequest;
 import com.example.springapp.controller.RegisterRequest;
 import com.example.springapp.model.User;
 import com.example.springapp.model.UserRole;
@@ -106,5 +107,15 @@ public class AuthenticationService {
         }
         
         
+    }
+
+    public String validateUser(LoadUserRequest jwtToken){
+        try{
+            String username = jwtService.extractUsername(jwtToken.getToken());
+            return username;
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid Token ");
+        }
     }
 }
