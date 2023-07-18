@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
 import com.example.springapp.service.PostService;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,8 +32,8 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("api/posts")
-    public ResponseEntity<Post> createPost(@RequestBody Post post) {
-        Post createdPost = postService.createPost(post);
+    public ResponseEntity<Post> createPost(@RequestBody Post post,@RequestParam("imageFile") MultipartFile imageFile) {
+        Post createdPost = postService.createPost(post,imageFile);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
     
