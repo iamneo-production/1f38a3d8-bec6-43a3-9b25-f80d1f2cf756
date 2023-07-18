@@ -1,23 +1,15 @@
 com/example/springapp/service/JwtService.class
-<<<<<<< HEAD
-=======
-com/example/springapp/SpringappApplication.class
->>>>>>> b8422ba1637cb4bfc39458fe29bb3726c9ac931f
 com/example/springapp/service/UserService.class
 com/example/springapp/model/UserRole.class
 com/example/springapp/model/User.class
 com/example/springapp/controller/RegisterRequest$RegisterRequestBuilder.class
-<<<<<<< HEAD
-=======
-com/example/springapp/config/JwtAuthenticationFilter.class
->>>>>>> b8422ba1637cb4bfc39458fe29bb3726c9ac931f
 com/example/springapp/controller/RegisterRequest.class
 com/example/springapp/config/ApplicationConfig.class
 com/example/springapp/controller/UserController.class
 com/example/springapp/repository/PostRepository.class
 com/example/springapp/controller/AuthenticationResponse.class
+com/example/springapp/controller/AuthenticationController.class
 com/example/springapp/controller/AuthenticationRequest$AuthenticationRequestBuilder.class
-<<<<<<< HEAD
 com/example/springapp/SpringappApplication.class
 com/example/springapp/controller/PostController.class
 com/example/springapp/controller/AuthenticationRequest.class
@@ -30,6 +22,3 @@ com/example/springapp/config/JwtAuthenticationFilter.class
 com/example/springapp/config/SecurityConfig.class
 com/example/springapp/model/Post$PostBuilder.class
 com/example/springapp/model/Post.class
-=======
-com/example/springapp/controller/AuthenticationController.class
->>>>>>> b8422ba1637cb4bfc39458fe29bb3726c9ac931f
