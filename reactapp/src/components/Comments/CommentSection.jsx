@@ -63,6 +63,7 @@ const CommentsSection = () => {
           Add Comment
         </button>
       </div>
+      <CommentsSection/>
     </div>
   );
 };
