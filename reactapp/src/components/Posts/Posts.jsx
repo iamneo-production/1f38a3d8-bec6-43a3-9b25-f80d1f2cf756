@@ -3,6 +3,7 @@ import {AiFillLike} from 'react-icons/ai'
 import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
 import {BiDotsHorizontalRounded,BiShareAlt} from 'react-icons/bi';
 import {FaRegCommentDots} from 'react-icons/fa';
+import CommentsSection from '../Comments/CommentSection';
 const Posts = ({post}) => {
 
   const [liked, setliked] = useState(false);
@@ -47,7 +48,7 @@ const Posts = ({post}) => {
                 <AiOutlineHeart size={30} onClick={() => Like()} />
               }  <span className='px'>{post.likes} likes</span>
               
-              < FaRegCommentDots size={30}/>
+              <CommentsSection/>
               
             </div>
             <BiShareAlt size={30}/>
