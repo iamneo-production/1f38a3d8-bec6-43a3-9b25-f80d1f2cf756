@@ -1,39 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegSun } from 'react-icons/fa';
 import { MdOutlineNotifications } from 'react-icons/md'
 import { TbMessageChatbot } from 'react-icons/tb'
 import { GoHome } from 'react-icons/go'
 import SearchBar from './SearchBar';
-import { redirect } from "react-router-dom";
 
 const NavBar = ({ showNav, setShowNav }) => {
 
 
-    //  useState("false") -> GetVariable, SetFunction("false")
-
-    // const [showNav, setShowNav] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
 
-    // const [email, setEmail] = useState("test@gmail.com");
-    var email = " "
+    const userName = localStorage.getItem("user")
+    const token = localStorage.getItem("token")
 
-
-    if(localStorage.getItem("token") !== null){
-        let user = localStorage.getItem("token")
-        email = user
-        
-    }
-
-
-    const logout = () =>{
+    const logout = () => {
         localStorage.removeItem("token")
         window.location = "/login";
-        // navigate("/login")
-        // redirect("/login")
     }
-
-    //  showNav == True ? "kjdandsajdd" :  "nakjd"
-
 
     return (
         <nav class=" h-20 shadow-sm flex align-items-center  absolute top-0 sticky z-50 border-gray-200 bg-gray-700">
@@ -44,7 +27,7 @@ const NavBar = ({ showNav, setShowNav }) => {
 
                     <a href='/'>
                         <span class="self-center text-2xl font-semibold italic whitespace-nowrap text-white">konnect</span>
-                    </a>                
+                    </a>
                 </div>
 
                 <button onClick={() => setShowNav(!showNav)} type="button" class="inline-flex items-center p-2 ml-3 text-sm  rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 " aria-controls="navbar-default" aria-expanded="false">
@@ -59,71 +42,88 @@ const NavBar = ({ showNav, setShowNav }) => {
                             <SearchBar />
                         </div>
 
-                        <li>
-                            <a href="/" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">
-                                <GoHome size="30" />
-                                <span className='text-white lg:hidden md:hidden inline-block text-lg'>Home</span>
-                            </a>
-                        </li>
+                        {
+                            token !== null
+                                ?
+                                <>
+                                    <li>
+                                        <a href="/" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" aria-current="page">
+                                            <GoHome size="30" />
+                                            <span className='text-white lg:hidden md:hidden inline-block text-lg'>Home</span>
+                                        </a>
+                                    </li>
 
-                        <li>
-                            <a href="/messages" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                <TbMessageChatbot size={30} />
-                                <span className='text-white lg:hidden md:hidden inline-block text-lg'>Messaging</span>
-                            </a>
-                        </li>
+                                    <li>
+                                        <a href="/messages" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
+                                            <TbMessageChatbot size={30} />
+                                            <span className='text-white lg:hidden md:hidden inline-block text-lg'>Messaging</span>
+                                        </a>
+                                    </li>
 
-                        <li>
-                            <a href="#" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                <MdOutlineNotifications size={30} />
-                                <span className='text-white lg:hidden md:hidden inline-block text-lg'>Notifications</span>
-                            </a>
-                        </li>
+                                    <li>
+                                        <a href="#" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
+                                            <MdOutlineNotifications size={30} />
+                                            <span className='text-white lg:hidden md:hidden inline-block text-lg'>Notifications</span>
+                                        </a>
+                                    </li>
 
-                        <li>
-                            <a href="/settings" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                <FaRegSun color='white' size="30" />
+                                    <li>
+                                        <a href="/settings" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
+                                            <FaRegSun color='white' size="30" />
 
-                                <span className='text-white lg:hidden md:hidden inline-block text-lg'>Settings</span>
-                            </a>
+                                            <span className='text-white lg:hidden md:hidden inline-block text-lg'>Settings</span>
+                                        </a>
 
-                        </li>
+                                    </li>
 
-                        <li>
-                            <a href="#" onClick={() => setShowProfile(!showProfile)}  class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                <img class="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
+                                    <li>
+                                        <a href="#" onClick={() => setShowProfile(!showProfile)} class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
+                                            <img class="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
 
-                                <span className='text-white lg:hidden md:hidden inline-block text-lg'>Bhavana</span>
-                            </a>
+                                            <span className='text-white lg:hidden md:hidden inline-block text-lg'>{userName}</span>
+                                        </a>
 
-                        </li>
+                                    </li>
 
 
-                        <div id="dropdownAvatar" class={showProfile ? "z-10 absolute right-8 top-14  bg-white divide-y divide-gray-100 rounded-lg shadow w-44" :"z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 hidden" }>
+                                    <div id="dropdownAvatar" class={showProfile ? "z-10 absolute right-8 top-14  bg-white divide-y divide-gray-100 rounded-lg shadow w-44" : "z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 hidden"}>
 
-                            <div class="px-4 py-3 text-sm text-gray-900">
-                                <div className='mb-2'>Bonnie Green
-                                </div>
-                                
-                                <hr/>
-                                <div class="font-medium truncate pt-2">{email}
-                                </div>
+                                        <div class="px-4 py-3 text-sm text-gray-900">
 
-                            </div>
+                                            <div class="font-medium truncate pt-2">{userName }
+                                            </div>
+                                            <hr />
 
-                            <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownUserAvatarButton">
-                                
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
-                                </li>
+                                        </div>
 
-                            </ul>
+                                        <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownUserAvatarButton">
 
-                            <div class="py-2">
-                                <a onClick={logout} href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
-                            </div>
-                            
-                        </div>
+                                            <li>
+                                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                                            </li>
+
+                                        </ul>
+
+                                        <div class="py-2">
+                                            <a onClick={logout} href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                                        </div>
+
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <li>
+                                        <a href="/login" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" aria-current="page">
+                                            <span className='text-white text-lg'>Login</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/register" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" aria-current="page">
+                                            <span className='text-white text-lg'>Register</span>
+                                        </a>
+                                    </li>
+                                </>
+                        }
 
                     </ul>
                 </div>
