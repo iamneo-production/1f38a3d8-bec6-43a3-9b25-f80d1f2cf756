@@ -5,7 +5,6 @@ import Login from './components/Auth/Login';
 import NavBar from './components/NavBar/NavBar';
 import store from './store';
 import { Provider } from 'react-redux';
-import CommentsSection from './components/Comments/CommentSection';
 
 import "./App.css";
 // import "./Scroll.css";
@@ -48,10 +47,7 @@ const router = createBrowserRouter(
            path: "/messages",
            element: <Messages />,
          },  
-         {
-          path: "/commentssection",
-          element: <CommentsSection/>,
-         },
+         
       ]
 
 
