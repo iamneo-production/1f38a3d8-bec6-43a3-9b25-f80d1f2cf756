@@ -3,6 +3,7 @@ import {LOGIN_FAIL,
   SIGNUP_FAIL,
   SIGNUP_SUCCESS,
   LOGOUT,
+  USER_FETCH_SUCCESS,
   LOAD_USER_FETCH_SUCCESS,
   LOAD_USER_FETCH_FAIL
 } from '../actions/types';
@@ -56,6 +57,9 @@ export default function (state = initialState, action) {
           message:"Success"
         }
       }
+    
+      case USER_FETCH_SUCCESS:
+        return 
 
     case LOGIN_FAIL:
       //localStorage.setItem("logfail", JSON.stringify(true));
@@ -65,6 +69,7 @@ export default function (state = initialState, action) {
       }
 
     case SIGNUP_FAIL:
+    case LOAD_USER_FETCH_FAIL:
     case LOGOUT:
       // localStorage.removeItem('access');
       // localStorage.removeItem('refresh');
