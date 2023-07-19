@@ -46,7 +46,7 @@ const CommentsSection = () => {
 
   return (
     <div>
-      <FaRegCommentDots onClick={handleButton} size={30} />
+      <FaRegCommentDots onClick={handleButton} size={30} className="cursor-pointer"/>
       {isOpen && (
         <div className="flex mt-4">
         
