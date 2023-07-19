@@ -19,6 +19,9 @@ import com.example.springapp.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@CrossOrigin(origins="https://8081-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io/")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
