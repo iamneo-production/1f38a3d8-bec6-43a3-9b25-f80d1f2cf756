@@ -3,6 +3,8 @@ import {AiFillLike} from 'react-icons/ai'
 import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
 import {BiDotsHorizontalRounded,BiShareAlt} from 'react-icons/bi';
 import {FaRegCommentDots} from 'react-icons/fa';
+import {VscBookmark} from 'react-icons/vsc';
+import {IoIosShareAlt} from 'react-icons/io';
 import CommentsSection from '../Comments/CommentSection';
 const Posts = ({post}) => {
 
@@ -49,9 +51,11 @@ const Posts = ({post}) => {
               }  <span className='px'>{post.likes} likes</span>
               
               <CommentsSection/>
+              <IoIosShareAlt size={30}/>
               
             </div>
-            <BiShareAlt size={30}/>
+            
+            <VscBookmark size={30}/>
         </div>
 
     </div>
