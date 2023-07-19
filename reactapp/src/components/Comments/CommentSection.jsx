@@ -8,13 +8,13 @@ const CommentsSection = () => {
     {
       id: 1,
       username: "John",
-      text: "This is the first comment.",
+      text: "How beautiful the view is!",
       timestamp: new Date().toLocaleString()
     },
     {
       id: 2,
       username: "Jane",
-      text: "This is the second comment.",
+      text: "Too good.",
       timestamp: new Date().toLocaleString()
     }
   ]);
