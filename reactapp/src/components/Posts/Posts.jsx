@@ -5,6 +5,7 @@ import {BiDotsHorizontalRounded,BiShareAlt} from 'react-icons/bi';
 import {FaRegCommentDots} from 'react-icons/fa';
 import {VscBookmark} from 'react-icons/vsc';
 import {IoIosShareAlt} from 'react-icons/io';
+import Share from '../Posts/Share'
 import CommentsSection from '../Comments/CommentSection';
 const Posts = ({post}) => {
 
@@ -51,7 +52,7 @@ const Posts = ({post}) => {
               }  <span className='px'>{post.likes} likes</span>
               
               <CommentsSection/>
-              <IoIosShareAlt size={30}/>
+              <Share/>
               
             </div>
             

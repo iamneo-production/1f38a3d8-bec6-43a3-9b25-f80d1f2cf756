@@ -6,26 +6,13 @@ import com.example.springapp.repository.CommentRepository;
 import com.example.springapp.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
-import com.example.springapp.model.Comment;
-import com.example.springapp.model.Post;
-import com.example.springapp.repository.CommentRepository;
-import com.example.springapp.service.PostService;
-=======
 import org.springframework.transaction.annotation.Transactional;
->>>>>>> Project-Workspace-u3m2a1
 
 import java.time.LocalDate;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> Project-Workspace-u3m2a1
 import lombok.RequiredArgsConstructor;
 
 @Service

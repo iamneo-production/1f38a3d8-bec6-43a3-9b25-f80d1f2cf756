@@ -43,11 +43,10 @@ public class Post {
     @Builder.Default
     private LocalDate updatedAt = LocalDate.now();
 
-<<<<<<< HEAD
+
     private String imagePath;
 
-=======
->>>>>>> Project-Workspace-u3m2a1
+
     @JsonIgnore
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;

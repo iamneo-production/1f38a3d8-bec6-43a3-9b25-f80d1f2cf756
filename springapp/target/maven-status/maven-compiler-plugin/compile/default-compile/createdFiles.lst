@@ -1,8 +1,7 @@
 com/example/springapp/service/JwtService.class
-<<<<<<< HEAD
+
 com/example/springapp/model/Comment.class
-=======
->>>>>>> Project-Workspace-u3m2a1
+
 com/example/springapp/service/UserService.class
 com/example/springapp/controller/LoadUserRequest$LoadUserRequestBuilder.class
 com/example/springapp/model/UserRole.class
@@ -17,10 +16,9 @@ com/example/springapp/repository/PostRepository.class
 com/example/springapp/controller/AuthenticationResponse.class
 com/example/springapp/controller/AuthenticationController.class
 com/example/springapp/controller/AuthenticationRequest$AuthenticationRequestBuilder.class
-<<<<<<< HEAD
+
 com/example/springapp/controller/AuthenticationController.class
-=======
->>>>>>> Project-Workspace-u3m2a1
+
 com/example/springapp/SpringappApplication.class
 com/example/springapp/controller/PostController.class
 com/example/springapp/controller/AuthenticationRequest.class
@@ -35,8 +33,6 @@ com/example/springapp/config/JwtAuthenticationFilter.class
 com/example/springapp/service/CommentService.class
 com/example/springapp/config/SecurityConfig.class
 com/example/springapp/model/Post$PostBuilder.class
-<<<<<<< HEAD
+
 com/example/springapp/model/Post.class
-=======
-com/example/springapp/model/Post.class
->>>>>>> Project-Workspace-u3m2a1
+
