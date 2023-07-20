@@ -1,11 +1,10 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
-
 function NotificationList() {
   const [notificationList, setNotificationList] = useState([]);
-  const [open, setOpen] = React.useState(false);
+  const currentDate = new Date();
 
   useEffect(() => {
     axios
@@ -17,38 +16,18 @@ function NotificationList() {
           time: item.time,
           date: new Date(item.time),
         }));
-        notificationArray.push({ id: 90, notification: "hii", time: 4556, date: new Date() });
-        const sortedNotifications = notificationArray.sort((a, b) => b.date - a.date);
+        notificationArray.push({
+          id: 90,
+          notification: "hii",
+          time: 4556,
+          date: new Date(),
+        });
+        const sortedNotifications = notificationArray.sort(
+          (a, b) => b.date - a.date
+        );
         setNotificationList(sortedNotifications);
       });
   }, []);
-
-  useEffect(() => {
-    function showNotification(message) {
-      var notification = document.createElement("div");
-      notification.className =
-        "notification bg-gray-500 text-white px-4 py-2 rounded-md shadow-md";
-
-      notification.textContent = message;
-
-      var container = document.getElementById("notification-container");
-      container.appendChild(notification);
-
-      setTimeout(function () {
-        notification.classList.add("notification-show");
-      }, 100);
-
-      setTimeout(function () {
-        notification.remove();
-      }, 5000);
-    }
-
-    notificationList.forEach((notification) => {
-      showNotification(notification.notification);
-    });
-  }, [notificationList]);
-
-  const currentDate = new Date();
 
   const groupedNotificationList = notificationList.reduce((acc, notification) => {
     const date = notification.date.toLocaleDateString();
@@ -83,11 +62,9 @@ function NotificationList() {
           {notifications.map((notification) => (
             <div
               key={notification.id}
-              className="bg-black  p-4 rounded-lg my-2 w-96 prose"
+              className="bg-gray-200 p-4 rounded-lg my-2 w-96"
             >
-              <code className="text-white">
-                {notification.notification}
-              </code>
+              <p className="text-black">{notification.notification}</p>
             </div>
           ))}
         </div>

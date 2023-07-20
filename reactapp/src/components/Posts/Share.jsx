@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {BiShareAlt} from 'react-icons/bi';
+import {IoIosShareAlt} from 'react-icons/io';
 import axios from "axios";
 
 function Share(props) {
@@ -58,7 +58,7 @@ function Share(props) {
 
   return (
     <div className="p">
-      <BiShareAlt size={30} onClick={handleClickOpen}/>
+      <IoIosShareAlt size={30} onClick={handleClickOpen}/>
       {open && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-lg p-6 w-96">

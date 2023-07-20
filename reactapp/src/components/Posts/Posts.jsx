@@ -2,7 +2,9 @@ import React,{useState} from 'react'
 import {AiFillLike} from 'react-icons/ai'
 import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
 import {BiDotsHorizontalRounded,BiShareAlt} from 'react-icons/bi';
-import {FaRegCommentDots} from 'react-icons/fa'
+import {FaRegCommentDots} from 'react-icons/fa';
+import {VscBookmark} from 'react-icons/vsc';
+
 import Share from './Share';
 
 const Posts = ({post}) => {
@@ -50,10 +52,12 @@ const Posts = ({post}) => {
               }  <span className='px'>{post.likes} likes</span>
               
               <FaRegCommentDots size={30} />
+              <Share/>
               
             </div>
+            <VscBookmark size={30}/>
             
-            <Share/>
+            
         </div>
 
     </div>
