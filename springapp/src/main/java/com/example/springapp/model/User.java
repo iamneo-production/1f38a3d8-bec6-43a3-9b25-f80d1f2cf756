@@ -2,28 +2,37 @@ package com.example.springapp.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import com.example.springapp.model.UserRole;
 import com.example.springapp.model.Post;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
-
 import javax.persistence.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -52,6 +61,33 @@ public class User implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+        name = "user_likes",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "post_id")
+    )
+    private Set<Post> likedPosts = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", bio='" + bio + '\'' +
+                ", dateOfBirth=" + getDateOfBirth() +
+                ", registrationDate=" + registrationDate +
+                ", role=" + role +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 
     public int getId() {
         return id;
@@ -112,7 +148,7 @@ public class User implements UserDetails {
             SimpleDateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
             return outputFormatter.format(dateOfBirth);
         }
-        return ""; // Return an empty string if dateOfBirth is null
+        return "";
     }
 
     public void setDateOfBirth(String dateString) throws ParseException {
@@ -121,7 +157,7 @@ public class User implements UserDetails {
             Date parsedDate = inputFormatter.parse(dateString);
             this.dateOfBirth = parsedDate;
         } else {
-            this.dateOfBirth = null; // Set dateOfBirth to null if dateString is null or empty
+            this.dateOfBirth = null;
         }
     }
 
@@ -131,6 +167,16 @@ public class User implements UserDetails {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public void likePost(Post post) {
+        likedPosts.add(post);
+        post.getLikedByUsers().add(this);
+    }
+
+    public void unlikePost(Post post) {
+        likedPosts.remove(post);
+        post.getLikedByUsers().remove(this);
     }
 
     @Override

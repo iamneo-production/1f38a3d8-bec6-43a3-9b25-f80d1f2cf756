@@ -1,7 +1,8 @@
 package com.example.springapp.controller;
 
-import java.text.ParseException;
 import java.util.List;
+
+import java.text.ParseException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,5 +67,17 @@ public class PostController {
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
+    }
+
+    @PostMapping("api/posts/{postId}/like")
+    public ResponseEntity<Void> likePost(@PathVariable int postId, @RequestParam String username) {
+        postService.likePost(postId, username);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("api/posts/{postId}/unlike")
+    public ResponseEntity<Void> unlikePost(@PathVariable int postId, @RequestParam String username) {
+        postService.unlikePost(postId, username);
+        return ResponseEntity.ok().build();
     }
 }
