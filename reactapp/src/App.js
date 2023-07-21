@@ -17,7 +17,11 @@ import {
 } from "react-router-dom";
 import Register from './components/Auth/Register';
 import RouteProtectionUser from './routeProtection/RouteProtectionUser';
+<<<<<<< HEAD
 import Messages from './components/Messages';
+=======
+// import Messages from './components/Messages/Messages';
+>>>>>>> Project-Workspace-pratikmandge
 
 
 
@@ -44,11 +48,18 @@ const router = createBrowserRouter(
           path: "/register",
           element: <Register />,
         },
+<<<<<<< HEAD
          {
            path: "/messages",
            element: <Messages />,
          },  
          
+=======
+        // {
+        //   path: "/messages",
+        //   element: <Messages />,
+        // },  
+>>>>>>> Project-Workspace-pratikmandge
       ]
 
 

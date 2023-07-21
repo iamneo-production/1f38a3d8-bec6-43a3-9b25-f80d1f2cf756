@@ -20,11 +20,19 @@ const MainFeeds = () => {
   //  useEffect -> intialized at the starting stage of a component life cycle
 
 
+<<<<<<< HEAD
   useEffect(() => {
     if(localStorage.getItem("user") === null){
       navigate("/login");
     }
   },[]);
+=======
+  // useEffect(() => {
+  //   if(localStorage.getItem("user") === null){
+  //     navigate("/login");
+  //   }
+  // },[]);
+>>>>>>> Project-Workspace-pratikmandge
 
 
     const [postData, setPostData] = useState([

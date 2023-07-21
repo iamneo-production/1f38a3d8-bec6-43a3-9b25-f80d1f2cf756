@@ -2,11 +2,17 @@ import React,{useState} from 'react'
 import {AiFillLike} from 'react-icons/ai'
 import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
 import {BiDotsHorizontalRounded,BiShareAlt} from 'react-icons/bi';
+<<<<<<< HEAD
 import {FaRegCommentDots} from 'react-icons/fa';
 import {VscBookmark} from 'react-icons/vsc';
 import {IoIosShareAlt} from 'react-icons/io';
 import Share from '../Posts/Share'
 import CommentsSection from '../Comments/CommentSection';
+=======
+import {FaRegCommentDots} from 'react-icons/fa'
+//import CommentsSection from '../Comments/CommentSection';
+
+>>>>>>> Project-Workspace-pratikmandge
 const Posts = ({post}) => {
 
   const [liked, setliked] = useState(false);
@@ -51,6 +57,7 @@ const Posts = ({post}) => {
                 <AiOutlineHeart size={30} onClick={() => Like()} />
               }  <span className='px'>{post.likes} likes</span>
               
+<<<<<<< HEAD
               <CommentsSection/>
               <Share/>
               
@@ -58,6 +65,14 @@ const Posts = ({post}) => {
             
             <VscBookmark size={30}/>
         </div>
+=======
+              <FaRegCommentDots size={30} />
+              
+            </div>
+            <BiShareAlt size={30}/>
+        </div>
+        {/* <CommentsSection/> */}
+>>>>>>> Project-Workspace-pratikmandge
 
     </div>
   )

@@ -1,4 +1,5 @@
 import axios from 'axios';
+<<<<<<< HEAD
 import {
     LOGIN_FAIL,
     LOGIN_SUCCESS,
@@ -10,6 +11,9 @@ import {
     LOAD_USER_FETCH_FAIL
 }
     from './types';
+=======
+import {LOGIN_FAIL,LOGIN_SUCCESS,SIGNUP_FAIL,SIGNUP_SUCCESS} from './types';
+>>>>>>> Project-Workspace-pratikmandge
 
 
 
@@ -17,17 +21,27 @@ import {
 export const login = (username, password) => async dispatch => {
     const config = {
         headers: {
+<<<<<<< HEAD
             'Content-Type': 'application/json',
+=======
+            'Content-Type': 'application/json',            
+>>>>>>> Project-Workspace-pratikmandge
         }
     };
     const body = JSON.stringify({ username, password });
     try {
+<<<<<<< HEAD
 
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/authenticate/`, body, config);
+=======
+        
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/authenticate/`, body,config);
+>>>>>>> Project-Workspace-pratikmandge
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
         });
+<<<<<<< HEAD
 
         dispatch(load_user());
     } catch (err) {
@@ -39,18 +53,41 @@ export const login = (username, password) => async dispatch => {
 };
 
 export const signup = (username, email, password, dateofbirth) => async dispatch => {
+=======
+    } catch (err) {
+        if(err.response.status != 400){
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: {message:"Something went wrong!!!  "}
+            })
+        }else{
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: {message:"Invalid username or password"}
+            })
+        }
+    } 
+};
+
+export const signup = (username,email, password,dateofbirth) => async dispatch => {
+>>>>>>> Project-Workspace-pratikmandge
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
 
+<<<<<<< HEAD
     const body = JSON.stringify({ username, email, password, dateofbirth });
+=======
+    const body = JSON.stringify({ username,email, password,dateofbirth });
+>>>>>>> Project-Workspace-pratikmandge
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/register`, body, config);
         console.log(res);
         dispatch({
+<<<<<<< HEAD
             type: SIGNUP_SUCCESS,
             payload: res.data
         });
@@ -129,3 +166,16 @@ export const fetch_user_details = () => async dispatch => {
         })
     }
 };
+=======
+            type:     SIGNUP_SUCCESS,
+            payload: res.data
+        });
+
+        // dispatch(load_user());
+    } catch (err) {
+        dispatch({
+            type: SIGNUP_FAIL
+        })
+    }
+};
+>>>>>>> Project-Workspace-pratikmandge

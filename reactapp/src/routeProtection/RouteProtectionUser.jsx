@@ -6,6 +6,7 @@ const RouteProtectionUser = ({ children, isAuthenticated,token}) => {
     const navigate = useNavigate();
     let auth = false;
 
+<<<<<<< HEAD
     // useEffect(()=>{
     //     if(!isAuthenticated || localStorage.getItem("token") === null || token === null){
     //         auth = false
@@ -16,6 +17,18 @@ const RouteProtectionUser = ({ children, isAuthenticated,token}) => {
     // },[])
 
   if(localStorage.getItem("token")){
+=======
+    useEffect(()=>{
+        if(!isAuthenticated || localStorage.getItem("token") === null || token === null){
+            auth = false
+            navigate("/login")
+        }else{
+          auth = true;
+        }
+    },[])
+
+  if(isAuthenticated && localStorage.getItem("token") && token){
+>>>>>>> Project-Workspace-pratikmandge
     return children
   }
   

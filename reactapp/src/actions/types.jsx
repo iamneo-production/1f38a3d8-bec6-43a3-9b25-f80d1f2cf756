@@ -12,7 +12,10 @@ export const STORY_FETCH_FAIL = "STORY_FETCH_FAIL";
 export const STORY_CREATE_SUCCESS = "STORY_CREATE_SUCCESS";
 export const STORY_CREATE_FAIL = "STORY_CREATE_FAIL";
 
+<<<<<<< HEAD
 export const USER_FETCH_SUCCESS = "USER_FETCH_SUCCESS";
 export const USER_FETCH_FAIL = "USER_FETCH_FAIL";
 export const LOAD_USER_FETCH_SUCCESS = "LOAD_USER_FETCH_SUCCESS";
 export const LOAD_USER_FETCH_FAIL = "LOAD_USER_FETCH_FAIL";
+=======
+>>>>>>> Project-Workspace-pratikmandge
