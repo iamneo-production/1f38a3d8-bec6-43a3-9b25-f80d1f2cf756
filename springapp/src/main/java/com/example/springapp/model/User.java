@@ -108,14 +108,21 @@ public class User implements UserDetails {
     }
 
     public String getDateOfBirth() {
-        SimpleDateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
-        return outputFormatter.format(dateOfBirth);
+        if (dateOfBirth != null) {
+            SimpleDateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            return outputFormatter.format(dateOfBirth);
+        }
+        return ""; // Return an empty string if dateOfBirth is null
     }
 
     public void setDateOfBirth(String dateString) throws ParseException {
-        SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date parsedDate = inputFormatter.parse(dateString);
-        this.dateOfBirth = parsedDate;
+        if (dateString != null && !dateString.isEmpty()) {
+            SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date parsedDate = inputFormatter.parse(dateString);
+            this.dateOfBirth = parsedDate;
+        } else {
+            this.dateOfBirth = null; // Set dateOfBirth to null if dateString is null or empty
+        }
     }
 
     public List<Post> getPosts() {

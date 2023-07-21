@@ -5,6 +5,8 @@ import com.example.springapp.controller.AuthenticationRequest;
 import com.example.springapp.controller.AuthenticationResponse;
 import com.example.springapp.controller.RegisterRequest;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,4 +54,14 @@ public class AuthenticationController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new AuthenticationResponse("Authentication failed: " + e.getMessage()));
 		}
 	}
+
+	@PostMapping("/api/user/details")
+    public ResponseEntity<UserDetails> getUserDetailsFromToken(@RequestBody String token) {
+        try {
+            UserDetails userDetails = service.getUserDetailsFromToken(token);
+            return ResponseEntity.ok(userDetails);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
 }

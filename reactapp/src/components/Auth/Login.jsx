@@ -1,4 +1,4 @@
-import React, {login, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import Alert from '../Alerts/Alert';
@@ -17,6 +17,7 @@ const Login = ({ login, token, isAuthenticated }) => {
 				errorColor: "red"
 			})
 			setAlert(true)
+
 		}
 
 		if (isAuthenticated === true && localStorage.getItem("token") && token !== null) {
