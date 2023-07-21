@@ -120,7 +120,10 @@ import com.example.springapp.model.User;
 import com.example.springapp.model.Comment;
 
 import java.time.LocalDate;
+
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -131,9 +134,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.FetchType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -154,6 +160,7 @@ public class Post {
     private int postId;
     private String title;
     private String content;
+    
     @Builder.Default
     private LocalDate createdAt = LocalDate.now();
     @Builder.Default
@@ -166,6 +173,10 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "username")
     private User user;
+
+    @JsonIgnoreProperties("likedPosts")
+    @ManyToMany(mappedBy = "likedPosts", fetch = FetchType.EAGER)
+    private Set<User> likedByUsers = new HashSet<>();
 
     public int getId() {
         return id;
@@ -215,5 +226,14 @@ public class Post {
         this.user = user;
     }
 
+    public void addLike(User user) {
+        likedByUsers.add(user);
+        user.getLikedPosts().add(this);
+    }
+
+    public void removeLike(User user) {
+        likedByUsers.remove(user);
+        user.getLikedPosts().remove(this);
+    }
 }
 >>>>>>> Project-Workspace-pratikmandge

@@ -96,18 +96,19 @@ package com.example.springapp.service;
 
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
+
 import com.example.springapp.service.UserService;
+
 import com.example.springapp.repository.PostRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
-
-import org.springframework.transaction.annotation.Transactional;
-
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -151,6 +152,22 @@ public class PostService {
     public void deletePost(int postId) {
         Post post = getPostById(postId);
         postRepository.delete(post);
+    }
+
+    @Transactional
+    public void likePost(int postId, String username) {
+        Post post = getPostById(postId);
+        User user = userService.getUserByUsername(username);
+        post.addLike(user);
+        postRepository.save(post);
+    }
+
+    @Transactional
+    public void unlikePost(int postId, String username) {
+        Post post = getPostById(postId);
+        User user = userService.getUserByUsername(username);
+        post.removeLike(user);
+        postRepository.save(post);
     }
 }
 >>>>>>> Project-Workspace-pratikmandge
