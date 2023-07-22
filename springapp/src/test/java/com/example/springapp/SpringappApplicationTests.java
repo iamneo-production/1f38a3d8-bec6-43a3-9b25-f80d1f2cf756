@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp;
 
 import static org.junit.Assert.assertTrue;
@@ -110,6 +113,7 @@ class SpringappApplicationTests {
       assertTrue(file.exists() && file.isFile());;
       }
 }
+<<<<<<< HEAD
 =======
 package com.example.springapp;
 
@@ -223,3 +227,5 @@ class SpringappApplicationTests {
       }
 }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18

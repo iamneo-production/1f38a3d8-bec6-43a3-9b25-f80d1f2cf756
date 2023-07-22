@@ -18,10 +18,14 @@ import {
 import Register from './components/Auth/Register';
 import RouteProtectionUser from './routeProtection/RouteProtectionUser';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Messages from './components/Messages';
 =======
 // import Messages from './components/Messages/Messages';
 >>>>>>> Project-Workspace-pratikmandge
+=======
+import Messages from './components/Messages';
+>>>>>>> Project-Workspace-ukeerthi18
 
 
 
@@ -49,17 +53,23 @@ const router = createBrowserRouter(
           element: <Register />,
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
          {
            path: "/messages",
            element: <Messages />,
          },  
          
+<<<<<<< HEAD
 =======
         // {
         //   path: "/messages",
         //   element: <Messages />,
         // },  
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
       ]
 
 

@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.service;
 
 import com.example.springapp.controller.AuthenticationRequest;
@@ -120,6 +123,7 @@ public class AuthenticationService {
         }
     }
 }
+<<<<<<< HEAD
 =======
 package com.example.springapp.service;
 
@@ -234,3 +238,5 @@ public class AuthenticationService {
     }
 }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18

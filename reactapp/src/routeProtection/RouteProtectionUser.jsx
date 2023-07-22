@@ -7,6 +7,9 @@ const RouteProtectionUser = ({ children, isAuthenticated,token}) => {
     let auth = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
     // useEffect(()=>{
     //     if(!isAuthenticated || localStorage.getItem("token") === null || token === null){
     //         auth = false
@@ -17,6 +20,7 @@ const RouteProtectionUser = ({ children, isAuthenticated,token}) => {
     // },[])
 
   if(localStorage.getItem("token")){
+<<<<<<< HEAD
 =======
     useEffect(()=>{
         if(!isAuthenticated || localStorage.getItem("token") === null || token === null){
@@ -29,6 +33,8 @@ const RouteProtectionUser = ({ children, isAuthenticated,token}) => {
 
   if(isAuthenticated && localStorage.getItem("token") && token){
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
     return children
   }
   

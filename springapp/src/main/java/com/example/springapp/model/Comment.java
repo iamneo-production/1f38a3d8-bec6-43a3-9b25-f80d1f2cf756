@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.model;
 
 import java.time.LocalDate;
@@ -76,6 +79,7 @@ public class Comment {
     public void setPost(Post post){
         this.post = post;
     }
+<<<<<<< HEAD
 =======
 package com.example.springapp.model;
 
@@ -155,4 +159,6 @@ public class Comment {
         this.post = post;
     }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 }

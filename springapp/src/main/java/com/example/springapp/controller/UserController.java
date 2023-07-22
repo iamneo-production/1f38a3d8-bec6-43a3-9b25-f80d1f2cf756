@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.controller;
 
 import java.text.ParseException;
@@ -65,6 +68,7 @@ public class UserController{
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
     }
+<<<<<<< HEAD
 =======
 package com.example.springapp.controller;
 
@@ -132,4 +136,6 @@ public class UserController{
 		}
     }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 }

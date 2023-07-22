@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.controller;
 
 import com.example.springapp.model.Comment;
@@ -12,6 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
+<<<<<<< HEAD
+=======
+@CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
+>>>>>>> Project-Workspace-ukeerthi18
 @RequiredArgsConstructor
 public class CommentController {
 
@@ -53,6 +60,7 @@ public class CommentController {
         return ResponseEntity.noContent().build();
     }
 
+<<<<<<< HEAD
 =======
 package com.example.springapp.controller;
 
@@ -113,3 +121,6 @@ public class CommentController {
 
 >>>>>>> Project-Workspace-pratikmandge
 }
+=======
+}
+>>>>>>> Project-Workspace-ukeerthi18

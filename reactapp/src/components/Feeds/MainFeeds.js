@@ -21,11 +21,15 @@ const MainFeeds = () => {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
   useEffect(() => {
     if(localStorage.getItem("user") === null){
       navigate("/login");
     }
   },[]);
+<<<<<<< HEAD
 =======
   // useEffect(() => {
   //   if(localStorage.getItem("user") === null){
@@ -33,6 +37,8 @@ const MainFeeds = () => {
   //   }
   // },[]);
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 
 
     const [postData, setPostData] = useState([

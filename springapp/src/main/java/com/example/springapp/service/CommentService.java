@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.service;
 
 import com.example.springapp.model.Comment;
@@ -7,6 +10,7 @@ import com.example.springapp.repository.CommentRepository;
 import com.example.springapp.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +18,20 @@ import java.time.LocalDate;
 import java.util.List;
 
 
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.springapp.model.Comment;
+import com.example.springapp.model.Post;
+import com.example.springapp.repository.CommentRepository;
+import com.example.springapp.service.PostService;
+
+import java.time.LocalDate;
+import java.util.List;
+
+>>>>>>> Project-Workspace-ukeerthi18
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -58,6 +76,7 @@ public class CommentService {
         Comment comment = getCommentById(commentId);
         commentRepository.delete(comment);
     }
+<<<<<<< HEAD
 =======
 package com.example.springapp.service;
 
@@ -119,4 +138,6 @@ public class CommentService {
         commentRepository.delete(comment);
     }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 }

@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.service;
 
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
+<<<<<<< HEAD
 import com.example.springapp.service.UserService;
 import com.example.springapp.repository.PostRepository;
 import org.springframework.stereotype.Service;
@@ -14,10 +18,23 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 
+=======
+
+import com.example.springapp.service.UserService;
+
+import com.example.springapp.repository.PostRepository;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> Project-Workspace-ukeerthi18
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,13 +45,18 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.List;
 
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 @Service
 @RequiredArgsConstructor
 public class PostService {
 
+<<<<<<< HEAD
     @Value("${file.upload-dir}")
     private String uploadDir;
 
+=======
+>>>>>>> Project-Workspace-ukeerthi18
     @Autowired
     private final UserService userService;
     private final PostRepository postRepository;
@@ -52,13 +74,18 @@ public class PostService {
         return postRepository.findByUser(user);
     }
 
+<<<<<<< HEAD
     public Post createPost(Post post,MultipartFile imageFile) {
+=======
+    public Post createPost(Post post) {
+>>>>>>> Project-Workspace-ukeerthi18
         User user = userService.getUserByUsername(post.getUser().getUsername());
         post.setUser(user);
         post.setTitle(post.getTitle());
         post.setContent(post.getContent());
         post.setCreatedAt(post.getCreatedAt());
         post.setUpdatedAt(post.getUpdatedAt());
+<<<<<<< HEAD
 
         
         if (imageFile != null && !imageFile.isEmpty()) {
@@ -75,6 +102,8 @@ public class PostService {
             }
         }
             
+=======
+>>>>>>> Project-Workspace-ukeerthi18
         return postRepository.save(post);
     }    
 
@@ -90,6 +119,7 @@ public class PostService {
         Post post = getPostById(postId);
         postRepository.delete(post);
     }
+<<<<<<< HEAD
 }
 =======
 package com.example.springapp.service;
@@ -171,3 +201,22 @@ public class PostService {
     }
 }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+
+    @Transactional
+    public void likePost(int postId, String username) {
+        Post post = getPostById(postId);
+        User user = userService.getUserByUsername(username);
+        post.addLike(user);
+        postRepository.save(post);
+    }
+
+    @Transactional
+    public void unlikePost(int postId, String username) {
+        Post post = getPostById(postId);
+        User user = userService.getUserByUsername(username);
+        post.removeLike(user);
+        postRepository.save(post);
+    }
+}
+>>>>>>> Project-Workspace-ukeerthi18

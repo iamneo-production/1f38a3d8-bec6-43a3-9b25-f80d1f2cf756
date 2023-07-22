@@ -4,6 +4,7 @@ import React from 'react'
 const ProfilePage = () => {
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div className=' ml-5 h-screen w-9/12 bg-gray-100'>
       <div className='bg-gray-700 h-[200px] relative w-full text-white'>
         <div className="w-6/12 absolute bottom-[-60px] h-[200px]">
@@ -232,6 +233,13 @@ const ProfilePage = () => {
         </div>
       </main>
 >>>>>>> Project-Workspace-pratikmandge
+=======
+    <div className='h-full w-full'>
+      <div className='h-64 w-full bg-black '>
+
+      </div>
+      
+>>>>>>> Project-Workspace-ukeerthi18
     </div>
   )
 }

@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp;
 
 import org.springframework.boot.SpringApplication;
@@ -12,6 +15,7 @@ public class SpringappApplication {
 	}
 
 }
+<<<<<<< HEAD
 =======
 package com.example.springapp;
 
@@ -27,3 +31,5 @@ public class SpringappApplication {
 
 }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18

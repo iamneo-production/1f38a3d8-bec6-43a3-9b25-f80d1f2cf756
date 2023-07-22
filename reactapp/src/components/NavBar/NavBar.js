@@ -1,22 +1,32 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 =======
 import React, { useState } from 'react';
 >>>>>>> Project-Workspace-pratikmandge
+=======
+import React, { useEffect, useState } from 'react';
+>>>>>>> Project-Workspace-ukeerthi18
 import { FaRegSun } from 'react-icons/fa';
 import { MdOutlineNotifications } from 'react-icons/md'
 import { TbMessageChatbot } from 'react-icons/tb'
 import { GoHome } from 'react-icons/go'
 import SearchBar from './SearchBar';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { redirect } from "react-router-dom";
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 
 const NavBar = ({ showNav, setShowNav }) => {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
     const [showProfile, setShowProfile] = useState(false);
 
     const userName = localStorage.getItem("user")
@@ -27,6 +37,7 @@ const NavBar = ({ showNav, setShowNav }) => {
         window.location = "/login";
     }
 
+<<<<<<< HEAD
 =======
     //  useState("false") -> GetVariable, SetFunction("false")
 
@@ -55,6 +66,8 @@ const NavBar = ({ showNav, setShowNav }) => {
 
 
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
     return (
         <nav class=" h-20 shadow-sm flex align-items-center  absolute top-0 sticky z-50 border-gray-200 bg-gray-700">
             <div class="max-w-screen-xl flex flex-wrap items-center w-full justify-between mx-5">
@@ -65,10 +78,14 @@ const NavBar = ({ showNav, setShowNav }) => {
                     <a href='/'>
                         <span class="self-center text-2xl font-semibold italic whitespace-nowrap text-white">konnect</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     </a>
 =======
                     </a>                
 >>>>>>> Project-Workspace-pratikmandge
+=======
+                    </a>
+>>>>>>> Project-Workspace-ukeerthi18
                 </div>
 
                 <button onClick={() => setShowNav(!showNav)} type="button" class="inline-flex items-center p-2 ml-3 text-sm  rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 " aria-controls="navbar-default" aria-expanded="false">
@@ -84,6 +101,9 @@ const NavBar = ({ showNav, setShowNav }) => {
                         </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
                         {
                             token !== null
                                 ?
@@ -166,6 +186,7 @@ const NavBar = ({ showNav, setShowNav }) => {
                                     </li>
                                 </>
                         }
+<<<<<<< HEAD
 =======
                         <li>
                             <a href="/" class="block flex space-x-2 items-center py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">
@@ -233,6 +254,8 @@ const NavBar = ({ showNav, setShowNav }) => {
                             
                         </div>
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 
                     </ul>
                 </div>

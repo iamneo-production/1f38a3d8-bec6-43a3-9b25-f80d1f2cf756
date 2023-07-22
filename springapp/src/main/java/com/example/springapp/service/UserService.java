@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.service;
 
 import java.text.ParseException;
@@ -73,6 +76,7 @@ public class UserService {
         userRepository.deleteByUsername(username);
     }
 }
+<<<<<<< HEAD
 =======
 package com.example.springapp.service;
 
@@ -149,3 +153,5 @@ public class UserService {
     }
 }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18

@@ -1,30 +1,62 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+<<<<<<< HEAD
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+=======
+
+import java.time.LocalDate;
+
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+>>>>>>> Project-Workspace-ukeerthi18
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+<<<<<<< HEAD
+=======
+
+>>>>>>> Project-Workspace-ukeerthi18
 import com.example.springapp.model.UserRole;
 import com.example.springapp.model.Post;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+<<<<<<< HEAD
+=======
+
+>>>>>>> Project-Workspace-ukeerthi18
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
+<<<<<<< HEAD
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 
 import javax.persistence.Id;
+=======
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+
+>>>>>>> Project-Workspace-ukeerthi18
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -54,6 +86,36 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
+<<<<<<< HEAD
+=======
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+        name = "user_likes",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "post_id")
+    )
+    private Set<Post> likedPosts = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", bio='" + bio + '\'' +
+                ", dateOfBirth=" + getDateOfBirth() +
+                ", registrationDate=" + registrationDate +
+                ", role=" + role +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
+>>>>>>> Project-Workspace-ukeerthi18
     public int getId() {
         return id;
     }
@@ -109,6 +171,7 @@ public class User implements UserDetails {
     }
 
     public String getDateOfBirth() {
+<<<<<<< HEAD
         SimpleDateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
         return outputFormatter.format(dateOfBirth);
     }
@@ -117,6 +180,23 @@ public class User implements UserDetails {
         SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
         Date parsedDate = inputFormatter.parse(dateString);
         this.dateOfBirth = parsedDate;
+=======
+        if (dateOfBirth != null) {
+            SimpleDateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            return outputFormatter.format(dateOfBirth);
+        }
+        return "";
+    }
+
+    public void setDateOfBirth(String dateString) throws ParseException {
+        if (dateString != null && !dateString.isEmpty()) {
+            SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date parsedDate = inputFormatter.parse(dateString);
+            this.dateOfBirth = parsedDate;
+        } else {
+            this.dateOfBirth = null;
+        }
+>>>>>>> Project-Workspace-ukeerthi18
     }
 
     public List<Post> getPosts() {
@@ -127,6 +207,19 @@ public class User implements UserDetails {
         this.posts = posts;
     }
 
+<<<<<<< HEAD
+=======
+    public void likePost(Post post) {
+        likedPosts.add(post);
+        post.getLikedByUsers().add(this);
+    }
+
+    public void unlikePost(Post post) {
+        likedPosts.remove(post);
+        post.getLikedByUsers().remove(this);
+    }
+
+>>>>>>> Project-Workspace-ukeerthi18
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -152,6 +245,7 @@ public class User implements UserDetails {
         return true;
     }
 }
+<<<<<<< HEAD
 =======
 package com.example.springapp.model;
 
@@ -360,3 +454,5 @@ public class User implements UserDetails {
     }
 }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18

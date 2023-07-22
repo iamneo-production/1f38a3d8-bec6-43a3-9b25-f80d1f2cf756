@@ -2,6 +2,9 @@ import React from 'react'
 
 const Alert = ({ errorMessage, errorCode, errorColor, setAlert }) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
     const test= "";
     return (
             <>
@@ -32,6 +35,7 @@ const Alert = ({ errorMessage, errorCode, errorColor, setAlert }) => {
                 }
             </>
         )
+<<<<<<< HEAD
 =======
 
     return (
@@ -64,6 +68,8 @@ const Alert = ({ errorMessage, errorCode, errorColor, setAlert }) => {
         </>
     )
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 }
 
 export default Alert

@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect, useMemo } from 'react';
 =======
 import React, { useState, useEffect } from 'react';
 >>>>>>> Project-Workspace-pratikmandge
+=======
+import React, { useState, useEffect, useMemo } from 'react';
+>>>>>>> Project-Workspace-ukeerthi18
 import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import Alert from '../Alerts/Alert';
@@ -10,6 +14,9 @@ import { login } from '../../actions/auth';
 import { connect, useSelector } from 'react-redux';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 
 
 
@@ -24,6 +31,7 @@ const Login = ({ login, token, isAuthenticated,login_state }) => {
 	})
 
 	const data = useMemo(()=> {
+<<<<<<< HEAD
 =======
 const Login = ({ login, token, isAuthenticated }) => {
 
@@ -41,6 +49,8 @@ const Login = ({ login, token, isAuthenticated }) => {
 		}
 
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 		if (isAuthenticated === true && localStorage.getItem("token") && token !== null) {
 			setAlertStatus({
 				errorMessage: login_state.message,
@@ -55,6 +65,9 @@ const Login = ({ login, token, isAuthenticated }) => {
 			}, 1000)
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 		if(login_state.status === true){
 			setAlertStatus({
 				errorMessage: login_state.message,
@@ -90,9 +103,12 @@ const Login = ({ login, token, isAuthenticated }) => {
 	// 		}, 1000)
 	// 	}
 	// }, [login_state.status, token, isAuthenticated])
+<<<<<<< HEAD
 =======
 	}, [login_state.status, token, isAuthenticated])
 >>>>>>> Project-Workspace-pratikmandge
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 
 	const navigate = useNavigate();
 
@@ -104,6 +120,7 @@ const Login = ({ login, token, isAuthenticated }) => {
 
 	const { email, password } = formData;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 	const [alert, setAlert] = useState(false);
@@ -113,6 +130,9 @@ const Login = ({ login, token, isAuthenticated }) => {
 		errorColor: ""
 	})
 >>>>>>> Project-Workspace-pratikmandge
+=======
+	
+>>>>>>> Project-Workspace-ukeerthi18
 
 	const onChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -190,9 +210,13 @@ const mapStateToProps = state => ({
 	isAuthenticated: state.auth.isAuthenticated,
 	token: state.auth.token,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	login_state: state.auth.login_state
 =======
 >>>>>>> Project-Workspace-pratikmandge
+=======
+	login_state: state.auth.login_state
+>>>>>>> Project-Workspace-ukeerthi18
 });
 
 

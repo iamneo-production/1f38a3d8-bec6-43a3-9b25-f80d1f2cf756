@@ -1,11 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Project-Workspace-ukeerthi18
 package com.example.springapp.model;
 
 import com.example.springapp.model.User;
 import com.example.springapp.model.Comment;
 
 import java.time.LocalDate;
+<<<<<<< HEAD
 import java.util.List;
+=======
+
+import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+>>>>>>> Project-Workspace-ukeerthi18
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,9 +26,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+<<<<<<< HEAD
 import javax.persistence.JoinColumn;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+=======
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.FetchType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+>>>>>>> Project-Workspace-ukeerthi18
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,15 +58,22 @@ public class Post {
     private int postId;
     private String title;
     private String content;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> Project-Workspace-ukeerthi18
     @Builder.Default
     private LocalDate createdAt = LocalDate.now();
     @Builder.Default
     private LocalDate updatedAt = LocalDate.now();
 
+<<<<<<< HEAD
 
     private String imagePath;
 
 
+=======
+>>>>>>> Project-Workspace-ukeerthi18
     @JsonIgnore
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
@@ -56,6 +82,13 @@ public class Post {
     @JoinColumn(name = "username")
     private User user;
 
+<<<<<<< HEAD
+=======
+    @JsonIgnoreProperties("likedPosts")
+    @ManyToMany(mappedBy = "likedPosts", fetch = FetchType.EAGER)
+    private Set<User> likedByUsers = new HashSet<>();
+
+>>>>>>> Project-Workspace-ukeerthi18
     public int getId() {
         return id;
     }
@@ -104,6 +137,7 @@ public class Post {
         this.user = user;
     }
 
+<<<<<<< HEAD
     public String getImagePath(){
         return imagePath;
     }
@@ -237,3 +271,15 @@ public class Post {
     }
 }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+    public void addLike(User user) {
+        likedByUsers.add(user);
+        user.getLikedPosts().add(this);
+    }
+
+    public void removeLike(User user) {
+        likedByUsers.remove(user);
+        user.getLikedPosts().remove(this);
+    }
+}
+>>>>>>> Project-Workspace-ukeerthi18

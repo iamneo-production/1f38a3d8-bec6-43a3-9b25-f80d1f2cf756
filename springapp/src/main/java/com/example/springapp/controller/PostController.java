@@ -1,9 +1,18 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.example.springapp.controller;
 
 import java.text.ParseException;
 import java.util.List;
 
+=======
+package com.example.springapp.controller;
+
+import java.util.List;
+
+import java.text.ParseException;
+
+>>>>>>> Project-Workspace-ukeerthi18
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,11 +30,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
 import com.example.springapp.service.PostService;
+<<<<<<< HEAD
 import org.springframework.web.multipart.MultipartFile;
+=======
+import org.springframework.web.bind.annotation.CrossOrigin;
+>>>>>>> Project-Workspace-ukeerthi18
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
+<<<<<<< HEAD
+=======
+@CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
+>>>>>>> Project-Workspace-ukeerthi18
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class PostController {
@@ -33,8 +50,13 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("api/posts")
+<<<<<<< HEAD
     public ResponseEntity<Post> createPost(@RequestBody Post post,@RequestParam("imageFile") MultipartFile imageFile) {
         Post createdPost = postService.createPost(post,imageFile);
+=======
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
+        Post createdPost = postService.createPost(post);
+>>>>>>> Project-Workspace-ukeerthi18
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
     
@@ -67,6 +89,7 @@ public class PostController {
         List<Post> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
     }
+<<<<<<< HEAD
 }
 =======
 package com.example.springapp.controller;
@@ -153,3 +176,18 @@ public class PostController {
     }
 }
 >>>>>>> Project-Workspace-pratikmandge
+=======
+
+    @PostMapping("api/posts/{postId}/like")
+    public ResponseEntity<Void> likePost(@PathVariable int postId, @RequestParam String username) {
+        postService.likePost(postId, username);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("api/posts/{postId}/unlike")
+    public ResponseEntity<Void> unlikePost(@PathVariable int postId, @RequestParam String username) {
+        postService.unlikePost(postId, username);
+        return ResponseEntity.ok().build();
+    }
+}
+>>>>>>> Project-Workspace-ukeerthi18
