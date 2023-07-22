@@ -56,7 +56,7 @@ const StoryTop = () => {
                     storyData ?
                         storyData.map((value, index) => {
                             return (
-                                <a href='#' className="flex  w-[135px] rounded-lg bg-gray-800">
+                                <div key={index} className="flex  w-[135px] rounded-lg bg-gray-800">
                                     <div className="h-[181px] w-[131px] flex flex-col relative ">
                                         <img className="z-0 rounded-lg h-[181px] " src={value.storyImage} alt="" />
 
@@ -67,7 +67,7 @@ const StoryTop = () => {
                                             <p className='font-semibold mt-2'>{value.userName}</p>
                                         </div>
                                     </div>
-                                </a>
+                                </div>
                             )
                         })
                         :

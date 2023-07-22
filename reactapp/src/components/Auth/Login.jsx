@@ -41,33 +41,7 @@ const Login = ({ login, token, isAuthenticated,login_state }) => {
 			setAlert(true)
 		}
 	  }, [isAuthenticated,token])
-
-	// useEffect(() => {
-	// 	if (login_state.status === true) {
-	// 		setAlertStatus({
-	// 			errorMessage: login_state.message,
-	// 			errorCode: "error",
-	// 			errorColor: "red"
-	// 		})
-	// 		setAlert(true)
-
-	// 	}
-
-	// 	if (isAuthenticated === true && localStorage.getItem("token") && token !== null) {
-	// 		setAlertStatus({
-	// 			errorMessage: login_state.message,
-	// 			errorCode: "success",
-	// 			errorColor: "green"
-	// 		})
-	// 		setAlert(true)
-
-	// 		setTimeout(() => {
-	// 			setAlert(false)
-	// 			navigate("/")
-	// 		}, 1000)
-	// 	}
-	// }, [login_state.status, token, isAuthenticated])
-
+	  
 	const navigate = useNavigate();
 
 	// Retrieving data from input tag.
