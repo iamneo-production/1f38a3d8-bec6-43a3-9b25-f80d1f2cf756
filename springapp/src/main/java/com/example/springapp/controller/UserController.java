@@ -3,6 +3,7 @@ package com.example.springapp.controller;
 import java.text.ParseException;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springapp.model.User;
@@ -62,5 +64,53 @@ public class UserController{
 		else {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
+    }
+
+	@PutMapping("/api/users/{userId}/profile-photo")
+    public ResponseEntity<String> uploadProfilePhoto(@PathVariable("userId") String userId, @RequestParam("file") MultipartFile file) {
+        String photoPath = userService.uploadProfilePhoto(file);
+        userService.updateProfilePhoto(userId, photoPath);
+        return ResponseEntity.ok("Profile photo uploaded successfully");
+    }
+
+    @PutMapping("/api/users/{userId}/cover-photo")
+    public ResponseEntity<String> uploadCoverPhoto(@PathVariable("userId") String userId, @RequestParam("file") MultipartFile file) {
+        String photoPath = userService.uploadCoverPhoto(file);
+        userService.updateCoverPhoto(userId, photoPath);
+        return ResponseEntity.ok("Cover photo uploaded successfully");
+    }
+
+    @GetMapping("/api/users/{userId}/profile-photo")
+    public ResponseEntity<byte[]> getProfilePhoto(@PathVariable("userId") String userId) {
+        try {
+            byte[] photoBytes = userService.getProfilePhoto(userId);
+            return ResponseEntity.ok(photoBytes);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/api/users/{userId}/cover-photo")
+    public ResponseEntity<byte[]> getCoverPhoto(@PathVariable("userId") String userId) {
+        try {
+            byte[] photoBytes = userService.getCoverPhoto(userId);
+            return ResponseEntity.ok(photoBytes);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @DeleteMapping("/api/users/{userId}/profile-photo")
+    public ResponseEntity<String> deleteProfilePhoto(@PathVariable("userId") String userId) {
+        userService.deleteProfilePhoto(userId);
+        return ResponseEntity.ok("Profile photo deleted successfully");
+    }
+
+    @DeleteMapping("/api/users/{userId}/cover-photo")
+    public ResponseEntity<String> deleteCoverPhoto(@PathVariable("userId") String userId) {
+        userService.deleteCoverPhoto(userId);
+        return ResponseEntity.ok("Cover photo deleted successfully");
     }
 }
