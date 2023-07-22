@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequiredArgsConstructor
 public class CommentController {
 
@@ -40,11 +41,7 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
     }
 
-<<<<<<< HEAD
-    @PutMapping("/api/comments/{postId}")
-=======
     @PutMapping("/api/comments/{commentId}")
->>>>>>> Project-Workspace-u3m2a1
     public ResponseEntity<Comment> updateComment(@PathVariable int commentId, @RequestBody Comment updatedComment) {
         Comment comment = commentService.updateComment(commentId, updatedComment);
         return ResponseEntity.ok(comment);

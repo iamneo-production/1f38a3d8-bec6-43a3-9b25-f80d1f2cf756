@@ -1,7 +1,8 @@
 package com.example.springapp.controller;
 
-import java.text.ParseException;
 import java.util.List;
+
+import java.text.ParseException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
 import com.example.springapp.service.PostService;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class PostController {
@@ -32,8 +34,8 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("api/posts")
-    public ResponseEntity<Post> createPost(@RequestBody Post post,@RequestParam("imageFile") MultipartFile imageFile) {
-        Post createdPost = postService.createPost(post,imageFile);
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
+        Post createdPost = postService.createPost(post);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
     
@@ -65,5 +67,17 @@ public class PostController {
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
+    }
+
+    @PostMapping("api/posts/{postId}/like")
+    public ResponseEntity<Void> likePost(@PathVariable int postId, @RequestParam String username) {
+        postService.likePost(postId, username);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("api/posts/{postId}/unlike")
+    public ResponseEntity<Void> unlikePost(@PathVariable int postId, @RequestParam String username) {
+        postService.unlikePost(postId, username);
+        return ResponseEntity.ok().build();
     }
 }
