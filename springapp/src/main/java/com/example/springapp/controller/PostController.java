@@ -1,7 +1,7 @@
 package com.example.springapp.controller;
 
 import java.util.List;
-
+import java.io.IOException;
 import java.text.ParseException;
 
 import org.springframework.http.HttpStatus;
@@ -17,11 +17,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
 import com.example.springapp.service.PostService;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+
+import org.springframework.http.HttpHeaders;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,9 +43,15 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("api/posts")
-    public ResponseEntity<Post> createPost(@RequestBody Post post) {
-        Post createdPost = postService.createPost(post);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
+    public ResponseEntity<Post> createPost(@RequestParam("file") MultipartFile file, @RequestParam("post") String postJson) throws IOException {
+        try{
+            ObjectMapper objectMapper = new ObjectMapper();
+            Post post = objectMapper.readValue(postJson, Post.class);
+            Post createdPost = postService.createPost(post, file);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
+        }catch (JsonProcessingException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
     
     @GetMapping("api/posts/{postId}")
@@ -67,6 +82,20 @@ public class PostController {
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
+    }
+
+    @GetMapping("api/posts/{postId}/photo")
+    public ResponseEntity<Resource> getPostPhoto(@PathVariable int postId) {
+        Post post = postService.getPostById(postId);
+        Resource photoResource = postService.getPostPhoto(post);
+        if (photoResource != null && photoResource.exists()) {
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + photoResource.getFilename() + "\"")
+                    .body(photoResource);
+        } else {
+            // Handle the case when the photo does not exist.
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("api/posts/{postId}/like")

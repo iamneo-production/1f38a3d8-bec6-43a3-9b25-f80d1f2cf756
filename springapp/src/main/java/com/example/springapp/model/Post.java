@@ -21,6 +21,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.FetchType;
+import javax.persistence.Column;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -44,6 +45,9 @@ public class Post {
     private int postId;
     private String title;
     private String content;
+    
+    @Column
+    private String photoPath;
     
     @Builder.Default
     private LocalDate createdAt = LocalDate.now();
@@ -92,6 +96,14 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 
     public LocalDate getCreatedAt() {
