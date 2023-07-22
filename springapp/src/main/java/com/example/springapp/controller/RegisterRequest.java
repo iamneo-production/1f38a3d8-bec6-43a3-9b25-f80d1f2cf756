@@ -21,7 +21,8 @@ public class RegisterRequest {
 	@Builder.Default
 	private LocalDate registrationDate = LocalDate.now();
 	private Date dateOfBirth;
-	private byte[] profilePicture;
+	private String profilePhotoPath;
+    private String coverPhotoPath;
 }
 =======
 package com.example.springapp.controller;

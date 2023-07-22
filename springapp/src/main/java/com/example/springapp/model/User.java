@@ -302,7 +302,8 @@ public class User implements UserDetails {
     private String email;
     private String bio;
     private Date dateOfBirth;
-    private byte[] profilePicture;
+    private String profilePhotoPath;
+    private String coverPhotoPath; 
     @Builder.Default
     private LocalDate registrationDate = LocalDate.now();
     @Enumerated(EnumType.STRING)
@@ -380,12 +381,20 @@ public class User implements UserDetails {
         this.bio = bio;
     }
 
-    public byte[] getProfilePicture() {
-        return profilePicture;
+    public String getProfilePhotoPath() {
+        return profilePhotoPath;
     }
 
-    public void setProfilePicture(byte[] profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setProfilePhotoPath(String profilePhotoPath) {
+        this.profilePhotoPath = profilePhotoPath;
+    }
+    
+    public String getCoverPhotoPath() {
+        return coverPhotoPath;
+    }
+
+    public void setCoverPhotoPath(String coverPhotoPath) {
+        this.coverPhotoPath = coverPhotoPath;
     }
 
     public LocalDate getRegistrationDate() {
