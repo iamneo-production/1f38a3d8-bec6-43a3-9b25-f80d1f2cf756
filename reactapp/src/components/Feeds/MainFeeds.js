@@ -1,8 +1,4 @@
 import React ,{useState,useEffect} from 'react'
-import Post from "./Post";
-import Story from "./Story";
-import TopNavBar from "./TopNavBar";
-import NavBar from "../NavBar/NavBar";
 import StoryTop from "./StoryTop";
 import FriendRequest from './FriendRequest';
 import CreatePost from '../Posts/CreatePost';
@@ -14,32 +10,19 @@ import { useNavigate } from 'react-router-dom';
 
 const MainFeeds = () => {
 
+
   const navigate = useNavigate();
 
   // Hooks -> lifecycle of a component different stages different hooks 
   //  useEffect -> intialized at the starting stage of a component life cycle
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Project-Workspace-ukeerthi18
+
   useEffect(() => {
     if(localStorage.getItem("user") === null){
       navigate("/login");
     }
   },[]);
-<<<<<<< HEAD
-=======
-  // useEffect(() => {
-  //   if(localStorage.getItem("user") === null){
-  //     navigate("/login");
-  //   }
-  // },[]);
->>>>>>> Project-Workspace-pratikmandge
-=======
->>>>>>> Project-Workspace-ukeerthi18
-
 
     const [postData, setPostData] = useState([
       {
@@ -87,12 +70,11 @@ const MainFeeds = () => {
                     postData ? 
                       postData.map((post,index)=>{ // loop through each element -> post
                         return(
-                          <Posts post={post} />
+                          <Posts key={index} post={post} />
                         )
                       })
                       :
                       "No Post Added"
-
                   }
               </div>
             </div>
