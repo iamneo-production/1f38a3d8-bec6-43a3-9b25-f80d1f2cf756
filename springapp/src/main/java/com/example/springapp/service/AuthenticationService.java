@@ -210,7 +210,7 @@ public class AuthenticationService {
                         } catch (ParseException e1) {
                             e1.printStackTrace();
                         }
-                        e.setProfilePicture(updatedUser.getProfilePicture());
+                        e.setProfilePhotoPath(updatedUser.getProfilePhotoPath());
                     }
                     return e;
                 }).collect(Collectors.toList());

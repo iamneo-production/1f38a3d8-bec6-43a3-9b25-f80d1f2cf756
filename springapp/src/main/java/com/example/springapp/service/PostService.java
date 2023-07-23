@@ -127,16 +127,31 @@ package com.example.springapp.service;
 import com.example.springapp.model.Post;
 import com.example.springapp.model.User;
 
+import java.io.InputStream;
+import java.nio.file.StandardCopyOption;
+
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+
 import com.example.springapp.service.UserService;
 
 import com.example.springapp.repository.PostRepository;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 
@@ -147,6 +162,9 @@ public class PostService {
     @Autowired
     private final UserService userService;
     private final PostRepository postRepository;
+
+    @Value("${post.photos.post-folder}")
+    private String postPhotoFolder;
 
     public List<Post> getAllPosts() {
         return postRepository.findAll();
@@ -161,27 +179,84 @@ public class PostService {
         return postRepository.findByUser(user);
     }
 
-    public Post createPost(Post post) {
+    public Post createPost(Post post, MultipartFile file) throws IOException {
         User user = userService.getUserByUsername(post.getUser().getUsername());
         post.setUser(user);
         post.setTitle(post.getTitle());
         post.setContent(post.getContent());
         post.setCreatedAt(post.getCreatedAt());
         post.setUpdatedAt(post.getUpdatedAt());
+
+        if (!file.isEmpty()) {
+            String photoFileName = "post_" + post.getId() + "_" + System.currentTimeMillis() + ".jpg";
+            String photoPath = postPhotoFolder + photoFileName;
+            savePhoto(file, photoPath);
+            post.setPhotoPath(photoPath);
+        }
         return postRepository.save(post);
     }    
 
+    private void savePhoto(MultipartFile file, String targetPath) throws IOException {
+        try (InputStream inputStream = file.getInputStream()) {
+            Files.copy(inputStream, Paths.get(targetPath), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            // Handle exception (e.g., log error or throw custom exception)
+            throw e;
+        }
+    }
+
+    public Resource getPostPhoto(Post post) {
+        String photoFileName = post.getPhotoPath();
+        if (photoFileName != null) {
+            try {
+                return new UrlResource(Paths.get(photoFileName).toUri());
+            } catch (MalformedURLException e) {
+                // Handle exception (e.g., log error or throw custom exception)
+            }
+        }
+        return null;
+    }
+
     public Post updatePost(int postId, Post updatedPost) {
-        Post post = getPostById(postId);
+        Post post = getPostById(postId);    
         post.setTitle(updatedPost.getTitle());
         post.setContent(updatedPost.getContent());
+
+        if (!updatedPost.getPhotoPath().isEmpty()) {
+            String photoFileName = "post_" + updatedPost.getId() + "_" + System.currentTimeMillis() + ".jpg";
+            String photoPath = postPhotoFolder + photoFileName;
+            savePhoto(updatedPost.getPhotoPath(), photoPath);
+            post.setPhotoPath(photoPath);
+        }
         return postRepository.save(post);
     }
 
     @Transactional
     public void deletePost(int postId) {
         Post post = getPostById(postId);
+
+        if (post.getPhotoPath() != null) {
+            deletePhoto(post.getPhotoPath());
+        }
+
         postRepository.delete(post);
+    }
+
+    private void savePhoto(String sourcePath, String targetPath) {
+        try {
+            Files.copy(Paths.get(sourcePath), Paths.get(targetPath));
+        } catch (IOException e) {
+            // Handle exception (e.g., log error or throw custom exception)
+        }
+    }
+
+    private void deletePhoto(String photoFileName) {
+        String photoPath = postPhotoFolder + photoFileName;
+        try {
+            Files.deleteIfExists(Paths.get(photoPath));
+        } catch (IOException e) {
+            // Handle exception (e.g., log error or throw custom exception)
+        }
     }
 
     @Transactional
