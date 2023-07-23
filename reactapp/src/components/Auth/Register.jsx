@@ -7,7 +7,7 @@ import { signup } from '../../actions/auth';
 
 
 
-const Register = ({token,isAuthenticated,signup}) => {
+const Register = ({isAuthenticated,signup}) => {
 
     const navigate = useNavigate();
 
@@ -142,12 +142,8 @@ const Register = ({token,isAuthenticated,signup}) => {
             })
             
         }
-
-
-
     }
     // for confirm password
-
 
     const onChange = (e) => {
 
@@ -271,7 +267,6 @@ const Register = ({token,isAuthenticated,signup}) => {
 
 const mapStateToProps = state => ({
 	isAuthenticated: state.auth.isAuthenticated,
-	token: state.auth.token,
 });
 
 export default connect(mapStateToProps, { signup })(Register)

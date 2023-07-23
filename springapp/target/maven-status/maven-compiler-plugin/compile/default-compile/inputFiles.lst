@@ -5,12 +5,12 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/UserRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/CommentService.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Post.java
-/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/CommentController.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/AuthenticationController.java
-/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/AuthenticationResponse.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/CommentController.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/CommentRepository.java
-/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/UserRole.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/AuthenticationResponse.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/PostRepository.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/UserRole.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/config/ApplicationConfig.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/AuthenticationService.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Comment.java
