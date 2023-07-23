@@ -1,18 +1,17 @@
 package com.example.springapp.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.example.springapp.model.Comment;
 import com.example.springapp.model.Post;
 import com.example.springapp.repository.CommentRepository;
 import com.example.springapp.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+
 
 import lombok.RequiredArgsConstructor;
 

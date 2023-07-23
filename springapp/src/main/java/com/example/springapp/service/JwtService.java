@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import com.example.springapp.model.User;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,12 @@ public class JwtService {
             Map<String, Object> extraClaims,
             UserDetails userDetails
     ) {
+        User user = (User) userDetails;
+        
+        extraClaims.put("userId", user.getId());
+        extraClaims.put("email", user.getEmail());
+        extraClaims.put("bio", user.getBio());
+        extraClaims.put("dateOfBirth", user.getDateOfBirth());
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
