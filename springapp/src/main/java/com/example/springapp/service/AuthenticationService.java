@@ -1,8 +1,10 @@
 package com.example.springapp.service;
 
 import com.example.springapp.controller.AuthenticationRequest;
+
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.example.springapp.controller.AuthenticationResponse;
-import com.example.springapp.controller.LoadUserRequest;
 import com.example.springapp.controller.RegisterRequest;
 import com.example.springapp.model.User;
 import com.example.springapp.model.UserRole;
@@ -81,7 +83,7 @@ public class AuthenticationService {
                         } catch (ParseException e1) {
                             e1.printStackTrace();
                         }
-                        e.setProfilePicture(updatedUser.getProfilePicture());
+                        e.setProfilePhotoPath(updatedUser.getProfilePhotoPath());
                     }
                     return e;
                 }).collect(Collectors.toList());
@@ -89,33 +91,22 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        
-        try {
-            authenticationManager.authenticate(
+        authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
                         request.getPassword()
                 )
-            );
-            User user = repository.findByUsername(request.getUsername()).orElseThrow(() -> new RuntimeException("Invalid username or password"));
-            String jwtToken = jwtService.generateToken(user);
-            return AuthenticationResponse.builder()
-                    .token(jwtToken)
-                    .build();
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid username or password");
-        }
-        
-        
+        );
+        User user = repository.findByUsername(request.getUsername()).orElseThrow();
+        String jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
     }
 
-    public String validateUser(LoadUserRequest jwtToken){
-        try{
-            String username = jwtService.extractUsername(jwtToken.getToken());
-            return username;
-
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid Token ");
-        }
+    public UserDetails getUserDetailsFromToken(String token) {
+        String username = jwtService.extractUsername(token);
+        User user = repository.findByUsername(username).orElseThrow();
+        return user;
     }
 }
