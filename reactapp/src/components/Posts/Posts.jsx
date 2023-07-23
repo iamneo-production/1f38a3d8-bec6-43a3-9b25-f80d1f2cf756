@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
-import {AiFillLike} from 'react-icons/ai'
 import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
 import {BiDotsHorizontalRounded,BiShareAlt} from 'react-icons/bi';
 import {FaRegCommentDots} from 'react-icons/fa';
 import {VscBookmark} from 'react-icons/vsc';
 import {IoIosShareAlt} from 'react-icons/io';
 import CommentsSection from '../Comments/CommentSection';
+
 const Posts = ({post}) => {
 
   const [liked, setliked] = useState(false);
@@ -24,7 +24,7 @@ const Posts = ({post}) => {
     <div className=' w-full bg-white my-2 rounded-lg'>
         <div className='rounded-t-lg h-20 pt-6 px-5 w-full bg-white flex justify-between items-center'>
           <div className='flex space-x-4 items-center'>
-            <img class="object-cover w-14 h-14 rounded-full" src={post.profile} alt="" />
+            <img className="object-cover w-14 h-14 rounded-full" src={post.profile} alt="" />
             <div >
                 <p className='text-lg font-semibold'>{post.name}</p>
                 <p className='text-md text-gray-500'>{post.active} min ago</p>
@@ -34,11 +34,11 @@ const Posts = ({post}) => {
         </div>
 
         <div className='h-[60px] bg-white w-full p-5'>
-            <p>{post.description} <a href='#' className='text-skyblue-700 font-semibold'>...see more </a></p>
+            <p>{post.description} <span className='text-skyblue-700 font-semibold'>...see more </span></p>
         </div>
 
         <div className='h-[450px] w-full  px-6 py-4  '>
-                <img class=" w-full h-full square-full rounded-xl" src={post.postImage} alt="" />
+                <img className=" w-full h-full square-full rounded-xl" src={post.postImage} alt="" />
         </div>
         <div className=' flex justify-between mx-4 py-4'>
             <div className="flex space-x-4">
@@ -57,6 +57,7 @@ const Posts = ({post}) => {
             
             <VscBookmark size={30}/>
         </div>
+        {/* <CommentsSection/> */}
 
     </div>
   )

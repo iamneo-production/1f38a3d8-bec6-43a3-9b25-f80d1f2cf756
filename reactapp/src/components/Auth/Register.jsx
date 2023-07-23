@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Alert from '../Alerts/Alert';
 import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { connect } from 'react-redux';
+import { signup } from '../../actions/auth';
 
 
 
-
-const Register = () => {
+const Register = ({isAuthenticated,signup}) => {
 
     const navigate = useNavigate();
 
     useEffect(function(){
-        const user = localStorage.getItem("user")
-
-        if(user !== null){
+        const token = localStorage.getItem("token")
+        if(token !== null){
             navigate("/");
         }
     },[])
@@ -25,10 +25,11 @@ const Register = () => {
         username: "",
         email: "",
         password: "",
-        confirmPasssword: ""
+        confirmPasssword: "",
+        dateofbirth:""
     })
 
-    const { username, email, password, confirmPasssword } = formData;
+    const { username, email, password, confirmPasssword,dateofbirth } = formData;
     const [alert, setAlert] = useState(false);
     const [alertStatus, setAlertStatus] = useState({
         errorMessage: "",
@@ -59,7 +60,7 @@ const Register = () => {
             errMsg = "Password is empty";
             setAlertStatus({
                 errorMessage: errMsg,
-                errorCode: "Error..!!",
+                errorCode: "error",
                 errorColor: "red"
             });
 
@@ -68,7 +69,7 @@ const Register = () => {
             errMsg = "At least one Uppercase";
             setAlertStatus({
                 errorMessage: errMsg,
-                errorCode: "Error..!!",
+                errorCode: "error",
                 errorColor: "red"
             });
 
@@ -77,7 +78,7 @@ const Register = () => {
             errMsg = "At least one Lowercase";
             setAlertStatus({
                 errorMessage: errMsg,
-                errorCode: "Error..!!",
+                errorCode: "error",
                 errorColor: "red"
             });
 
@@ -86,7 +87,7 @@ const Register = () => {
             errMsg = "At least one digit";
             setAlertStatus({
                 errorMessage: errMsg,
-                errorCode: "Error..!!",
+                errorCode: "error",
                 errorColor: "red"
             });
 
@@ -95,7 +96,7 @@ const Register = () => {
             errMsg = "At least one Special Characters";
             setAlertStatus({
                 errorMessage: errMsg,
-                errorCode: "Error..!!",
+                errorCode: "error",
                 errorColor: "red"
             });
 
@@ -104,7 +105,7 @@ const Register = () => {
             errMsg = "At least minumum 8 characters";
             setAlertStatus({
                 errorMessage: errMsg,
-                errorCode: "Error..!!",
+                errorCode: "error",
                 errorColor: "red"
             });
 
@@ -112,29 +113,37 @@ const Register = () => {
         } else if (password !== confirmPasssword) {
             setAlertStatus({
                 errorMessage: "Confirm password is not matched",
-                errorCode: "Error..!!",
+                errorCode: "error",
                 errorColor: "red"
             });
 
             setAlert(true);
         } else {
-            setAlertStatus({
-                errorMessage: "Account Created Successfully...",
-                errorCode: "Success..!!",
-                errorColor: "green"
-            });
-            setAlert(true);
+            
+            signup(username,email, password,dateofbirth).then(res=>{
+                setAlertStatus({
+                    errorMessage: "Account Created Successfully...",
+                    errorCode: "Success..!!",
+                    errorColor: "green"
+                });
+                setAlert(true);
 
-            setTimeout(function () {
-                navigate("/login");
-            }, 2000);
+                setTimeout(function () {
+                    navigate("/login");
+                    
+                }, 2000);
+            }).catch(error=>{
+                setAlertStatus({
+                    errorMessage: "something went wrong...",
+                    errorCode: "error",
+                    errorColor: "red"
+                });
+                setAlert(true);
+            })
+            
         }
-
-
-
     }
     // for confirm password
-
 
     const onChange = (e) => {
 
@@ -207,6 +216,12 @@ const Register = () => {
                                 class="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="email"
                                 placeholder="email" onChange={(e) => onChange(e)} required />
+                            
+                            <input
+                                type="date"
+                                class="block border border-grey-light w-full p-3 rounded mb-4"
+                                name="dateofbirth"
+                                onChange={(e) => onChange(e)} required />
 
                             <div className="relative">
                                 <input
@@ -250,4 +265,8 @@ const Register = () => {
     )
 }
 
-export default Register
+const mapStateToProps = state => ({
+	isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { signup })(Register)

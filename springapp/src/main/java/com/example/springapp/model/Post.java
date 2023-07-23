@@ -43,6 +43,8 @@ public class Post {
     @Builder.Default
     private LocalDate updatedAt = LocalDate.now();
 
+    private String imagePath;
+
     @JsonIgnore
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
@@ -97,6 +99,14 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getImagePath(){
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath){
+        this.imagePath = imagePath;
     }
 
 }

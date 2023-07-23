@@ -2,6 +2,7 @@ package com.example.springapp.service;
 
 import com.example.springapp.controller.AuthenticationRequest;
 import com.example.springapp.controller.AuthenticationResponse;
+import com.example.springapp.controller.LoadUserRequest;
 import com.example.springapp.controller.RegisterRequest;
 import com.example.springapp.model.User;
 import com.example.springapp.model.UserRole;
@@ -88,16 +89,33 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        authenticationManager.authenticate(
+        
+        try {
+            authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
                         request.getPassword()
                 )
-        );
-        User user = repository.findByUsername(request.getUsername()).orElseThrow();
-        String jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-                .token(jwtToken)
-                .build();
+            );
+            User user = repository.findByUsername(request.getUsername()).orElseThrow(() -> new RuntimeException("Invalid username or password"));
+            String jwtToken = jwtService.generateToken(user);
+            return AuthenticationResponse.builder()
+                    .token(jwtToken)
+                    .build();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid username or password");
+        }
+        
+        
+    }
+
+    public String validateUser(LoadUserRequest jwtToken){
+        try{
+            String username = jwtService.extractUsername(jwtToken.getToken());
+            return username;
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid Token ");
+        }
     }
 }
