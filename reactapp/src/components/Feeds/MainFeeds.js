@@ -10,20 +10,6 @@ import { useNavigate } from 'react-router-dom';
 
 const MainFeeds = () => {
 
-
-  const navigate = useNavigate();
-
-  // Hooks -> lifecycle of a component different stages different hooks 
-  //  useEffect -> intialized at the starting stage of a component life cycle
-
-
-
-  useEffect(() => {
-    if(localStorage.getItem("user") === null){
-      navigate("/login");
-    }
-  },[]);
-
     const [postData, setPostData] = useState([
       {
         id:1 , 

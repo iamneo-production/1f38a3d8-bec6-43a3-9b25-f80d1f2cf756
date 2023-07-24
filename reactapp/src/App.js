@@ -12,20 +12,12 @@ import "./App.css";
 import {
   createBrowserRouter,
   RouterProvider,
- 
+  createRoutesFromElements
   
 } from "react-router-dom";
 import Register from './components/Auth/Register';
 import RouteProtectionUser from './routeProtection/RouteProtectionUser';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import Messages from './components/Messages';
-=======
-// import Messages from './components/Messages/Messages';
->>>>>>> Project-Workspace-pratikmandge
-=======
-import Messages from './components/Messages';
->>>>>>> Project-Workspace-ukeerthi18
+import Messages from './components/Messages/Messages';
 
 
 
@@ -52,24 +44,11 @@ const router = createBrowserRouter(
           path: "/register",
           element: <Register />,
         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Project-Workspace-ukeerthi18
          {
            path: "/messages",
            element: <Messages />,
          },  
          
-<<<<<<< HEAD
-=======
-        // {
-        //   path: "/messages",
-        //   element: <Messages />,
-        // },  
->>>>>>> Project-Workspace-pratikmandge
-=======
->>>>>>> Project-Workspace-ukeerthi18
       ]
 
 

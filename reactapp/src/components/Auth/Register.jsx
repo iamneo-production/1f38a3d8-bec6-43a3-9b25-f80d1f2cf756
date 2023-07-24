@@ -7,15 +7,7 @@ import { signup } from '../../actions/auth';
 
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 const Register = ({isAuthenticated,signup}) => {
-=======
-const Register = ({token,isAuthenticated,signup}) => {
->>>>>>> Project-Workspace-pratikmandge
-=======
-const Register = ({isAuthenticated,signup}) => {
->>>>>>> Project-Workspace-ukeerthi18
 
     const navigate = useNavigate();
 
@@ -150,25 +142,9 @@ const Register = ({isAuthenticated,signup}) => {
             })
             
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
     }
     // for confirm password
 
-=======
-
-
-
-    }
-    // for confirm password
-
-
->>>>>>> Project-Workspace-pratikmandge
-=======
-    }
-    // for confirm password
-
->>>>>>> Project-Workspace-ukeerthi18
     const onChange = (e) => {
 
         // e.target.name -> tells which input component the user is adding data,
@@ -291,13 +267,6 @@ const Register = ({isAuthenticated,signup}) => {
 
 const mapStateToProps = state => ({
 	isAuthenticated: state.auth.isAuthenticated,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	token: state.auth.token,
->>>>>>> Project-Workspace-pratikmandge
-=======
->>>>>>> Project-Workspace-ukeerthi18
 });
 
 export default connect(mapStateToProps, { signup })(Register)

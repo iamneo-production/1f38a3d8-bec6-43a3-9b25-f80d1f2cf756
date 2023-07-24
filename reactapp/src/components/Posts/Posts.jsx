@@ -1,11 +1,9 @@
 import React,{useState} from 'react'
 import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
-import {BiDotsHorizontalRounded,BiShareAlt} from 'react-icons/bi';
+import {BiDotsHorizontalRounded} from 'react-icons/bi';
 import {VscBookmark} from 'react-icons/vsc';
 import {IoIosShareAlt} from 'react-icons/io';
-import Share from '../Posts/Share'
 import CommentsSection from '../Comments/CommentSection';
-import {FaRegCommentDots} from 'react-icons/fa';
 
 const Posts = ({post}) => {
 
@@ -50,16 +48,15 @@ const Posts = ({post}) => {
 
                 <AiOutlineHeart size={30} onClick={() => Like()} />
               }  <span className='px'>{post.likes} likes</span>
-
-              <FaRegCommentDots size={30} />
+              
               <CommentsSection/>
-              <Share/>
-              <BiShareAlt size={30}/>
+              <IoIosShareAlt size={30}/>
               
             </div>
             
             <VscBookmark size={30}/>
         </div>
+        {/* <CommentsSection/> */}
 
     </div>
   )

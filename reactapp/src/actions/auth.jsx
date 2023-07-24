@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import {
     LOGIN_FAIL,
     LOGIN_SUCCESS,
@@ -25,7 +24,6 @@ export const login = (username, password) => async dispatch => {
     try {
 
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/authenticate/`, body, config);
-
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -41,13 +39,11 @@ export const login = (username, password) => async dispatch => {
 };
 
 export const signup = (username, email, password, dateofbirth) => async dispatch => {
-
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
-
 
     const body = JSON.stringify({ username, email, password, dateofbirth });
 

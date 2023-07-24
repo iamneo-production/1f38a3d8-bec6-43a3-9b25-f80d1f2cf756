@@ -1,15 +1,10 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
-
-import React, { useState, useEffect } from 'react';
-
-import React, { useState, useEffect, useMemo } from 'react';
-
 import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import Alert from '../Alerts/Alert';
 import { login } from '../../actions/auth';
 import { connect, useSelector } from 'react-redux';
+
 
 
 
@@ -24,7 +19,6 @@ const Login = ({ login, token, isAuthenticated,login_state }) => {
 	})
 
 	const data = useMemo(()=> {
-
 		if (isAuthenticated === true && localStorage.getItem("token") && token !== null) {
 			setAlertStatus({
 				errorMessage: login_state.message,
@@ -38,7 +32,6 @@ const Login = ({ login, token, isAuthenticated,login_state }) => {
 				navigate("/")
 			}, 1000)
 		}
-
 		if(login_state.status === true){
 			setAlertStatus({
 				errorMessage: login_state.message,
@@ -48,34 +41,7 @@ const Login = ({ login, token, isAuthenticated,login_state }) => {
 			setAlert(true)
 		}
 	  }, [isAuthenticated,token])
-
-
-	// useEffect(() => {
-	// 	if (login_state.status === true) {
-	// 		setAlertStatus({
-	// 			errorMessage: login_state.message,
-	// 			errorCode: "error",
-	// 			errorColor: "red"
-	// 		})
-	// 		setAlert(true)
-
-	// 	}
-
-	// 	if (isAuthenticated === true && localStorage.getItem("token") && token !== null) {
-	// 		setAlertStatus({
-	// 			errorMessage: login_state.message,
-	// 			errorCode: "success",
-	// 			errorColor: "green"
-	// 		})
-	// 		setAlert(true)
-
-	// 		setTimeout(() => {
-	// 			setAlert(false)
-	// 			navigate("/")
-	// 		}, 1000)
-	// 	}
-	// }, [login_state.status, token, isAuthenticated])
-
+	  
 	const navigate = useNavigate();
 
 	// Retrieving data from input tag.
@@ -85,6 +51,7 @@ const Login = ({ login, token, isAuthenticated,login_state }) => {
 	})
 
 	const { email, password } = formData;
+	
 
 	const onChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -161,10 +128,7 @@ const Login = ({ login, token, isAuthenticated,login_state }) => {
 const mapStateToProps = state => ({
 	isAuthenticated: state.auth.isAuthenticated,
 	token: state.auth.token,
-
 	login_state: state.auth.login_state
-
-
 });
 
 
