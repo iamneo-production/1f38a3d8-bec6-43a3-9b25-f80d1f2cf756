@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 
 package com.example.springapp;
 
