@@ -77,7 +77,7 @@ public class PostService {
             Files.copy(inputStream, Paths.get(targetPath), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             // Handle exception (e.g., log error or throw custom exception)
-            e.printStackTrace();
+            throw e;
         }
     }
 
@@ -87,7 +87,7 @@ public class PostService {
             try {
                 return new UrlResource(Paths.get(photoFileName).toUri());
             } catch (MalformedURLException e) {
-                e.printStackTrace();
+                // Handle exception (e.g., log error or throw custom exception)
             }
         }
         return null;
@@ -122,7 +122,7 @@ public class PostService {
         try {
             Files.copy(Paths.get(sourcePath), Paths.get(targetPath));
         } catch (IOException e) {
-            e.printStackTrace();
+            // Handle exception (e.g., log error or throw custom exception)
         }
     }
 
@@ -131,7 +131,7 @@ public class PostService {
         try {
             Files.deleteIfExists(Paths.get(photoPath));
         } catch (IOException e) {
-            e.printStackTrace();
+            // Handle exception (e.g., log error or throw custom exception)
         }
     }
 
