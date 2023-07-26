@@ -21,7 +21,7 @@ const CommentsSection = () => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get("/api/comments");
+      const response = await axios.get("https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments");
       setComments(response.data);
     } catch (error) {
       console.error("Error fetching comments:", error);
@@ -38,7 +38,7 @@ const CommentsSection = () => {
         postId: 1,
       };
       try {
-        await axios.post("/api/comments", comment);
+        await axios.post("https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments", comment);
         setComments([...comments, comment]);
         setNewComment("");
         setCommentId(commentId + 1);
@@ -50,7 +50,7 @@ const CommentsSection = () => {
 
   const handleDeleteComment = async (id) => {
     try {
-      await axios.delete(`/api/comments/${id}`);
+      await axios.delete(`https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments/${id}`);
       const updatedComments = comments.filter((comment) => comment.id !== id);
       setComments(updatedComments);
     } catch (error) {
