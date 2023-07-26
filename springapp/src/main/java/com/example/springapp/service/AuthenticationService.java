@@ -1,6 +1,9 @@
 package com.example.springapp.service;
 
 import com.example.springapp.controller.AuthenticationRequest;
+
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.example.springapp.controller.AuthenticationResponse;
 import com.example.springapp.controller.RegisterRequest;
 import com.example.springapp.model.User;
@@ -80,7 +83,7 @@ public class AuthenticationService {
                         } catch (ParseException e1) {
                             e1.printStackTrace();
                         }
-                        e.setProfilePicture(updatedUser.getProfilePicture());
+                        e.setProfilePhotoPath(updatedUser.getProfilePhotoPath());
                     }
                     return e;
                 }).collect(Collectors.toList());
@@ -99,5 +102,11 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
+    }
+
+    public UserDetails getUserDetailsFromToken(String token) {
+        String username = jwtService.extractUsername(token);
+        User user = repository.findByUsername(username).orElseThrow();
+        return user;
     }
 }
