@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
+@CrossOrigin(origins = "https://8081-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequestMapping("/")
 public class AuthenticationController {
 
