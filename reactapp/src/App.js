@@ -1,13 +1,10 @@
-import './App.css';
-
-
 import React, { useState } from 'react'
 import MainFeeds from './components/Feeds/MainFeeds';
 import MainPage from './Settings/SideBar/MainPage';
 import Login from './components/Auth/Login';
 import NavBar from './components/NavBar/NavBar';
-import NotificationList from './components/Notification/NotificationList';
-
+import store from './store';
+import { Provider } from 'react-redux';
 
 import "./App.css";
 // import "./Scroll.css";
@@ -19,7 +16,8 @@ import {
   
 } from "react-router-dom";
 import Register from './components/Auth/Register';
-// import Messages from './components/Messages/Messages';
+import RouteProtectionUser from './routeProtection/RouteProtectionUser';
+import Messages from './components/Messages/Messages';
 
 
 
@@ -31,11 +29,11 @@ const router = createBrowserRouter(
   [
     {
           path: "/settings",
-          element: <MainPage />,
+          element: <RouteProtectionUser><MainPage /></RouteProtectionUser>,
         },
         {
           path: "/",
-          element: <MainFeeds/>,
+          element: <RouteProtectionUser><MainFeeds/></RouteProtectionUser>,
           
         },
         {
@@ -46,14 +44,11 @@ const router = createBrowserRouter(
           path: "/register",
           element: <Register />,
         },
-        {
-          path:"/notification",
-          element: <NotificationList/>,
-        }
-        // {
-        //   path: "/messages",
-        //   element: <Messages />,
-        // },  
+         {
+           path: "/messages",
+           element: <Messages />,
+         },  
+         
       ]
 
 
@@ -64,16 +59,16 @@ const App = () => {
   const [showNav, setShowNav] = useState(false);
 
   return (
-    
-  
     <div id='root'>
       
+      <Provider store={store}>
       <NavBar showNav={showNav} setShowNav={setShowNav}/>
       <div onClick = {() => setShowNav(false)}>
         <RouterProvider router={router} />
         </div>
         {/* <MainPage /> */}
-    
+        
+      </Provider>
     </div>
     
   )
