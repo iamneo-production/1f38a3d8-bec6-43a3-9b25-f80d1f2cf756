@@ -4,6 +4,7 @@ import com.example.springapp.service.AuthenticationService;
 import com.example.springapp.controller.AuthenticationRequest;
 import com.example.springapp.controller.AuthenticationResponse;
 import com.example.springapp.controller.RegisterRequest;
+import com.example.springapp.controller.LoadUserRequest;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -64,4 +65,13 @@ public class AuthenticationController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
+
+	@PostMapping("/api/loadUser")
+	public ResponseEntity<String> authenticate(@RequestBody LoadUserRequest request) {
+		try{
+			return ResponseEntity.ok(service.validateUser(request));
+				}catch(Exception e) {
+					return ResponseEntity.badRequest().body(null);
+					}
+			}
 }

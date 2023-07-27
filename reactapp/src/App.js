@@ -12,7 +12,7 @@ import "./App.css";
 import {
   createBrowserRouter,
   RouterProvider,
- 
+  createRoutesFromElements
   
 } from "react-router-dom";
 import Register from './components/Auth/Register';
