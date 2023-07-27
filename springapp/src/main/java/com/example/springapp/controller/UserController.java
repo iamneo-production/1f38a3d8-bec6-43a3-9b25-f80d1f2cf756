@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> Social-Media-Portal-pratikmandge
 package com.example.springapp.controller;
 
 import java.text.ParseException;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
 import org.springframework.web.multipart.MultipartFile;
->>>>>>> Social-Media-Portal-pratikmandge
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,24 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
-=======
 import org.springframework.web.bind.annotation.RequestParam;
->>>>>>> Social-Media-Portal-pratikmandge
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springapp.model.User;
 import com.example.springapp.service.UserService;
-<<<<<<< HEAD
-
-import lombok.RequiredArgsConstructor;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-@CrossOrigin(origins="https://8081-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io/")
-@RestController
-@RequiredArgsConstructor
-=======
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import lombok.RequiredArgsConstructor;
@@ -45,7 +25,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "https://8081-defbdcccffddcdafbacfedaceeaeaadbdbabf.project.examly.io")
->>>>>>> Social-Media-Portal-pratikmandge
 @RequestMapping("/")
 public class UserController{
 	
@@ -87,8 +66,6 @@ public class UserController{
 		}
     }
 
-<<<<<<< HEAD
-=======
 	@PutMapping("/api/users/{userId}/profile-photo")
     public ResponseEntity<String> uploadProfilePhoto(@PathVariable("userId") String userId, @RequestParam("file") MultipartFile file) {
         String photoPath = userService.uploadProfilePhoto(file);
@@ -136,5 +113,4 @@ public class UserController{
         userService.deleteCoverPhoto(userId);
         return ResponseEntity.ok("Cover photo deleted successfully");
     }
->>>>>>> Social-Media-Portal-pratikmandge
 }
