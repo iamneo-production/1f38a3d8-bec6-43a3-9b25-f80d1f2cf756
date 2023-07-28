@@ -86,7 +86,7 @@ const NavBar = ({ showNav,isAuthenticated,token, setShowNav }) => {
 
                                     <li>
                                         <div onClick={() => setShowProfile(!showProfile)} className="block flex space-x-2 items-center py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
-                                            <img className="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
+                                            <img className="object-cover w-8 h-8 rounded-full" src="https://i.pinimg.com/736x/3d/5f/e9/3d5fe98d6d997b8302a136625b88b532.jpg" alt="" />
 
                                             <span className='text-white lg:hidden md:hidden inline-block text-lg'>{userName}</span>
                                         </div>

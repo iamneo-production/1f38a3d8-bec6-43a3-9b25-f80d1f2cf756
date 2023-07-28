@@ -9,10 +9,10 @@ const ProfilePage = () => {
           <div className="p-5 flex justify-center items-center">
             <div className="flex items-center ">
               <div className="">
-                <img className="w-40 border-4 shadow-md border-white rounded-sm box-border md:h-40 object-cover" src="https://ii2.pepperfry.com/media/catalog/product/w/h/1100x1210/white-ceramic-pipe-shaped-small-flower-pot---set-of-2-by-cdi-white-ceramic-pipe-shaped-small-flower--riznsl.jpg" />
+                <img className="w-40 border-4 shadow-md border-white rounded-sm box-border md:h-40 object-cover" src="https://i.pinimg.com/736x/3d/5f/e9/3d5fe98d6d997b8302a136625b88b532.jpg" alt=''/>
               </div>
               <div className="mx-4 ">
-                <p className='text-2xl font-semibold'>Giduturi Bhavana</p>
+                <p className='text-2xl font-semibold'>Uma</p>
                 <p>New York</p>
               </div>
             </div>
@@ -28,7 +28,7 @@ const ProfilePage = () => {
           </div>
           <div className=" flex justify-around w-5/12 h-[100px]">
             <div className=" text-center pt-5 h-[100px] w-3/12">
-              <p className='text-2xl font-semibold'>253</p>
+              <p className='text-2xl font-semibold'>0</p>
               <p className='text-lg font-normal text-gray-500'>Photos</p>
             </div>
             <div className=" text-center pt-5 h-[100px] w-3/12">

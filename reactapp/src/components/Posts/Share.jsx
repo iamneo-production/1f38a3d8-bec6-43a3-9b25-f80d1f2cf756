@@ -55,7 +55,7 @@ function Share(props) {
 
   return (
     <div className="p">
-      <IoIosShareAlt size={30} onClick={handleClickOpen}/>
+      <IoIosShareAlt size={30} onClick={handleClickOpen} className="cursor-pointer"/>
       {open && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-lg p-6 w-96">

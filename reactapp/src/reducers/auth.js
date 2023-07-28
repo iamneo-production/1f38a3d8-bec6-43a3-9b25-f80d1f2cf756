@@ -61,7 +61,6 @@ export default function (state = initialState, action) {
 
     
     case LOGIN_FAIL:
-      // console.log(payload)
       
       localStorage.removeItem('token');
       return {
@@ -76,9 +75,6 @@ export default function (state = initialState, action) {
     case SIGNUP_FAIL:
     case LOAD_USER_FETCH_FAIL:
     case LOGOUT:
-      // localStorage.removeItem('access');
-      // localStorage.removeItem('refresh');
-
       localStorage.removeItem('token');
 
       return {

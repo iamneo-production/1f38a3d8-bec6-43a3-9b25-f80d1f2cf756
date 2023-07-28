@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import ReportButton from './Report';
+import BlockButton from './Block';
 
 const DropdownMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
+  const [showBlockModal, setShowBlockModal] = useState(false);
 
   const handleMenuToggle = () => {
     setShowMenu(!showMenu);
@@ -16,7 +18,7 @@ const DropdownMenu = () => {
   };
 
   const handleBlockClick = () => {
-    console.log('Block clicked');
+    setShowBlockModal(true);
     setShowMenu(false);
   };
 
@@ -40,8 +42,12 @@ const DropdownMenu = () => {
           <ReportButton  setShowReportModal={setShowReportModal} />
         </div>
       )}
+      {showBlockModal && (
+        <div className="fixed z-10 inset-0 overflow-y-auto">
+          <BlockButton  setShowBlockModal={setShowBlockModal} />
+        </div>
+      )}
     </div>
   );
 };
-
 export default DropdownMenu;

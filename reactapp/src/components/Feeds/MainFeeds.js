@@ -11,7 +11,7 @@ const MainFeeds = () => {
   const [postData, setPostData] = useState([]);
 
   useEffect(() => {
-    axios.get('https://8080-dbfccefdafacfddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts')
+    axios.get('https://8080-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts')
       .then(response => {
         setPostData(response.data);
       })
@@ -48,5 +48,4 @@ const MainFeeds = () => {
     </div>
   );
 };
-
 export default MainFeeds;
