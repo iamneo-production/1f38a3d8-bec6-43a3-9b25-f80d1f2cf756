@@ -44,8 +44,6 @@ public class UserService {
         if (userRepository.existsByUsername(username)) {
             throw new IllegalArgumentException("Username already exists");
         }
-        
-        
         return userRepository.save(newUser);
     }
 

@@ -15,7 +15,6 @@ import com.example.springapp.repository.PostRepository;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -76,21 +75,22 @@ public class PostService {
         try (InputStream inputStream = file.getInputStream()) {
             Files.copy(inputStream, Paths.get(targetPath), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            // Handle exception (e.g., log error or throw custom exception)
             e.printStackTrace();
         }
     }
 
-    public Resource getPostPhoto(Post post) {
+    public byte[] getPostPhoto(int postId) {
+        Post post = getPostById(postId);
         String photoFileName = post.getPhotoPath();
-        if (photoFileName != null) {
-            try {
-                return new UrlResource(Paths.get(photoFileName).toUri());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
+        if (photoFileName == null) {
+            throw new IllegalArgumentException("Post photo not found");
         }
-        return null;
+        try {
+            return Files.readAllBytes(Paths.get(photoFileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Error reading post photo");
+        }
     }
 
     public Post updatePost(int postId, Post updatedPost) {

@@ -20,7 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+<<<<<<< HEAD
 @CrossOrigin(origins = "https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io")
+=======
+@CrossOrigin(origins = "*")
+>>>>>>> Project-Workspace-pratikmandge
 @RequestMapping("/")
 public class AuthenticationController {
 

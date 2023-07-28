@@ -24,8 +24,10 @@ public class SecurityConfig {
 		http
 			.csrf().disable()
 			.authorizeRequests(authorizeRequests -> authorizeRequests
-				.antMatchers("/user/details/","/users/**","/posts/**","/comments/**").authenticated()
+				.antMatchers("/user/details/","/users/","/posts/","/comments/").authenticated()
 				.anyRequest().permitAll()
+				// .antMatchers("/api/**").permitAll()
+				// .anyRequest().authenticated()
 			)
 			.sessionManagement(session -> session
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
