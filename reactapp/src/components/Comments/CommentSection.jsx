@@ -11,51 +11,27 @@ const CommentsSection = () => {
   const [newComment, setNewComment] = useState("");
   const [commentId, setCommentId] = useState(0);
 
-  useEffect(() => {
-    fetchComments();
-  }, []);
-
   const handleButton = () => {
     setIsOpen(!isOpen);
   };
-
-  const fetchComments = async () => {
-    try {
-      const response = await axios.get("https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments");
-      setComments(response.data);
-    } catch (error) {
-      console.error("Error fetching comments:", error);
-    }
-  };
-
-  const handleAddComment = async () => {
+  const handleAddComment = () => {
     if (newComment.trim() !== "") {
       const comment = {
         id: commentId,
-        username: "User",
+        username: "Uma",
         text: newComment,
-        timestamp: new Date().toLocaleString(),
-        postId: 1,
+        timestamp: new Date().toLocaleString()
       };
-      try {
-        await axios.post("https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments", comment);
-        setComments([...comments, comment]);
-        setNewComment("");
-        setCommentId(commentId + 1);
-      } catch (error) {
-        console.error("Error adding comment:", error);
-      }
+      setComments([...comments, comment]);
+      setNewComment("");
+      setCommentId(commentId + 1);
     }
   };
 
-  const handleDeleteComment = async (id) => {
-    try {
-      await axios.delete(`https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments/${id}`);
-      const updatedComments = comments.filter((comment) => comment.id !== id);
-      setComments(updatedComments);
-    } catch (error) {
-      console.error("Error deleting comment:", error);
-    }
+
+  const handleDeleteComment = (id) => {
+    const updatedComments = comments.filter((comment) => comment.id !== id);
+    setComments(updatedComments);
   };
 
   return (

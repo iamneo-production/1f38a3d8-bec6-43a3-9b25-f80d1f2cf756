@@ -9,15 +9,11 @@ const CreatePost = ({ setPostData}) => {
   const [username,setUsername]=useState("");
 
   useEffect(() => {
-      axios.get('https://8080-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts')
-        .then(response => {
-          if (response.data.length > 0 && response.data[0].user) {
-            setUsername(response.data[0].user.username);
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching user data:', error);
-        });
+    const storedUsername = localStorage.getItem('user');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+    console.log(username);
   }, []);
 
   const handleFileChange = (e) => {
@@ -41,7 +37,10 @@ const CreatePost = ({ setPostData}) => {
         
         setPostData(prevData => [...prevData, response.data]);
         setContent("");
-        setFile(null);
+        const fileInput = document.getElementById("file-input");
+        if (fileInput) {
+          fileInput.value = null;
+        }
       })
     .catch(error => {
         console.error('Error creating post:', error);

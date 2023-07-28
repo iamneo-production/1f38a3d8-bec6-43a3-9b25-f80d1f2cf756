@@ -1,36 +1,23 @@
 import React, { useState } from 'react';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import { VscBookmark } from 'react-icons/vsc';
 import CommentsSection from '../Comments/CommentSection';
 import Share from './Share';
-import axios from 'axios';
+
 import DropdownMenu from './Dropdownmenu';
 
 const Posts = ({ post }) => {
   const [liked, setLiked] = useState(false);
-
+  const photoUrl = `https://8080-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}/photo`
+  if (typeof post.likes !== 'number') {
+    post.likes = 0;
+  }
   const handleLike = () => {
-    if (liked) {
-      axios.post(`https://8080-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}/unlike`)
-        .then(response => {
-          setLiked(false);
-        })
-        .catch(error => {
-          console.error('Error unliking post:', error);
-        });
-    } else {
-      axios.post(`https://8080-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}/like`)
-        .then(response => {
-          setLiked(true);
-          console.log(post.user.username);
-        })
-        .catch(error => {
-          console.error('Error liking post:', error);
-        });
-    }
+    // Update the post.likes value directly based on the liked state
+    const updatedLikes = liked ? post.likes - 1 : post.likes + 1;
+    post.likes = updatedLikes;
+    setLiked(!liked);
   };
-  const likesCount = Array.isArray(post.likes) ? post.likes.length : 0;
 
   return (
     <div className='w-full bg-white my-2 rounded-lg'>
@@ -51,22 +38,23 @@ const Posts = ({ post }) => {
 
       {post.photoPath && (
         <div className='h-[450px] w-full px-6 py-4'>
-          <img className="w-full h-full square-full rounded-xl" src={post.photoPath} alt="" />
+          <img className="w-full h-full square-full rounded-xl" src={photoUrl} alt="" />
         </div>
       )}
 
       <div className='flex justify-between mx-4 py-4'>
         <div className="flex space-x-4">
-          {liked ? (
+        {
+          liked ?
             <AiFillHeart className='text-pink-800' size={30} onClick={handleLike} />
-          ) : (
-            <AiOutlineHeart size={30} onClick={handleLike} />
-          )}
-          <span className='px'>{likesCount} likes</span>
+          :
+          <AiOutlineHeart size={30} onClick={handleLike} className="cursor-pointer"/>
+        } 
+        <span className='px'>{post.likes} likes</span>
           <CommentsSection />
           <Share/>
         </div>
-        <VscBookmark size={30} />
+        <VscBookmark size={30} className="cursor-pointer"/>
       </div>
     </div>
   );

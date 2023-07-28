@@ -91,7 +91,7 @@ const Login = ({ login, token, isAuthenticated,login_state }) => {
 								type="text"
 								class="block border border-grey-light w-full p-3 rounded mb-4"
 								name="email"
-								placeholder="email" onChange={(e) => onChange(e)} required />
+								placeholder="username" onChange={(e) => onChange(e)} required />
 
 							<div className="relative">
 								<input
