@@ -6,16 +6,16 @@ const RouteProtectionUser = ({ children, isAuthenticated,token}) => {
     const navigate = useNavigate();
     let auth = false;
 
-    useEffect(()=>{
-        if(!isAuthenticated || localStorage.getItem("token") === null || token === null){
-            auth = false
-            navigate("/login")
-        }else{
-          auth = true;
-        }
-    },[])
+    // useEffect(()=>{
+    //     if(!isAuthenticated || localStorage.getItem("token") === null || token === null){
+    //         auth = false
+    //         navigate("/login")
+    //     }else{
+    //       auth = true;
+    //     }
+    // },[])
 
-  if(isAuthenticated && localStorage.getItem("token") && token){
+  if(localStorage.getItem("token")){
     return children
   }
   

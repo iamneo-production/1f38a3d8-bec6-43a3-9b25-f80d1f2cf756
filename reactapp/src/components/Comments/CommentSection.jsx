@@ -1,68 +1,95 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Comment from "./Comment";
+import { FaRegCommentDots } from "react-icons/fa";
+import axios from "axios";
+
+
 
 const CommentsSection = () => {
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      username: "John",
-      text: "This is the first comment.",
-      timestamp: new Date().toLocaleString()
-    },
-    {
-      id: 2,
-      username: "Jane",
-      text: "This is the second comment.",
-      timestamp: new Date().toLocaleString()
-    }
-  ]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
-  const [commentId, setCommentId] = useState(3);
+  const [commentId, setCommentId] = useState(0);
 
-  const handleAddComment = () => {
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
+  const handleButton = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get("https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments");
+      setComments(response.data);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
+
+  const handleAddComment = async () => {
     if (newComment.trim() !== "") {
       const comment = {
         id: commentId,
         username: "User",
         text: newComment,
-        timestamp: new Date().toLocaleString()
+        timestamp: new Date().toLocaleString(),
+        postId: 1,
       };
-      setComments([...comments, comment]);
-      setNewComment("");
-      setCommentId(commentId + 1);
+      try {
+        await axios.post("https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments", comment);
+        setComments([...comments, comment]);
+        setNewComment("");
+        setCommentId(commentId + 1);
+      } catch (error) {
+        console.error("Error adding comment:", error);
+      }
     }
   };
 
-  const handleDeleteComment = (id) => {
-    const updatedComments = comments.filter((comment) => comment.id !== id);
-    setComments(updatedComments);
+  const handleDeleteComment = async (id) => {
+    try {
+      await axios.delete(`https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/comments/${id}`);
+      const updatedComments = comments.filter((comment) => comment.id !== id);
+      setComments(updatedComments);
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
   };
 
   return (
     <div>
-      {comments.map((comment) => (
-        <Comment
-          key={comment.id}
-          comment={comment}
-          onDelete={() => handleDeleteComment(comment.id)}
-        />
-      ))}
+      <FaRegCommentDots onClick={handleButton} size={30} className="cursor-pointer" />
+      {isOpen && (
+        <div className="flex mt-4">
+          <div>
+            {comments.map((comment) => (
+              <Comment
+                key={comment.id}
+                comment={comment}
+                onDelete={() => handleDeleteComment(comment.id)}
+              />
+            ))}
 
-      <div className="flex mt-4">
-        <input
-          type="text"
-          placeholder="Add a comment..."
-          className="flex-grow p-2 border rounded-l"
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-        />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r"
-          onClick={handleAddComment}
-        >
-         Comment
-        </button>
-      </div>
+            <div className="flex mt-4">
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                className="flex-grow p-2 border rounded-l"
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+              />
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r"
+                onClick={handleAddComment}
+              >
+                Comment
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
