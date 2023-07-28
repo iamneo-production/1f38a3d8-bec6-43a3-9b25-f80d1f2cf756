@@ -7,7 +7,6 @@ function Share(props) {
   const [friendsList, setFriendsList] = useState([]);
 
   const getFriendsList = (userId) => {
-    // API to get list of friends of user with a particular userId
     axios
       .get("https://648ae86717f1536d65e9f0b7.mockapi.io/frndlist/frnds")
       .then(function (response) {
@@ -48,10 +47,8 @@ function Share(props) {
 
   function handleInput(id) {
     if (receiverid.includes(id)) {
-      // If the ID is already in the array, remove it
       setReceiverid(receiverid.filter((receiverId) => receiverId !== id));
     } else {
-      // If the ID is not in the array, add it
       setReceiverid([...receiverid, id]);
     }
   }
