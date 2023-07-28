@@ -1,28 +1,18 @@
-import React from 'react'
-import Messages from '../Messages/Messages';
-import Input from '../Messages/Input';
-import Cam from '../Images/cam.png';
-import Add from '../Images/add.png';
-import More from '../Images/more.png';
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAIL = "SIGNUP_FAIL";
+export const LOGOUT = "LOGOUT";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const POST_FETCH_SUCCESS = "POST_FETCH_SUCCESS";
+export const POST_FETCH_FAIL = "POST_FETCH_FAIL";
+export const POST_CREATE_SUCCESS = "POST_CREATE_SUCCESS";
+export const POST_CREATE_FAIL = "POST_CREATE_FAIL";
+export const STORY_FETCH_SUCCESS = "STORY_FETCH_SUCCESS";
+export const STORY_FETCH_FAIL = "STORY_FETCH_FAIL";
+export const STORY_CREATE_SUCCESS = "STORY_CREATE_SUCCESS";
+export const STORY_CREATE_FAIL = "STORY_CREATE_FAIL";
 
-
-
-
-const Chat = () => {
-  return (
-    <div class="flex-[2]">
-      <div class="h-[50px] bg-[#5d5b8d] flex items-center justify-between text-[lightgray] p-2.5">
-        <span>Cha enwooo</span>
-        <div class=" flex gap-2.5">
-          <img class="h-6 cursor-pointer" src={Cam} alt="" />
-          <img class="h-6 cursor-pointer" src={Add} alt="" />
-          <img class="h-6 cursor-pointer" src={More} alt="" />
-        </div>
-      </div>
-      <Messages />
-      <Input />
-    </div>
-  );
-};
-
-export default Chat
+export const USER_FETCH_SUCCESS = "USER_FETCH_SUCCESS";
+export const USER_FETCH_FAIL = "USER_FETCH_FAIL";
+export const LOAD_USER_FETCH_SUCCESS = "LOAD_USER_FETCH_SUCCESS";
+export const LOAD_USER_FETCH_FAIL = "LOAD_USER_FETCH_FAIL";

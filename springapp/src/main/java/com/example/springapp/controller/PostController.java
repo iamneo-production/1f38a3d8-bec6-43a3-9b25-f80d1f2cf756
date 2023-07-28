@@ -35,7 +35,7 @@ import org.springframework.http.HttpHeaders;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@CrossOrigin(origins = "https://8081-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io")
+@CrossOrigin(origins = "https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class PostController {

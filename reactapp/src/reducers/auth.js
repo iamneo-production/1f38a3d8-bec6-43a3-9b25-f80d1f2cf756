@@ -5,11 +5,7 @@ import {LOGIN_FAIL,
   LOGOUT,
   USER_FETCH_SUCCESS,
   LOAD_USER_FETCH_SUCCESS,
-  LOAD_USER_FETCH_FAIL,
-  POST_CREATE_FAIL,
-  POST_CREATE_SUCCESS,
-  POST_FETCH_SUCCESS,
-  POST_FETCH_FAIL,
+  LOAD_USER_FETCH_FAIL
 } from '../actions/types';
 
 
@@ -19,9 +15,7 @@ const initialState = {
   login_state:{status:null,message:null},
   userName: null,
   isAuthenticated: false,
-  createdPost:{},
-  postsData:{},
-  isPostAvail:false,
+  
 }; 
 
 export default function (state = initialState, action) {
@@ -61,19 +55,9 @@ export default function (state = initialState, action) {
           message:"Success"
         }
       }
-    case POST_CREATE_SUCCESS:
-      return{
-        ...state,
-        createdPost:payload
-      }
-    case POST_FETCH_SUCCESS:
-      return{
-        ...state,
-        postsData:payload,
-        isPostAvail:true,
-      }
+    
       case USER_FETCH_SUCCESS:
-        return {}
+        return 
 
     
     case LOGIN_FAIL:
@@ -88,17 +72,6 @@ export default function (state = initialState, action) {
           },
           isAuthenticated: false,
           token: null,
-      }
-    case POST_CREATE_FAIL:
-      return {
-        ...state,
-        createdPost:{}
-      }
-    case POST_FETCH_FAIL:
-      return{
-        ...state,
-        postsData:{},
-        isPostAvail:false
       }
     case SIGNUP_FAIL:
     case LOAD_USER_FETCH_FAIL:
@@ -126,11 +99,3 @@ export default function (state = initialState, action) {
       return state;
   }
 }
-
-
-
-
-
-
-
-

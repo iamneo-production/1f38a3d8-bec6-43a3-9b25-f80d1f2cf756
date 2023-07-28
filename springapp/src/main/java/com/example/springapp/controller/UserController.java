@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "https://8081-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io")
+@CrossOrigin(origins = "https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequestMapping("/")
 public class UserController{
 	
@@ -81,7 +81,7 @@ public class UserController{
     }
 
     @GetMapping("/api/users/{userId}/profile-photo")
-    public ResponseEntity<byte[]> getProfilePhotoPath(@PathVariable("userId") String userId) {
+    public ResponseEntity<byte[]> getProfilePhoto(@PathVariable("userId") String userId) {
         try {
             byte[] photoBytes = userService.getProfilePhoto(userId);
             return ResponseEntity.ok(photoBytes);
@@ -92,7 +92,7 @@ public class UserController{
     }
 
     @GetMapping("/api/users/{userId}/cover-photo")
-    public ResponseEntity<byte[]> getCoverPhotoPath(@PathVariable("userId") String userId) {
+    public ResponseEntity<byte[]> getCoverPhoto(@PathVariable("userId") String userId) {
         try {
             byte[] photoBytes = userService.getCoverPhoto(userId);
             return ResponseEntity.ok(photoBytes);
@@ -103,13 +103,13 @@ public class UserController{
     }
 
     @DeleteMapping("/api/users/{userId}/profile-photo")
-    public ResponseEntity<String> deleteProfilePhotoPath(@PathVariable("userId") String userId) {
+    public ResponseEntity<String> deleteProfilePhoto(@PathVariable("userId") String userId) {
         userService.deleteProfilePhoto(userId);
         return ResponseEntity.ok("Profile photo deleted successfully");
     }
 
     @DeleteMapping("/api/users/{userId}/cover-photo")
-    public ResponseEntity<String> deleteCoverPhotoPath(@PathVariable("userId") String userId) {
+    public ResponseEntity<String> deleteCoverPhoto(@PathVariable("userId") String userId) {
         userService.deleteCoverPhoto(userId);
         return ResponseEntity.ok("Cover photo deleted successfully");
     }

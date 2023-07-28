@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-@CrossOrigin(origins = "https://8081-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io")
+@CrossOrigin(origins = "https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequiredArgsConstructor
 public class CommentController {
 

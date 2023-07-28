@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "https://8081-cdeeceacaebfddcdafbacfedaceeaeaadbdbabf.project.examly.io")
+@CrossOrigin(origins = "https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io")
 @RequestMapping("/")
 public class AuthenticationController {
 
@@ -65,13 +65,12 @@ public class AuthenticationController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
-
 	@PostMapping("/api/loadUser")
 	public ResponseEntity<String> authenticate(@RequestBody LoadUserRequest request) {
 		try{
 			return ResponseEntity.ok(service.validateUser(request));
-				}catch(Exception e) {
-					return ResponseEntity.badRequest().body(null);
-					}
-			}
+		}catch(Exception e) {
+			return ResponseEntity.badRequest().body(null);
+		}
+	}
 }

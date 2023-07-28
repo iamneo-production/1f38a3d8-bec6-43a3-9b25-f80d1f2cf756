@@ -7,11 +7,7 @@ import {
     USER_FETCH_SUCCESS,
     USER_FETCH_FAIL,
     LOAD_USER_FETCH_SUCCESS,
-    LOAD_USER_FETCH_FAIL,
-    POST_CREATE_FAIL,
-    POST_CREATE_SUCCESS,
-    POST_FETCH_SUCCESS,
-    POST_FETCH_FAIL,
+    LOAD_USER_FETCH_FAIL
 }
     from './types';
 
@@ -50,8 +46,10 @@ export const signup = (username, email, password, dateofbirth) => async dispatch
     };
 
     const body = JSON.stringify({ username, email, password, dateofbirth });
+        console.log(body);
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/register`, body, config);
+        console.log(res);
         dispatch({
             type: SIGNUP_SUCCESS,
             payload: res.data
@@ -131,62 +129,3 @@ export const fetch_user_details = () => async dispatch => {
         })
     }
 };
-
-
-
-export const createPost = (formData) => async dispatch => {
-    const token = localStorage.getItem("token");
-    const config = {
-        headers: {
-            'Content-Type': 'multipart/form-data',
-            'Authorization': `Bearer ${token}`
-        }
-    };
-
-    try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/posts`, formData, config);
-        dispatch({
-            type: POST_CREATE_SUCCESS,
-            payload: res.data
-        });
-        dispatch(fetch_posts())
-    } catch (err) {
-        dispatch({
-            type: POST_CREATE_FAIL
-        })
-    }
-};
-
-export const fetch_posts = () => async dispatch => {
-    if (localStorage.getItem('user')) {
-
-        const token = localStorage.getItem('token');
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        };
-
-        try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/posts`, config);
-            console.log(res)
-            dispatch({
-                type: POST_FETCH_SUCCESS,
-                payload: res.data
-            });
-        } catch (err) {
-            dispatch({
-                type: POST_FETCH_FAIL,
-                payload: { message: "Something went wrong!!!  " }
-            })
-        }
-
-    } else {
-        dispatch({
-            type: USER_FETCH_FAIL,
-            payload: { message: "User Not Authenticated" }
-        })
-    }
-};
-
