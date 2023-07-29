@@ -20,11 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-<<<<<<< HEAD
-@CrossOrigin(origins = "https://8081-cffdafcacefddcdafbacfedaceeaeaadbdbabf.project.examly.io")
-=======
 @CrossOrigin(origins = "*")
->>>>>>> Project-Workspace-pratikmandge
 @RequestMapping("/")
 public class AuthenticationController {
 
@@ -69,12 +65,4 @@ public class AuthenticationController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
-	@PostMapping("/api/loadUser")
-	public ResponseEntity<String> authenticate(@RequestBody LoadUserRequest request) {
-		try{
-			return ResponseEntity.ok(service.validateUser(request));
-		}catch(Exception e) {
-			return ResponseEntity.badRequest().body(null);
-		}
-	}
 }

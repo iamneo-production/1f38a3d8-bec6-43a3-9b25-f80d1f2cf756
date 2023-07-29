@@ -20,5 +20,6 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/LoadUserRequest.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/PostService.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/config/JwtAuthenticationFilter.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/JwtService.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/PostController.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/JwtService.java

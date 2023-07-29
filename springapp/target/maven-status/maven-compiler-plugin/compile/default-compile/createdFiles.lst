@@ -3,8 +3,8 @@ com/example/springapp/model/Comment.class
 com/example/springapp/service/UserService.class
 com/example/springapp/controller/LoadUserRequest$LoadUserRequestBuilder.class
 com/example/springapp/model/UserRole.class
-com/example/springapp/controller/RegisterRequest$RegisterRequestBuilder.class
 com/example/springapp/model/User.class
+com/example/springapp/controller/RegisterRequest$RegisterRequestBuilder.class
 com/example/springapp/controller/RegisterRequest.class
 com/example/springapp/config/ApplicationConfig.class
 com/example/springapp/repository/CommentRepository.class
@@ -24,6 +24,7 @@ com/example/springapp/model/User$UserBuilder.class
 com/example/springapp/controller/LoadUserRequest.class
 com/example/springapp/repository/UserRepository.class
 com/example/springapp/config/JwtAuthenticationFilter.class
+com/example/springapp/service/CommentService.class
 com/example/springapp/config/SecurityConfig.class
 com/example/springapp/service/CommentService.class
 com/example/springapp/model/Post$PostBuilder.class
