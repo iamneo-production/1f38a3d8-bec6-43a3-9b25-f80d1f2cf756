@@ -7,6 +7,7 @@ const CreatePost = ({ setPostData}) => {
   const [content, setContent] = useState("");
   const [file, setFile] = useState(null);
   const [username,setUsername]=useState("");
+
   useEffect(() => {
     const storedUsername = localStorage.getItem('user');
     if (storedUsername) {
