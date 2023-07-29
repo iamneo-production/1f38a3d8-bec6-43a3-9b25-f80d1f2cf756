@@ -85,13 +85,16 @@ public class PostController {
     }
 
     @GetMapping("api/posts/{postId}/photo")
-    public ResponseEntity<byte[]> getPostPhoto(@PathVariable("postId") int postId) {
-        try{
-            byte[] photoBytes = postService.getPostPhoto(postId);
-            return ResponseEntity.ok(photoBytes);
-        }  catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    public ResponseEntity<Resource> getPostPhoto(@PathVariable int postId) {
+        Post post = postService.getPostById(postId);
+        Resource photoResource = postService.getPostPhoto(post);
+        if (photoResource != null && photoResource.exists()) {
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + photoResource.getFilename() + "\"")
+                    .body(photoResource);
+        } else {
+            // Handle the case when the photo does not exist.
+            return ResponseEntity.notFound().build();
         }
     }
 
