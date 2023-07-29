@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Comment from "./Comment";
 import { FaRegCommentDots } from "react-icons/fa";
-import axios from "axios";
-
-
 
 const CommentsSection = () => {
   const [isOpen, setIsOpen] = useState(false);
