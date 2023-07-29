@@ -1,78 +1,24 @@
-import React, { useState } from 'react'
-import MainFeeds from './components/Feeds/MainFeeds';
-import MainPage from './Settings/SideBar/MainPage';
-import Login from './components/Auth/Login';
-import NavBar from './components/NavBar/NavBar';
-import store from './store';
-import { Provider } from 'react-redux';
+import { useSelector } from "react-redux";
+import "./App.css" 
+import Auth from "./pages/auth/Auth";
+import Home from "./pages/home/Home"
+import Profile from "./pages/profile/Profile"
+import { Routes, Route, Navigate } from "react-router-dom";
 
-import "./App.css";
-// import "./Scroll.css";
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-  createRoutesFromElements
-  
-} from "react-router-dom";
-import Register from './components/Auth/Register';
-import RouteProtectionUser from './routeProtection/RouteProtectionUser';
-import Messages from './components/Messages/Messages';
-
-
-
-
-const router = createBrowserRouter(
-  
-
-
-  [
-    {
-          path: "/settings",
-          element: <RouteProtectionUser><MainPage /></RouteProtectionUser>,
-        },
-        {
-          path: "/",
-          element: <RouteProtectionUser><MainFeeds/></RouteProtectionUser>,
-          
-        },
-        {
-          path: "/login",
-          element: <Login />,
-        },
-        {
-          path: "/register",
-          element: <Register />,
-        },
-         {
-           path: "/messages",
-           element: <Messages />,
-         },  
-         
-      ]
-
-
-
-);
-
-const App = () => {
-  const [showNav, setShowNav] = useState(false);
-
+function App() {
+  const user = useSelector(state => state.authReducer.authData)
   return (
-    <div id='root'>
-      
-      <Provider store={store}>
-      <NavBar showNav={showNav} setShowNav={setShowNav}/>
-      <div onClick = {() => setShowNav(false)}>
-        <RouterProvider router={router} />
-        </div>
-        {/* <MainPage /> */}
-        
-      </Provider>
+    <div className="App">
+        <div className="blur" style={{top: '-18%', right: '0'}} ></div>
+        <div className="blur" style={{top: '36%', left: '-8rem'}} ></div>
+        <Routes>
+          <Route path="/" element={user? <Navigate to="/home" /> : <Navigate to = 'auth' />} />
+          <Route path="/home" element={user ? <Home /> : <Navigate to='../auth' /> } />
+          <Route path="/auth" element={user ? <Navigate to='../home' />  : < Auth />} />
+          <Route path="/profile/:username" element={user ? <Profile /> : <Navigate to='../auth' /> } />
+        </Routes>
     </div>
-    
-  )
-  
+  );
 }
 
-export default App
+export default App;
