@@ -1,36 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import { VscBookmark } from 'react-icons/vsc';
 import CommentsSection from '../Comments/CommentSection';
 import Share from './Share';
 import axios from 'axios';
 import DropdownMenu from './Dropdownmenu';
 
-const Posts = ({ post }) => {
+const Posts = ({ post ,username}) => {
+  const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
+  const photoUrl = `https://8080-dbfccefdafacfddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}/photo`;
+
+  useEffect(() => {
+    // Fetch the total likes for the post
+    axios.get(`https://8080-dbfccefdafacfddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}`)
+      .then(response => {
+        setLikes(response.data.likes.length);
+        setLiked(response.data.likedByCurrentUser);
+      })
+      .catch(error => {
+        console.error('Error fetching post likes:', error);
+      });
+  }, [post.id]);
 
   const handleLike = () => {
     if (liked) {
-      axios.post(`https://8080-dbfccefdafacfddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}/unlike`)
+      axios.post(`https://8080-dbfccefdafacfddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}/unlike?username=${username}`)
         .then(response => {
           setLiked(false);
+          setLikes(prevLikes => prevLikes - 1);
         })
         .catch(error => {
           console.error('Error unliking post:', error);
         });
     } else {
-      axios.post(`https://8080-dbfccefdafacfddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}/like`)
+      axios.post(`https://8080-dbfccefdafacfddcdafbacfedaceeaeaadbdbabf.project.examly.io/api/posts/${post.id}/like?username=${username}`)
         .then(response => {
           setLiked(true);
-          console.log(post.user.username);
+          setLikes(prevLikes => prevLikes + 1);
         })
         .catch(error => {
           console.error('Error liking post:', error);
         });
     }
   };
-  const likesCount = Array.isArray(post.likes) ? post.likes.length : 0;
+  
 
   return (
     <div className='w-full bg-white my-2 rounded-lg'>
@@ -42,7 +56,7 @@ const Posts = ({ post }) => {
             <p className='text-md text-gray-500'>{post.createdAt}</p>
           </div>
         </div>
-        <DropdownMenu/>
+        <DropdownMenu />
       </div>
 
       <div className='h-[60px] bg-white w-full p-5'>
@@ -51,7 +65,7 @@ const Posts = ({ post }) => {
 
       {post.photoPath && (
         <div className='h-[450px] w-full px-6 py-4'>
-          <img className="w-full h-full square-full rounded-xl" src={post.photoPath} alt="" />
+          <img className="w-full h-full square-full rounded-xl" src={photoUrl} alt="" />
         </div>
       )}
 
@@ -62,9 +76,9 @@ const Posts = ({ post }) => {
           ) : (
             <AiOutlineHeart size={30} onClick={handleLike} />
           )}
-          <span className='px'>{likesCount} likes</span>
+          <span className='px'>{likes} likes</span>
           <CommentsSection />
-          <Share/>
+          <Share />
         </div>
         <VscBookmark size={30} />
       </div>
