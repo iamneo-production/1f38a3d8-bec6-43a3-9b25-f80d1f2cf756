@@ -2,10 +2,10 @@
 import React from 'react';
 
 const FollowingList = ({ following }) => {
-  // State to manage the search query
+  
   const [searchQuery, setSearchQuery] = React.useState('');
 
-  // Filter the following based on the search query
+
   const filteredFollowing = following.filter((followed) =>
     followed.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
