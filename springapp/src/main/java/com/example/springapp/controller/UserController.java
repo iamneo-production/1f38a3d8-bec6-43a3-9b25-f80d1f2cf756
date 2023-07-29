@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,15 +21,17 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-<<<<<<< HEAD
-@RequestMapping("/api")
-public class UserController {
-=======
 @RequestMapping("/")
 public class UserController{
->>>>>>> Social-Media-Portal-pratikmandge
 	
 	private final UserService userService;
+
+	@PostMapping("/api/users")
+		public ResponseEntity<User> createUser(@RequestBody User user) {
+    	User createdUser = userService.createUser(user);
+    	return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+	}
+
 
 	@GetMapping("/api/users/{userId}")
     public ResponseEntity<User> getUserByUsername(@PathVariable("userId") String userId) {

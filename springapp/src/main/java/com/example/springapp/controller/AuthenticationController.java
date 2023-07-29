@@ -21,20 +21,12 @@ public class AuthenticationController {
 	
 	private final AuthenticationService service;
 
-<<<<<<< HEAD
-	@PostMapping("/register")
-=======
 	@PostMapping("/api/register")
->>>>>>> Social-Media-Portal-pratikmandge
 	public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerUser(request));
 	}
-
-<<<<<<< HEAD
-	@PostMapping("/register/admin")
-=======
+	
 	@PostMapping("/api/register/admin")
->>>>>>> Social-Media-Portal-pratikmandge
 	public ResponseEntity<AuthenticationResponse> registerAdmin(@RequestBody RegisterRequest request) {
 		return ResponseEntity.ok(service.registerAdmin(request));
 	}
