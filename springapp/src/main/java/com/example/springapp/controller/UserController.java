@@ -20,13 +20,8 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-<<<<<<< HEAD
-@RequestMapping("/api")
-public class UserController {
-=======
 @RequestMapping("/")
 public class UserController{
->>>>>>> Social-Media-Portal-pratikmandge
 	
 	private final UserService userService;
 
