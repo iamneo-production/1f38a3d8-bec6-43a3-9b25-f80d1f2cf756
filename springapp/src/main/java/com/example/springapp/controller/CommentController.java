@@ -1,5 +1,7 @@
 package com.example.springapp.controller;
 
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.example.springapp.model.Comment;
 import com.example.springapp.service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class CommentController {
 
