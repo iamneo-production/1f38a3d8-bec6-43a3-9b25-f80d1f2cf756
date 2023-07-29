@@ -2,10 +2,10 @@
 import React from 'react';
 
 const FollowerList = ({ followers }) => {
-  // State to manage the search query
+
   const [searchQuery, setSearchQuery] = React.useState('');
 
-  // Filter the followers based on the search query
+
   const filteredFollowers = followers.filter((follower) =>
     follower.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
